@@ -1,0 +1,153 @@
+{
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/sale",
+  "documentPath": "/sale",
+  "templateName": "sale-page",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "style": "light",
+      "backgroundColor": "#ffffff",
+      "description": "Product highlight carousel with Memorial Day Sale promotional images",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "neutralDescription": "Horizontal carousel/slider with 5 product images showing sale tier details and individual product savings overlays (e.g., 'Save $600'), each slide linked to product pages with descriptive heading beneath (e.g., 'Shop Emerson Sectional'), pagination dots and prev/next navigation arrows"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "style": "accent",
+      "backgroundColor": "red background image (sale-red.avif)",
+      "description": "Promotional call-to-action banner for additional Memorial Day markdown savings",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "neutralDescription": "Centered heading 'Plus, Shop Additional Savings', subheading 'On select Memorial Day markdown items', and a single CTA button 'Don't Miss Out' linking to memorial-day-sale page, all on a red/dark promotional background image"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "style": "light",
+      "backgroundColor": "#ffffff",
+      "description": "Living room savings product carousel with separator",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "neutralDescription": "Product carousel with heading 'Shop Living Room Savings' showing a horizontal scrollable grid of product items with navigation arrows, followed by a horizontal separator/divider line"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "style": "light",
+      "backgroundColor": "#ffffff",
+      "description": "Dining room savings product carousel with separator",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "neutralDescription": "Product carousel with heading 'Shop Dining Room Savings' showing a horizontal scrollable grid of product items with navigation arrows, followed by a horizontal separator/divider line"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 5,
+      "style": "light",
+      "backgroundColor": "#ffffff",
+      "description": "Bedroom savings product carousel",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "neutralDescription": "Product carousel with heading 'Shop Bedroom Savings' showing a horizontal scrollable grid of product items with navigation arrows"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 6,
+      "style": "light",
+      "backgroundColor": "#ffffff",
+      "description": "Mattress sale promotional teaser with split layout",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "neutralDescription": "Split layout with large mattress product image on left, and text content on right containing heading 'Memorial Day Mattress Sale', descriptive paragraph about premium mattress brands, and two CTA buttons 'Shop Tempur-Pedic' and 'Shop All Mattress Brands'"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 7,
+      "style": "light",
+      "backgroundColor": "#ffffff",
+      "description": "SEO content and legal disclaimers",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "neutralDescription": "SEO-focused paragraph with heading 'Sale' describing Havertys furniture deals across product categories with inline links to category pages and store locations"
+        },
+        {
+          "sequenceNumber": 2,
+          "neutralDescription": "Legal disclaimer fragment with Memorial Day Sale terms and conditions, financing details for 60-month interest-free offers with credit card requirements and APR information"
+        }
+      ]
+    }
+  ],
+  "blockInventory": {
+    "localBlocks": [
+      {
+        "name": "carousel-category",
+        "baseBlock": "carousel",
+        "purpose": "Category navigation carousel with product images and linked headings",
+        "source": "custom"
+      },
+      {
+        "name": "commerce-teaser-split",
+        "baseBlock": "commerce-teaser",
+        "purpose": "Promotional teaser with split media/text layout, background images, and multiple CTAs",
+        "source": "custom"
+      },
+      {
+        "name": "call-to-action-promo",
+        "baseBlock": "call-to-action",
+        "purpose": "Promotional banner with eyebrow, heading, body text, and CTA button",
+        "source": "custom"
+      },
+      {
+        "name": "hero-video-sale",
+        "baseBlock": "hero",
+        "purpose": "Sale hero banner with video background and promotional messaging",
+        "source": "custom"
+      }
+    ],
+    "blockCollectionAvailable": [
+      {
+        "name": "hero",
+        "purpose": "Large heading, text, buttons for page intro"
+      },
+      {
+        "name": "cards",
+        "purpose": "Grid of items with images/text"
+      },
+      {
+        "name": "columns",
+        "purpose": "Side-by-side content layout"
+      },
+      {
+        "name": "carousel",
+        "purpose": "Rotating image/content displays"
+      },
+      {
+        "name": "accordion",
+        "purpose": "Expandable Q&A sections"
+      },
+      {
+        "name": "tabs",
+        "purpose": "Switchable content panels"
+      },
+      {
+        "name": "fragment",
+        "purpose": "Reusable content sections"
+      }
+    ]
+  }
+}

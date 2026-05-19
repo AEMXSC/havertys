@@ -1,0 +1,41 @@
+{
+  "variantName": "commerce-teaser-split",
+  "baseBlock": "commerce-teaser",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:01:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/",
+    "originPage": "Havertys furniture homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "promotional-teaser",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "background image + media (image or video) + eyebrow + heading + description + multiple CTAs",
+    "buttonCount": 3,
+    "imageCount": 1,
+    "hasVideo": true
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "homepage promotional teasers with background images",
+      "design service or brand story sections",
+      "split-layout content with media and text",
+      "featured service or product promotions"
+    ],
+    "notSuitableFor": [
+      "simple text-only promotional sections",
+      "card grids or lists",
+      "hero banners (use hero variant instead)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index", "/sale"],
+    "reuseCount": 2,
+    "lastUsed": "2026-05-19T18:05:00.000Z"
+  }
+}

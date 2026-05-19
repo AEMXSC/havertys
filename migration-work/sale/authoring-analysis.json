@@ -1,0 +1,197 @@
+{
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/sale",
+  "documentPath": "/sale",
+  "templateName": "sale-page",
+  "variantMapping": {
+    "carousel": "carousel-category",
+    "call-to-action": "call-to-action-sale",
+    "product-carousel": "product-carousel-sale",
+    "commerce-teaser": "commerce-teaser-split",
+    "fragment": "fragment"
+  },
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "style": "light",
+      "sectionMetadata": null,
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Horizontal carousel with 5 product promotional images showing Memorial Day Sale tiers and individual product savings, each slide linked with descriptive heading, pagination dots and navigation arrows",
+          "decision": "BLOCK",
+          "blockName": "carousel-category",
+          "blockVariant": "carousel-category",
+          "baseBlock": "carousel",
+          "reason": "Interactive carousel component with multiple slides, navigation controls, and auto-play requires structured block decoration. Matches carousel block pattern with image + linked heading per slide.",
+          "matchType": "obvious",
+          "variantDecision": "REUSE (75% similarity - same structure: image + linked heading per slide, same colorScheme/density/imagePattern)",
+          "notes": "Reusing carousel-category variant from homepage. Same structural pattern despite different purpose (sale highlights vs category navigation)."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "style": "accent",
+      "sectionMetadata": {
+        "backgroundImage": "sale-red.avif"
+      },
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Centered heading 'Plus, Shop Additional Savings', subheading 'On select Memorial Day markdown items', CTA button 'Don't Miss Out' on red promotional background image",
+          "decision": "BLOCK",
+          "blockName": "call-to-action-sale",
+          "blockVariant": "call-to-action-sale",
+          "baseBlock": "call-to-action",
+          "reason": "CTA with background image styling requires block structure. The existing call-to-action-promo variant does not support background images per its metadata. Created new variant with background-image support.",
+          "matchType": "obvious",
+          "variantDecision": "CREATE NEW (10% similarity to call-to-action-promo - different colorScheme, density, imagePattern)",
+          "notes": "New variant created. Has red background image unlike call-to-action-promo. Heading + subheading + single CTA button pattern."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "style": "light",
+      "sectionMetadata": null,
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Product carousel with heading 'Shop Living Room Savings' and horizontal scrollable product grid with navigation arrows, followed by separator",
+          "decision": "BLOCK",
+          "blockName": "product-carousel-sale",
+          "blockVariant": "product-carousel-sale",
+          "baseBlock": "carousel",
+          "reason": "Commerce-integrated product carousel that dynamically loads product data with swiper navigation. No existing variant for this commerce-specific carousel pattern.",
+          "matchType": "obvious",
+          "variantDecision": "CREATE NEW (no existing product-carousel variants)",
+          "notes": "New variant created for commerce product carousels. Includes heading area and product grid with carousel navigation. Used across sections 3, 4, and 5."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "style": "light",
+      "sectionMetadata": null,
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Product carousel with heading 'Shop Dining Room Savings' and horizontal scrollable product grid with navigation arrows, followed by separator",
+          "decision": "BLOCK",
+          "blockName": "product-carousel-sale",
+          "blockVariant": "product-carousel-sale",
+          "baseBlock": "carousel",
+          "reason": "Same commerce-integrated product carousel pattern as Section 3, displaying dining room category products.",
+          "matchType": "obvious",
+          "variantDecision": "REUSE product-carousel-sale (same variant as Section 3)",
+          "notes": "Same block variant as Section 3. Different product category data but identical visual and structural pattern."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 5,
+      "style": "light",
+      "sectionMetadata": null,
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Product carousel with heading 'Shop Bedroom Savings' and horizontal scrollable product grid with navigation arrows",
+          "decision": "BLOCK",
+          "blockName": "product-carousel-sale",
+          "blockVariant": "product-carousel-sale",
+          "baseBlock": "carousel",
+          "reason": "Same commerce-integrated product carousel pattern as Sections 3 and 4, displaying bedroom category products.",
+          "matchType": "obvious",
+          "variantDecision": "REUSE product-carousel-sale (same variant as Sections 3 and 4)",
+          "notes": "Same block variant. No separator after this instance (last in the series)."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 6,
+      "style": "light",
+      "sectionMetadata": null,
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Split layout with large mattress image on left and text content on right: heading 'Memorial Day Mattress Sale', descriptive paragraph, two CTA buttons ('Shop Tempur-Pedic' and 'Shop All Mattress Brands')",
+          "decision": "BLOCK",
+          "blockName": "commerce-teaser-split",
+          "blockVariant": "commerce-teaser-split",
+          "baseBlock": "commerce-teaser",
+          "reason": "Split layout with image and text/CTAs matches the commerce-teaser pattern. The existing commerce-teaser-split variant handles this exact layout with image + heading + description + multiple CTAs.",
+          "matchType": "obvious",
+          "variantDecision": "REUSE (72% similarity - same density, purpose, imagePattern; different colorScheme)",
+          "notes": "Reusing commerce-teaser-split from homepage. Source HTML uses 'featured-right' and 'textAlignment-left' classes."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 7,
+      "style": "light",
+      "sectionMetadata": null,
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "SEO paragraph with bold 'Sale' heading and descriptive text about Havertys furniture deals with inline links to product categories",
+          "decision": "DEFAULT_CONTENT",
+          "blockName": null,
+          "blockVariant": null,
+          "baseBlock": null,
+          "reason": "Author can type a heading and paragraph with inline links normally in Word/Google Docs. No special structure needed.",
+          "matchType": "not_applicable",
+          "variantDecision": "N/A (default content)",
+          "notes": "Source uses hvt-text block but content is simple heading + paragraph with links - default content in EDS."
+        },
+        {
+          "sequenceNumber": 2,
+          "description": "Legal disclaimer text fragment with Memorial Day Sale terms/conditions and financing details",
+          "decision": "BLOCK",
+          "blockName": "fragment",
+          "blockVariant": "fragment",
+          "baseBlock": "fragment",
+          "reason": "Legal disclaimers are reusable content that should be maintained as fragments to ensure consistency across pages. Source HTML uses fragment wrapper.",
+          "matchType": "obvious",
+          "variantDecision": "USE BASE (fragment is a structural reference block - no variants needed)",
+          "notes": "Renders as a fragment reference to a shared legal disclaimer. Content includes Memorial Day Sale terms and 60-month financing details."
+        }
+      ]
+    }
+  ],
+  "blockStructures": {
+    "carousel-category": {
+      "description": "Rotating image/content displays with slide navigation for category/product highlights",
+      "structure": "Each slide = 1 row with image + optional text content",
+      "baseBlock": "carousel"
+    },
+    "call-to-action-sale": {
+      "description": "Promotional CTA banner with background image support for sale events",
+      "structure": "Background image + heading + subheading + CTA button",
+      "baseBlock": "call-to-action"
+    },
+    "product-carousel-sale": {
+      "description": "Commerce-integrated product carousel with dynamic product loading for sale categories",
+      "structure": "Title row + product data source/configuration + carousel navigation",
+      "baseBlock": "carousel"
+    },
+    "commerce-teaser-split": {
+      "description": "Promotional teaser with split media/text layout for featured products",
+      "structure": "Image column + text column (heading + description + CTAs)",
+      "baseBlock": "commerce-teaser"
+    },
+    "fragment": {
+      "description": "Reusable content reference",
+      "structure": "Single row with path to fragment document",
+      "baseBlock": "fragment"
+    }
+  },
+  "sectionStylingValidation": {
+    "section2": {
+      "block": "call-to-action-sale",
+      "background": "Red promotional background image (sale-red.avif)",
+      "layout": "Content centered with visible padding",
+      "decision": "KEEP section-metadata",
+      "reason": "The background image provides a section container context rather than block-specific design. The call-to-action block itself does not inherently have backgrounds; the red background is section-level promotional styling."
+    }
+  }
+}

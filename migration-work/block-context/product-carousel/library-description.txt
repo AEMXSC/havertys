@@ -1,0 +1,13 @@
+Product Carousel block for the service page context ("Shop the look").
+
+A single-row block containing a heading/title that labels the product carousel section.
+The products themselves are loaded dynamically via commerce integration (product SKUs fetched at runtime).
+
+Row 1: Title/heading text that describes the carousel section (e.g., "Shop the look")
+
+The product carousel renders product items dynamically via JavaScript using commerce APIs.
+The block table only needs to capture the authoring-configurable content: the section title.
+Product items are placeholder elements populated at runtime and should not be included in the block table.
+
+This variant is for smaller "shop the look" style product carousels on service pages,
+as opposed to the product-carousel-sale variant which features larger product grids on sale pages.

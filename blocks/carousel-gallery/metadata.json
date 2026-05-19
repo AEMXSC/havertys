@@ -1,0 +1,41 @@
+{
+  "variantName": "carousel-gallery",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:08:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/free-design-service",
+    "originPage": "Havertys free design service page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "image-gallery",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "full-width linked images in slides + navigation arrows + pagination dots",
+    "buttonCount": 0,
+    "imageCount": 6,
+    "hasVideo": false
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "3D room rendering galleries",
+      "product image slideshows",
+      "full-width image carousels with linked images",
+      "design portfolio showcases"
+    ],
+    "notSuitableFor": [
+      "category navigation carousels with text",
+      "hero banner carousels with overlay text",
+      "testimonial or text-heavy carousels"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/free-design-service"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T18:08:00.000Z"
+  }
+}

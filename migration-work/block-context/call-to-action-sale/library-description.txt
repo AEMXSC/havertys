@@ -1,0 +1,10 @@
+Call to Action - Sale variant
+
+A promotional call-to-action block designed for sale/event announcements with background imagery.
+Uses a carousel structure (single or multi-slide) where each slide contains:
+- Column 1: Background image (displayed as full-bleed behind content)
+- Column 2: Content area with heading, subheading, and CTA button(s)
+
+Purpose: Bold sale promotional banners with dark overlay on background images.
+Content pattern: heading + subheading + 1 CTA button.
+Visual: Dark background with white text overlay on a background image.

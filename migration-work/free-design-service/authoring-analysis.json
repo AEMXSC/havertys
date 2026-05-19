@@ -1,0 +1,262 @@
+{
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/free-design-service",
+  "templateName": "service-page",
+  "variantMapping": {
+    "hero": "hero-service",
+    "carousel (gallery)": "carousel-gallery",
+    "carousel (spotlight)": "carousel-spotlight",
+    "commerce-teaser (video)": "commerce-teaser-video",
+    "commerce-teaser (card)": "commerce-teaser-card",
+    "accordion": "accordion-faq",
+    "quote": "quote-testimonial",
+    "call-to-action": "call-to-action-signup",
+    "product-carousel": "product-carousel"
+  },
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "style": "dark blue fabric background image",
+      "sectionMetadata": {
+        "decision": "KEEP",
+        "reason": "Background is a fabric texture image that provides section-level theming for the hero content + carousel combination"
+      },
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Eyebrow text 'DESIGN SERVICE', large heading 'Always Free. Always Inspired.', bold subtitle about offerings",
+          "decision": "BLOCK",
+          "blockName": "hero-service",
+          "blockVariant": "hero-service",
+          "reason": "Hero-style content with background image, eyebrow, heading, and description text. Cannot be default content because the background image and overlay text require structured decoration.",
+          "blockStructure": "Background image container + text overlay with eyebrow (h4), h1 heading, and paragraph with strong text"
+        },
+        {
+          "sequenceNumber": 2,
+          "description": "Full-width auto-playing image carousel with room photos",
+          "decision": "BLOCK",
+          "blockName": "carousel-gallery",
+          "blockVariant": "carousel-gallery",
+          "reason": "Interactive rotating carousel with auto-play, navigation arrows, pagination dots. Requires carousel decoration.",
+          "blockStructure": "Multiple slides each containing linked images, with swiper navigation controls"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "style": "light/white background",
+      "sectionMetadata": {
+        "decision": "SKIP",
+        "reason": "Default white background, no distinct section styling needed"
+      },
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Centered heading and 'Book An Appointment' CTA button",
+          "decision": "DEFAULT CONTENT",
+          "blockName": null,
+          "reason": "Author can type a heading and add a link/button. Simple text content with centered alignment."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "style": "light background with grid layout",
+      "sectionMetadata": {
+        "decision": "SKIP",
+        "reason": "Light background, grid layout is handled by carousel block variants"
+      },
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Grid of two full-width carousel sliders showing 3D room renderings",
+          "decision": "BLOCK",
+          "blockName": "carousel-gallery",
+          "blockVariant": "carousel-gallery",
+          "reason": "Two interactive image carousels with full-width slides, navigation, and auto-play. Complex interactive component.",
+          "blockStructure": "Two carousel instances in a grid, each with multiple linked image slides and swiper pagination"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "style": "light background",
+      "sectionMetadata": {
+        "decision": "SKIP",
+        "reason": "Standard light background, no section-level styling"
+      },
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Named carousel 'Design Project Spotlights' with vertical image cards",
+          "decision": "BLOCK",
+          "blockName": "carousel-spotlight",
+          "blockVariant": "carousel-spotlight",
+          "reason": "Interactive carousel with named header, vertical image cards, each with image + linked title. Requires carousel decoration.",
+          "blockStructure": "Named carousel with h3 title, slides containing vertical images + text (carousel-text pattern)"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 5,
+      "style": "light background",
+      "sectionMetadata": {
+        "decision": "SKIP",
+        "reason": "Light background, styling is handled by the commerce-teaser block itself"
+      },
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Split layout: video on left, text content (eyebrow, heading, description) on right",
+          "decision": "BLOCK",
+          "blockName": "commerce-teaser-video",
+          "blockVariant": "commerce-teaser-video",
+          "reason": "Split layout with video media and text content. Complex layout requiring block structure.",
+          "blockStructure": "Video container + content container with eyebrow, heading, description paragraph"
+        },
+        {
+          "sequenceNumber": 2,
+          "description": "Small product carousel 'Shop the look' with furniture items",
+          "decision": "BLOCK",
+          "blockName": "product-carousel",
+          "blockVariant": "product-carousel",
+          "reason": "Product slider showing related items. Site-specific product-carousel block handles commerce product display.",
+          "blockStructure": "Title heading + swiper carousel with product item placeholders loaded dynamically"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 6,
+      "style": "light/white background",
+      "sectionMetadata": {
+        "decision": "SKIP",
+        "reason": "Standard light background"
+      },
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Heading 'Your Questions, Answered.'",
+          "decision": "DEFAULT CONTENT",
+          "blockName": null,
+          "reason": "Simple heading that author types normally. Precedes the accordion block."
+        },
+        {
+          "sequenceNumber": 2,
+          "description": "Expandable accordion with 8 FAQ items",
+          "decision": "BLOCK",
+          "blockName": "accordion-faq",
+          "blockVariant": "accordion-faq",
+          "reason": "Interactive expandable/collapsible content. Requires accordion decoration. Obvious match with accordion block.",
+          "blockStructure": "Multiple accordion-item-containers, each with details/summary pattern: h3 question in summary, answer paragraphs in body"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 7,
+      "style": "light background with decorative border",
+      "sectionMetadata": {
+        "decision": "SKIP",
+        "reason": "Single-block section - quote block provides its own styling with decorative border"
+      },
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Styled blockquote testimonial from customer 'Bella'",
+          "decision": "BLOCK",
+          "blockName": "quote-testimonial",
+          "blockVariant": "quote-testimonial",
+          "reason": "Styled blockquote with decorative quote marks and attribution. Requires quote block decoration.",
+          "blockStructure": "Blockquote containing quote-inner with quote-mark span, paragraph text, and cite element"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 8,
+      "style": "light background with grid layout",
+      "sectionMetadata": {
+        "decision": "SKIP",
+        "reason": "Light background, grid handled by commerce-teaser card variation"
+      },
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Grid of two card-style commerce teasers with images, headings, descriptions, CTAs",
+          "decision": "BLOCK",
+          "blockName": "commerce-teaser-card",
+          "blockVariant": "commerce-teaser-card",
+          "reason": "Two card-style promotional teasers in a grid. Each has image, heading, description, CTA button. Matches commerce-teaser card-variation pattern.",
+          "blockStructure": "Grid of commerce-teaser-wrappers with card-variation class, each containing image-container, titles h4, description paragraph, and button-container"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 9,
+      "style": "green/teal brand color background",
+      "sectionMetadata": {
+        "decision": "KEEP",
+        "reason": "Distinct green/teal background color provides section-level styling for the CTA banner"
+      },
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Full-width CTA banner: 'GET EXCLUSIVE ACCESS' heading, subtitle, 'Sign Up' button",
+          "decision": "BLOCK",
+          "blockName": "call-to-action-signup",
+          "blockVariant": "call-to-action-signup",
+          "reason": "CTA banner with heading, descriptive text, and button. Matches call-to-action block pattern.",
+          "blockStructure": "call-to-action-signup-main-container with text div (h2 + p) and cta div (button/link)"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 10,
+      "style": "light/white background",
+      "sectionMetadata": {
+        "decision": "SKIP",
+        "reason": "Standard light background for SEO text"
+      },
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Long-form SEO text paragraph about the free design service with inline links",
+          "decision": "DEFAULT CONTENT",
+          "blockName": null,
+          "reason": "Long-form text that an author types normally. Strong heading + paragraph with inline links. No block structure needed."
+        }
+      ]
+    }
+  ],
+  "sectionStylingValidation": {
+    "section1": {
+      "block": "hero-service + carousel-gallery",
+      "background": "Full-width dark blue fabric background image",
+      "layout": "Content overlaid on background image with padding",
+      "decision": "KEEP section-metadata",
+      "reason": "Background is section-level styling (fabric texture) that contains both hero text AND carousel. Multiple sequences use it."
+    },
+    "section7": {
+      "block": "quote-testimonial",
+      "background": "Light background, decorative border on quote",
+      "layout": "Centered with visible section padding",
+      "decision": "SKIP section-metadata",
+      "reason": "Decorative border is part of the quote block styling itself, not section-level background"
+    },
+    "section9": {
+      "block": "call-to-action-signup",
+      "background": "Solid green/teal brand color",
+      "layout": "Content centered with visible section padding on sides",
+      "decision": "KEEP section-metadata",
+      "reason": "Solid color background with visible padding - section provides container styling for the CTA block"
+    }
+  },
+  "blocksFetched": [
+    "hero-service",
+    "carousel-gallery",
+    "carousel-spotlight",
+    "commerce-teaser-video",
+    "commerce-teaser-card",
+    "product-carousel",
+    "accordion-faq",
+    "quote-testimonial",
+    "call-to-action-signup"
+  ]
+}

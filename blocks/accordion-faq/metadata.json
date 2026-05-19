@@ -1,0 +1,41 @@
+{
+  "variantName": "accordion-faq",
+  "baseBlock": "accordion",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:08:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/free-design-service",
+    "originPage": "Havertys free design service page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "faq",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "multiple expandable question-answer pairs",
+    "buttonCount": 0,
+    "imageCount": 0,
+    "hasVideo": false
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "FAQ sections on service pages",
+      "frequently asked questions about design services",
+      "help/support information expandable sections",
+      "product or service Q&A"
+    ],
+    "notSuitableFor": [
+      "feature lists that should be always visible",
+      "tabbed content (use tabs variant)",
+      "content that requires images within expandable areas"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/free-design-service"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T18:08:00.000Z"
+  }
+}

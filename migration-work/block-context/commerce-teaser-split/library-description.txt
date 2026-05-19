@@ -1,0 +1,8 @@
+Commerce Teaser Split block - a side-by-side split layout teaser with image and content columns.
+Structure: Single row with two columns - [image, content].
+Column 1: Featured image (picture element or img).
+Column 2: Content combining optional pretitle, heading (h2), description paragraph, and up to 3 CTA button links.
+Supports featured-right (image left, content right) and featured-left (content left, image right) variants via wrapper classes.
+May also contain video instead of image in one column.
+Used for: promotional features, service highlights, brand messaging sections on homepage and sale pages.
+UE model fields: "image" (reference/image), "pretitle" (text), "title" (text), "description" (richtext), "cta1/cta2/cta3" (links).

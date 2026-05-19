@@ -1,0 +1,29 @@
+{
+  "fonts": {
+    "body": {"family": "soleil", "familySet": "soleil, -apple-system, blinkmacsystemfont, sans-serif"},
+    "heading": {"family": "orpheuspro", "familySet": "orpheuspro, serif"},
+    "headingSizes": {
+      "xxl": {"mobile": "36px", "desktop": "36px"},
+      "xl": {"mobile": "28px", "desktop": "28px"},
+      "l": {"mobile": "24px", "desktop": "24px"},
+      "m": {"mobile": "20px", "desktop": "18px"},
+      "s": {"mobile": "18px", "desktop": "15px"},
+      "xs": {"mobile": "16px", "desktop": "14px"}
+    },
+    "sources": {"typekit": "qlw1agr", "googleFonts": []}
+  },
+  "colors": {
+    "background": "#ffffff",
+    "text": "#4d4d4d",
+    "link": "#252a2f",
+    "linkHover": "#000000",
+    "light": "#f5f5f5",
+    "dark": "#252a2f"
+  },
+  "spacing": {
+    "sectionPadding": "16px",
+    "contentMaxWidth": "1900px",
+    "navHeight": "116px"
+  },
+  "favicons": [{"url": "https://main--hvt-eds--havertys-furniture.aem.live/favicon.ico", "rel": "icon"}]
+}

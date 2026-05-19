@@ -1,0 +1,95 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": ["https://main--hvt-eds--havertys-furniture.aem.live/"],
+      "description": "Main landing page with hero carousel, promotional banners, and featured collections",
+      "blocks": [
+        {"name": "hero-video-sale", "instances": [".hero-container .hero.block"]},
+        {"name": "call-to-action-promo", "instances": [".call-to-action-container .call-to-action.block"]},
+        {"name": "carousel-category", "instances": [".carousel-container .carousel.vertical-image.block"]},
+        {"name": "commerce-teaser-split", "instances": [".commerce-teaser-container .commerce-teaser.block"]},
+        {"name": "fragment", "instances": [".fragment-container .fragment.block"]}
+      ],
+      "sections": [
+        {"id": "section-1-hero", "name": "Hero Section", "selector": ".section.hero-container", "style": null, "blocks": ["hero-video-sale"], "defaultContent": []},
+        {"id": "section-2-cta", "name": "Financing CTA", "selector": ".section.call-to-action-container:nth-of-type(1)", "style": null, "blocks": ["call-to-action-promo"], "defaultContent": []},
+        {"id": "section-3-carousel", "name": "Category Carousel", "selector": ".section.carousel-container", "style": null, "blocks": ["carousel-category"], "defaultContent": []},
+        {"id": "section-4-lookbook", "name": "Spring Lookbook CTA", "selector": ".section.bg-image.call-to-action-container", "style": "bg-image", "blocks": ["call-to-action-promo"], "defaultContent": []},
+        {"id": "section-5-design", "name": "Design Service Teaser", "selector": [".section.bg-image.commerce-teaser-container:nth-of-type(1)"], "style": "bg-image", "blocks": ["commerce-teaser-split"], "defaultContent": []},
+        {"id": "section-6-brand", "name": "Brand Story Teaser", "selector": [".section.bg-image.commerce-teaser-container:nth-of-type(2)"], "style": "bg-image", "blocks": ["commerce-teaser-split"], "defaultContent": []},
+        {"id": "section-7-signup", "name": "Newsletter Signup", "selector": ".section.call-to-action-container:last-of-type", "style": null, "blocks": ["call-to-action-promo"], "defaultContent": []},
+        {"id": "section-8-legal", "name": "Legal Disclaimers", "selector": ".section.read-more-container.fragment-container", "style": null, "blocks": ["fragment"], "defaultContent": []}
+      ]
+    },
+    {
+      "name": "service-page",
+      "urls": ["https://main--hvt-eds--havertys-furniture.aem.live/free-design-service"],
+      "description": "Service-focused page with hero, value propositions, FAQ accordion, testimonials, and CTAs",
+      "blocks": [
+        {"name": "hero-service", "instances": [".bg-image.hvt-text-container .hero.block", ".section.bg-image.hvt-text-container"]},
+        {"name": "carousel-gallery", "instances": [".carousel-container .carousel.block", ".grid-container.carousel-container .carousel.block"]},
+        {"name": "carousel-spotlight", "instances": [".carousel-container .carousel.vertical-image.block"]},
+        {"name": "commerce-teaser-video", "instances": [".commerce-teaser-container .commerce-teaser.block"]},
+        {"name": "commerce-teaser-card", "instances": [".grid-container.commerce-teaser-container .commerce-teaser.block"]},
+        {"name": "accordion-faq", "instances": [".accordion-container .accordion.block"]},
+        {"name": "quote-testimonial", "instances": [".quote-container .quote.block"]},
+        {"name": "call-to-action-signup", "instances": [".call-to-action-container .call-to-action.block"]},
+        {"name": "product-carousel", "instances": [".product-carousel-container .product-carousel.block"]}
+      ],
+      "sections": [
+        {"id": "section-1-hero", "name": "Hero with Gallery", "selector": ".section.bg-image.hvt-text-container", "style": "navy-fabric", "blocks": ["hero-service", "carousel-gallery"], "defaultContent": []},
+        {"id": "section-2-booking", "name": "Booking CTA", "selector": ".section.hvt-text-container.hvt-button-container", "style": null, "blocks": [], "defaultContent": ["h2", "a.button"]},
+        {"id": "section-3-renders", "name": "3D Renders Gallery", "selector": ".section.grid-container.carousel-container", "style": null, "blocks": ["carousel-gallery"], "defaultContent": []},
+        {"id": "section-4-spotlights", "name": "Project Spotlights", "selector": ".section.carousel-container:not(.grid-container)", "style": null, "blocks": ["carousel-spotlight"], "defaultContent": []},
+        {"id": "section-5-video", "name": "Video Teaser", "selector": ".section.commerce-teaser-container.product-carousel-container", "style": null, "blocks": ["commerce-teaser-video", "product-carousel"], "defaultContent": []},
+        {"id": "section-6-faq", "name": "FAQ Section", "selector": ".section.accordion-container", "style": null, "blocks": ["accordion-faq"], "defaultContent": ["h2"]},
+        {"id": "section-7-testimonial", "name": "Customer Testimonial", "selector": ".section.quote-container", "style": null, "blocks": ["quote-testimonial"], "defaultContent": []},
+        {"id": "section-8-cards", "name": "Promotional Cards", "selector": ".section.grid-container.commerce-teaser-container", "style": null, "blocks": ["commerce-teaser-card"], "defaultContent": []},
+        {"id": "section-9-signup", "name": "Newsletter Signup", "selector": ".section.call-to-action-container", "style": "teal-accent", "blocks": ["call-to-action-signup"], "defaultContent": []},
+        {"id": "section-10-seo", "name": "SEO Content", "selector": ".section.hvt-text-container:last-of-type", "style": null, "blocks": [], "defaultContent": ["strong", "p"]}
+      ]
+    },
+    {
+      "name": "sale-page",
+      "urls": ["https://main--hvt-eds--havertys-furniture.aem.live/sale"],
+      "description": "Commerce/sale page with product savings carousels organized by room category",
+      "blocks": [
+        {"name": "carousel-category", "instances": [".carousel-container .carousel.vertical-image.block"]},
+        {"name": "call-to-action-sale", "instances": [".bg-image.call-to-action-container .call-to-action.block"]},
+        {"name": "product-carousel-sale", "instances": [".product-carousel-container .product-carousel.block"]},
+        {"name": "commerce-teaser-split", "instances": [".commerce-teaser-container .commerce-teaser.block"]},
+        {"name": "fragment", "instances": [".fragment-container .fragment.block"]}
+      ],
+      "sections": [
+        {"id": "section-1-carousel", "name": "Sale Highlights Carousel", "selector": ".section.carousel-container", "style": null, "blocks": ["carousel-category"], "defaultContent": []},
+        {"id": "section-2-cta", "name": "Additional Savings CTA", "selector": ".section.bg-image.call-to-action-container", "style": "sale-red", "blocks": ["call-to-action-sale"], "defaultContent": []},
+        {"id": "section-3-living", "name": "Living Room Savings", "selector": ".section.product-carousel-container.separator-container:nth-of-type(1)", "style": null, "blocks": ["product-carousel-sale"], "defaultContent": []},
+        {"id": "section-4-dining", "name": "Dining Room Savings", "selector": ".section.product-carousel-container.separator-container:nth-of-type(2)", "style": null, "blocks": ["product-carousel-sale"], "defaultContent": []},
+        {"id": "section-5-bedroom", "name": "Bedroom Savings", "selector": ".section.product-carousel-container:not(.separator-container)", "style": null, "blocks": ["product-carousel-sale"], "defaultContent": []},
+        {"id": "section-6-mattress", "name": "Mattress Teaser", "selector": ".section.commerce-teaser-container:first-of-type", "style": null, "blocks": ["commerce-teaser-split"], "defaultContent": []},
+        {"id": "section-7-seo", "name": "SEO & Legal Content", "selector": ".section.hvt-text-container.fragment-container", "style": null, "blocks": ["fragment"], "defaultContent": ["strong", "p"]}
+      ]
+    },
+    {
+      "name": "brand-page",
+      "urls": ["https://main--hvt-eds--havertys-furniture.aem.live/rfg"],
+      "description": "Brand messaging page with service highlights, content grids, and guarantee information",
+      "blocks": [
+        {"name": "commerce-teaser-featured", "instances": [".commerce-teaser-container .commerce-teaser.block"]},
+        {"name": "cards-linked-image", "instances": [".grid-container.commerce-teaser-container .commerce-teaser.block"]}
+      ],
+      "sections": [
+        {"id": "section-1-intro", "name": "Page Introduction", "selector": ".section.hvt-text-container:first-of-type", "style": null, "blocks": [], "defaultContent": ["h1", "p"]},
+        {"id": "section-2-beyond", "name": "Beyond the Furniture", "selector": ".section.commerce-teaser-container:not(.grid-container):nth-of-type(1)", "style": null, "blocks": ["commerce-teaser-featured"], "defaultContent": []},
+        {"id": "section-3-delivery-cards", "name": "Delivery & Planning Cards", "selector": ".section.grid-container.commerce-teaser-container:nth-of-type(1)", "style": null, "blocks": ["cards-linked-image"], "defaultContent": []},
+        {"id": "section-4-inspiration", "name": "Design & Inspiration", "selector": ".section.commerce-teaser-container:not(.grid-container):nth-of-type(2)", "style": null, "blocks": ["commerce-teaser-featured"], "defaultContent": []},
+        {"id": "section-5-service-cards", "name": "Service & Care Cards", "selector": ".section.grid-container.commerce-teaser-container:nth-of-type(2)", "style": null, "blocks": ["cards-linked-image"], "defaultContent": []},
+        {"id": "section-6-guarantee", "name": "Guarantee Statement", "selector": ".section.hvt-text-container:last-of-type", "style": null, "blocks": [], "defaultContent": ["strong", "p"]}
+      ]
+    }
+  ]
+}

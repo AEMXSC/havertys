@@ -1,0 +1,41 @@
+{
+  "variantName": "commerce-teaser-featured",
+  "baseBlock": "commerce-teaser",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:07:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/rfg",
+    "originPage": "Havertys Regret-Free Guarantee brand page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "brand-teaser",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "heading + description + 3 CTAs + large image",
+    "buttonCount": 3,
+    "imageCount": 1,
+    "hasVideo": false
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "brand pages with featured content teasers",
+      "service highlight sections with image and multiple CTAs",
+      "split-layout promotional content on light backgrounds",
+      "featured-left and featured-right alternating sections"
+    ],
+    "notSuitableFor": [
+      "dark background promotional teasers (use commerce-teaser-split)",
+      "hero-style full-width banners",
+      "card grids or lists"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/rfg"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T18:07:00.000Z"
+  }
+}

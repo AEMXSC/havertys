@@ -1,0 +1,40 @@
+{
+  "variantName": "carousel-category",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:01:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/",
+    "originPage": "Havertys furniture homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "category-navigation",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + linked heading per slide",
+    "buttonCount": 0,
+    "imageCount": 5,
+    "hasVideo": false
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "homepage category navigation carousels",
+      "product collection slideshows",
+      "featured category browsing"
+    ],
+    "notSuitableFor": [
+      "hero banner carousels with overlay text",
+      "testimonial carousels",
+      "text-heavy content carousels"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index", "/sale"],
+    "reuseCount": 2,
+    "lastUsed": "2026-05-19T18:05:00.000Z"
+  }
+}

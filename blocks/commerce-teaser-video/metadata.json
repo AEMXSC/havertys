@@ -1,0 +1,41 @@
+{
+  "variantName": "commerce-teaser-video",
+  "baseBlock": "commerce-teaser",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:08:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/free-design-service",
+    "originPage": "Havertys free design service page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "project-feature",
+    "imagePattern": "video"
+  },
+  "contentPattern": {
+    "structure": "video + eyebrow + heading + description paragraph",
+    "buttonCount": 0,
+    "imageCount": 0,
+    "hasVideo": true
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "featured design project with video walkthrough",
+      "split layout video + text content sections",
+      "service showcase with video demonstration",
+      "light background video teasers"
+    ],
+    "notSuitableFor": [
+      "dark background promotional teasers",
+      "card-style grid teasers without video",
+      "hero-style full-width video sections"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/free-design-service"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T18:08:00.000Z"
+  }
+}

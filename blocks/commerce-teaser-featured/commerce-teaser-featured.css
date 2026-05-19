@@ -1,0 +1,33 @@
+.commerce-teaser-featured > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.commerce-teaser-featured img {
+  width: 100%;
+}
+
+.commerce-teaser-featured > div > div {
+  order: 1;
+}
+
+.commerce-teaser-featured > div > .commerce-teaser-featured-img-col {
+  order: 0;
+}
+
+.commerce-teaser-featured > div > .commerce-teaser-featured-img-col img {
+  display: block;
+}
+
+@media (width >= 900px) {
+  .commerce-teaser-featured > div {
+    align-items: center;
+    flex-direction: unset;
+    gap: 24px;
+  }
+
+  .commerce-teaser-featured > div > div {
+    flex: 1;
+    order: unset;
+  }
+}

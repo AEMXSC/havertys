@@ -1,0 +1,156 @@
+{
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/",
+  "templateName": "homepage",
+  "analysisDate": "2026-05-19",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "className": "hero-container",
+      "visualStyle": "dark overlay on video background",
+      "background": "full-width video with gradient overlay",
+      "notes": "Hero section with auto-playing lifestyle video, overlaid text, and CTA button",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Full-width video background with overlaid heading 'MEMORIAL DAY SALE', subheading 'Shop Our Best Savings of the Year', featured product link, and a CTA button 'Don't Miss Out'",
+          "htmlClasses": ["hero", "hero-main-container", "hero-video-wrapper"],
+          "contentElements": ["video", "h4", "h1", "link", "button"]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "className": "call-to-action-container",
+      "visualStyle": "light background, text-heavy promotional banner",
+      "background": "white/light",
+      "notes": "Financing promotion with heading, body text, and CTA",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Promotional banner with eyebrow text 'LIMITED-TIME OFFER', heading '0% Interest for 60 Months', descriptive paragraph about financing terms, and 'Learn More' button",
+          "htmlClasses": ["call-to-action", "call-to-action-main-container"],
+          "contentElements": ["h4", "h2", "p", "button"]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "className": "carousel-container",
+      "visualStyle": "light background, card-style image carousel",
+      "background": "white/light",
+      "notes": "Horizontal sliding carousel of category cards with vertical images and text links below each",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Horizontal card carousel with 5 slides, each containing a vertical category image and a linked heading below (Memorial Day Markdowns, Living Rooms, Dining Rooms, Bedrooms, Mattresses). Includes navigation arrows and pagination dots.",
+          "htmlClasses": ["carousel", "vertical-image", "card-slide", "swiper"],
+          "contentElements": ["image", "h4-link"],
+          "slideCount": 5,
+          "slides": [
+            {"image": "Event5-Markdowns-Highlight-Carousel", "text": "DON'T MISS OUT", "link": "/sale/memorial-day-sale"},
+            {"image": "Event5-Living-Highlight-Carousel", "text": "SHOP LIVING ROOMS", "link": "/products/category-page/living-room"},
+            {"image": "Event5-Dining-Highlight-Carousel", "text": "SHOP DINING ROOMS", "link": "/products/category-page/dining-room"},
+            {"image": "Event5-Bedrooms-Highlight-Carousel", "text": "SHOP BEDROOMS", "link": "/products/category-page/bedroom"},
+            {"image": "Event5-Mattresses-Highlight-Carousel", "text": "SHOP MATTRESSES", "link": "/products/category-page/mattresses-bedding/mattresses"}
+          ]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "className": "bg-image call-to-action-container",
+      "visualStyle": "background image (blurred flowers), overlaid text",
+      "background": "full-width background image (blurred pink/purple floral)",
+      "notes": "Spring Lookbook promotional section with background image and CTA",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Call-to-action block with background image of blurred flowers, eyebrow text 'Shop Our 2026', large heading 'SPRING LOOKBOOK', and a 'Get Inspired' frosted glass button linking to external flipbook",
+          "htmlClasses": ["call-to-action", "bg-image"],
+          "contentElements": ["background-image", "h4", "h2", "button"]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 5,
+      "className": "bg-image commerce-teaser-container",
+      "visualStyle": "dark blue fabric texture background, split layout with image and text",
+      "background": "full-width background image (blue fabric texture)",
+      "notes": "Design service promotional teaser with product image on right and text content on left",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Commerce teaser with blue fabric background image, centered content featuring a product/lifestyle image (white chair), eyebrow 'Design Service', heading 'Always Free. Always Inspired.', description paragraph, and three CTA buttons ('Learn More', 'Book an Appointment', '3D Room Planning Tool')",
+          "htmlClasses": ["commerce-teaser", "textAlignment-center", "featured-right"],
+          "contentElements": ["background-image", "product-image", "eyebrow", "h2", "p", "button", "button", "button"]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 6,
+      "className": "bg-image commerce-teaser-container",
+      "visualStyle": "background image (lifestyle room), split layout with video and text",
+      "background": "full-width background image (lifestyle furniture scene)",
+      "notes": "Brand story teaser with video on one side and text on the other",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Commerce teaser with lifestyle background image, video element showing person, eyebrow 'HAVERTYS', heading 'Happiness in Every Moment', description paragraph about 140 years of craftsmanship and Regret-Free Guarantee, and one CTA button ('Regret-Free Guarantee')",
+          "htmlClasses": ["commerce-teaser", "textAlignment-center", "featured-left"],
+          "contentElements": ["background-image", "video", "eyebrow", "h2", "p", "button"]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 7,
+      "className": "call-to-action-container",
+      "visualStyle": "light background, centered text with email signup CTA",
+      "background": "white/light",
+      "notes": "Newsletter signup section",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Call-to-action with centered heading 'GET EXCLUSIVE ACCESS', subheading 'Be the first to know about offers, inspiration, and new products.', and a 'Sign Up' button that opens a modal",
+          "htmlClasses": ["call-to-action"],
+          "contentElements": ["h2", "h5", "button"]
+        }
+      ]
+    },
+    {
+      "sectionNumber": 8,
+      "className": "read-more-container fragment-container hvt-text-container",
+      "visualStyle": "light background, small legal text",
+      "background": "white/light",
+      "notes": "Legal disclaimers and fine print for promotions",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Fragment containing legal/disclaimer text about Memorial Day Sale terms, financing terms, and credit card details in small paragraph format",
+          "htmlClasses": ["fragment", "hvt-text"],
+          "contentElements": ["p", "p"]
+        }
+      ]
+    }
+  ],
+  "blockInventory": {
+    "localBlocks": [],
+    "blockCollectionAvailable": [
+      {"name": "hero", "purpose": "Large heading, text, buttons, image/video for page intro"},
+      {"name": "carousel", "purpose": "Rotating/sliding image or content gallery"},
+      {"name": "cards", "purpose": "Grid of items with images and text"},
+      {"name": "columns", "purpose": "Side-by-side content layout"},
+      {"name": "tabs", "purpose": "Switchable content panels"},
+      {"name": "accordion", "purpose": "Expandable Q&A sections"},
+      {"name": "fragment", "purpose": "Reusable content sections"}
+    ],
+    "customBlocksOnPage": [
+      {"name": "call-to-action", "purpose": "Promotional banner with heading, text, and CTA button"},
+      {"name": "commerce-teaser", "purpose": "Split layout teaser with image/video, text content, and multiple CTAs"},
+      {"name": "dynamic-media-image", "purpose": "Image display with linked wrapper"}
+    ]
+  },
+  "excludedFromAnalysis": {
+    "header": "Navigation with logo, search, account, cart, and mega-menu",
+    "footer": "Multi-column footer with social links, store info, legal links"
+  }
+}

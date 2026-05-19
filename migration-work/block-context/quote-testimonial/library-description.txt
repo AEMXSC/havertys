@@ -1,0 +1,17 @@
+Quote Testimonial Block
+
+A simple testimonial/quote block that displays a customer quote with attribution.
+
+Structure (5 rows, 1 column):
+- Row 1: Quote text (the testimonial paragraph content)
+- Row 2: Attribution (the person's name who gave the quote)
+- Row 3: Text color (CSS color token for the quote text, e.g. "white-smoke")
+- Row 4: Background color (CSS color token for the block background, e.g. "deep-gray-blue")
+- Row 5: Style class (additional CSS class applied to the block, e.g. "apply-border")
+
+The block decorator converts the table rows into a blockquote element with:
+- Row 1 becomes the quote-testimonial-quotation div with decorative curly quotes
+- Row 2 becomes the quote-testimonial-attribution div with an em-dash prefix
+- Rows 3-5 are configuration rows for styling
+
+Used for: customer testimonials, single quotes with attribution, social proof sections.

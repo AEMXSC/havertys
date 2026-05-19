@@ -1,0 +1,41 @@
+{
+  "variantName": "cards-linked-image",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:07:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/rfg",
+    "originPage": "Havertys Regret-Free Guarantee brand page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "linked-navigation-cards",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + linked heading per card",
+    "buttonCount": 0,
+    "imageCount": 2,
+    "hasVideo": false
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "navigation cards with large images and linked titles",
+      "service/feature card grids without descriptions",
+      "two-column image card layouts linking to subpages",
+      "category or topic navigation grids"
+    ],
+    "notSuitableFor": [
+      "cards with detailed descriptions or body text",
+      "product cards with pricing",
+      "cards with multiple CTAs per item"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/rfg"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T18:07:00.000Z"
+  }
+}

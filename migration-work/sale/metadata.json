@@ -1,0 +1,75 @@
+{
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/sale",
+  "timestamp": "2026-05-19T18:05:07.156Z",
+  "paths": {
+    "documentPath": "/sale",
+    "htmlFilePath": "/sale.plain.html",
+    "mdFilePath": "/sale.md",
+    "dirPath": "",
+    "filename": "sale"
+  },
+  "screenshot": "migration-work/sale/screenshot.png",
+  "html": {
+    "filePath": "migration-work/sale/cleaned.html",
+    "size": 118707
+  },
+  "metadata": {
+    "title": "Sale | Havertys",
+    "description": "Explore quality crafted furniture that’s on sale. Shop looks for your living room, bedroom, dining room and more at a price you'll love.",
+    "keywords": "furniture sale, discounted furniture, furniture deals, furniture discounts, furniture promotions, best furniture sale, home furniture sale, affordable furniture, sofa sale, sectional sale, dining table sale, bedroom furniture sale, living room furniture sale, dining room furniture sale, best furniture deals online, living room furniture on sale, stylish furniture on sale, bedroom furniture on sale, limited-time furniture deals, beds, sofas, sectionals, dining tables, dining chairs, chairs, recliners, leather furniture",
+    "og:title": "Sale | Havertys",
+    "og:description": "Explore quality crafted furniture that’s on sale. Shop looks for your living room, bedroom, dining room and more at a price you'll love.",
+    "og:url": "https://www.havertys.com/sale",
+    "og:image": "https://havertys.scene7.com/is/image/HvtWeb2/default-meta-image?$MetaLinkShareImage$",
+    "og:image:secure_url": "https://havertys.scene7.com/is/image/HvtWeb2/default-meta-image?$MetaLinkShareImage$",
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Sale | Havertys",
+    "twitter:description": "Explore quality crafted furniture that’s on sale. Shop looks for your living room, bedroom, dining room and more at a price you'll love.",
+    "twitter:image": "https://havertys.scene7.com/is/image/HvtWeb2/default-meta-image?$MetaLinkShareImage$",
+    "published-time": "2026-05-18T15:29:26.199Z",
+    "robots": "index, follow",
+    "modified-time": "2026-05-18T15:20:08.727Z",
+    "content-page-ref": "rPFxSNYFEh2VQwnyph8PWIvuFkXtZNHX1ZwXkpzpjgOnJcvPAXPGmoIrdhIBAg1tULM0mqxjby52q_etrHk3ww",
+    "viewport": "width=device-width, initial-scale=1, maximum-scale=1",
+    "canonical": "https://www.havertys.com/sale"
+  },
+  "images": {
+    "count": 26,
+    "mapping": {
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/overlay-slider-arrow-right.svg": "./images/dcbb9bba2596130feac84c4a742d8d09.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/overlay-slider-arrow-left.svg": "./images/97adab42ef8956e9c644eeafabf42f69.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:428fb7a2-df2b-4556-8563-8c19d7c65bef/as/Event5-Sale-Tiers-Highlight-Carousel-60mos.avif?quality=85&width=1280": "./images/e7365b1a5a8371124d576576ea6b3a72.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:fc117a62-c070-41e6-bb9d-ed28d4552ab5/as/Event5-Sale-Emerson-Highlight-Carousel.avif?quality=85&width=1280": "./images/ed8e071f56d0d5503c889ce509a63096.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/anniversary-header-logo.svg": "./images/9c682022ef26617525abf9bb54f8af98.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/storelocator.svg": "./images/27b4f877845d4fa771ee1e73706f825b.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/cart.svg": "./images/a1a19b5066d4e28ac1d1fbc0340c0e0e.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/header-logo.svg": "./images/7f2a061e790350d380d0f95c049166f9.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:f79ba34d-eef2-45bf-99a6-923d8169cd77/as/Event5-Sale-Nantucket-Highlight-Carousel.avif?quality=85&width=1280": "./images/d6757bfe902cd2d6e2ac7008b1060cef.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/button-arrow-green.svg": "./images/e13e31aaf608530732c864d2f963c62c.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/arrow-circle-left-brown.svg": "./images/bc9c55c388ff1566df96b0faee3f815a.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/arrow-left.svg": "./images/e463f68cf7b7ad58f87032ce16671c21.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:c3085c9b-c62b-45e6-a1d3-ba92e364a4f6/as/sale-red.avif?quality=85&width=1280": "./images/adb679eef49a0c2f128b7a0ef29a0f39.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/HavertysLogo-White-Large.svg": "./images/0ae0173ba0f3be84b2997bfe868ce3ac.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:072efd8f-8bfd-4385-900c-5ed3c359983b/as/Event5-Sale-Madeline-Highlight-Carousel.avif?quality=85&width=1280": "./images/25a1bbda3dd5e680e9825c8c92ed37e9.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/arrow-circle-right-brown.svg": "./images/76af353892407a223b11ddc08a421f3d.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/account.svg": "./images/5b69116dafdd17da31545380d9feb922.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/myhavertys-icon-hover.svg": "./images/6d96d86e45b16cc34d0b0173ff02b7b8.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/storelocator-icon-hover.svg": "./images/519d40d74dea466ebcbe82a594be7c3e.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/cart-icon-hover.svg": "./images/f95d8f0807642b05378e328b7eb8a0d1.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/nav-arrow-right.svg": "./images/b99757166ba0e01c6a4c6b2f370b3d7b.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:8712fd66-ac47-43a6-9f80-b5f3edf17038/as/Event5-Sale-Catalina-Highlight-Carousel.avif?quality=85&width=1280": "./images/45d6a1544c9c84db029a324b2490e8d5.png",
+      "https://usage.trackjs.com/usage.gif?token=fa4fa70c885b4aa9bd6cc4084e6bd795&correlationId=86d4a5f1-3f73-451c-9590-cdb8e5bd61ce&application=havertyscom&x=53124d0c-d9c3-4cf7-a7dc-aa9a35383690&": "./images/02122bb5b9bb42eef4228d9ee367c4f0.png",
+      "https://cdn.cookielaw.org/logos/3872861d-1837-4003-81d7-57bc12bc4b2f/01900cb2-8440-753e-b17b-ce1a0de40ec2/d2fd6604-26f7-4032-bcec-56f7ef33f92a/HavertysLogo.jpg": "./images/7252fb11bfca22f801cfe99e1c6b3ba0.jpg",
+      "https://cdn.cookielaw.org/logos/static/ot_close.svg": "./images/cec4a77b663a079574d478e06d310304.png",
+      "https://cdn.cookielaw.org/logos/static/powered_by_logo.svg": "./images/a9584a367ebcccfac48987ce1fec5eae.png"
+    },
+    "stats": {
+      "total": 27,
+      "converted": 25,
+      "skipped": 1,
+      "failed": 0,
+      "tooLarge": 0,
+      "limitReached": 0
+    }
+  }
+}

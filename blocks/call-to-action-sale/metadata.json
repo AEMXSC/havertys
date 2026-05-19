@@ -1,0 +1,41 @@
+{
+  "variantName": "call-to-action-sale",
+  "baseBlock": "call-to-action",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:08:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/sale",
+    "originPage": "Havertys Memorial Day sale page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "sale-cta",
+    "imagePattern": "background-image"
+  },
+  "contentPattern": {
+    "structure": "heading + subheading + 1 CTA",
+    "buttonCount": 1,
+    "imageCount": 0,
+    "hasVideo": false,
+    "hasBackgroundImage": true
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "promotional CTAs with background images",
+      "sale markdown announcement banners",
+      "seasonal event promotional sections with bold backgrounds"
+    ],
+    "notSuitableFor": [
+      "plain text CTAs without background images",
+      "multi-column promotional layouts",
+      "hero-style full-bleed banners with video"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/sale"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T18:08:00.000Z"
+  }
+}

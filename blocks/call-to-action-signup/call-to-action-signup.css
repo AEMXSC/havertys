@@ -1,0 +1,57 @@
+.call-to-action-signup-container .call-to-action-signup-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.call-to-action-signup {
+  display: block;
+}
+
+.call-to-action-signup .call-to-action-signup-main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.call-to-action-signup .call-to-action-signup-text h4 {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.call-to-action-signup .call-to-action-signup-text h2 {
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+}
+
+.call-to-action-signup .call-to-action-signup-text p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+.call-to-action-signup .call-to-action-signup-cta .button-container {
+  margin-top: 16px;
+}
+
+@media (width >= 900px) {
+  .call-to-action-signup-container .call-to-action-signup-wrapper {
+    padding: 40px 32px;
+  }
+
+  .call-to-action-signup .call-to-action-signup-main-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .call-to-action-signup .call-to-action-signup-text {
+    flex: 1;
+  }
+
+  .call-to-action-signup .call-to-action-signup-cta {
+    flex-shrink: 0;
+  }
+}

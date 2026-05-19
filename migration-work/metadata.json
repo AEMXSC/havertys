@@ -1,0 +1,152 @@
+{
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/",
+  "timestamp": "2026-05-19T17:58:31.725Z",
+  "paths": {
+    "documentPath": "/index",
+    "htmlFilePath": "/index.plain.html",
+    "mdFilePath": "/index.md",
+    "dirPath": "",
+    "filename": "index"
+  },
+  "screenshot": "/backups/AEMXSC/havertys/migration-work/screenshot.png",
+  "html": {
+    "filePath": "/backups/AEMXSC/havertys/migration-work/cleaned.html",
+    "size": 125375
+  },
+  "metadata": {
+    "title": "Furniture & Home Décor | Havertys",
+    "description": "At Havertys you can browse our wide selection of stylish, quality-crafted furniture pieces and décor that are made to fit any home.",
+    "keywords": "bedroom furniture, furniture for sale, living room furniture, furniture near me",
+    "og:title": "Furniture & Home Décor | Havertys",
+    "og:description": "At Havertys you can browse our wide selection of stylish, quality-crafted furniture pieces and décor that are made to fit any home.",
+    "og:url": "https://www.havertys.com",
+    "og:image": "https://havertys.scene7.com/is/image/HvtWeb2/default-meta-image?$MetaLinkShareImage$",
+    "og:image:secure_url": "https://havertys.scene7.com/is/image/HvtWeb2/default-meta-image?$MetaLinkShareImage$",
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Furniture & Home Décor | Havertys",
+    "twitter:description": "At Havertys you can browse our wide selection of stylish, quality-crafted furniture pieces and décor that are made to fit any home.",
+    "twitter:image": "https://havertys.scene7.com/is/image/HvtWeb2/default-meta-image?$MetaLinkShareImage$",
+    "target": "enabled",
+    "published-time": "2026-05-19T16:46:59.304Z",
+    "robots": "index, follow",
+    "modified-time": "2026-05-19T16:46:25.052Z",
+    "content-page-ref": "rPFxSNYFEh2VQwnyph8PWIvuFkXtZNHX1ZwXkpzpjgNSjpEwfA_n95AjX_iQOoiLuX5DLAELN8kcObodQWtduQ",
+    "viewport": "width=device-width, initial-scale=1, maximum-scale=1",
+    "canonical": "https://www.havertys.com",
+    "jsonLd": {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.havertys.com/#website",
+          "name": "Havertys Furniture",
+          "url": "https://www.havertys.com/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.havertys.com/search?search_query={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.havertys.com/#organization",
+          "name": "Havertys Furniture",
+          "url": "https://www.havertys.com/",
+          "logo": "https://havertys.scene7.com/is/image/HvtWeb2/default-meta-image?$MetaLinkShareImage$",
+          "description": "At Havertys you can browse our wide selection of stylish, quality-crafted furniture pieces and décor that are made to fit any home.",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-888-428-3789",
+            "contactType": "Customer Service"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.havertys.com/#webpage",
+          "url": "https://www.havertys.com/",
+          "name": "Havertys Furniture Homepage",
+          "description": "At Havertys you can browse our wide selection of stylish, quality-crafted furniture pieces and décor that are made to fit any home.",
+          "isPartOf": {
+            "@id": "https://www.havertys.com/#website"
+          },
+          "about": {
+            "@id": "https://www.havertys.com/#organization"
+          },
+          "image": {
+            "@type": "ImageObject",
+            "@id": "https://www.havertys.com/#webpage-image",
+            "url": "https://havertys.scene7.com/is/image/HvtWeb2/default-meta-image?$MetaLinkShareImage$",
+            "width": 1200,
+            "height": 630
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.havertys.com/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.havertys.com"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "images": {
+    "count": 41,
+    "mapping": {
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/overlay-slider-pause.svg": "./images/77a6ac73fbaaf4c99e21a8243c2866fb.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/button-arrow-green.svg": "./images/e13e31aaf608530732c864d2f963c62c.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/cart.svg": "./images/a1a19b5066d4e28ac1d1fbc0340c0e0e.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/account.svg": "./images/5b69116dafdd17da31545380d9feb922.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/storelocator.svg": "./images/27b4f877845d4fa771ee1e73706f825b.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/header-logo.svg": "./images/7f2a061e790350d380d0f95c049166f9.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/anniversary-header-logo.svg": "./images/9c682022ef26617525abf9bb54f8af98.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/button-arrow-white.svg": "./images/242914910756c139df7e40b00d96cd9b.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/overlay-slider-arrow-left.svg": "./images/97adab42ef8956e9c644eeafabf42f69.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/overlay-slider-arrow-right.svg": "./images/dcbb9bba2596130feac84c4a742d8d09.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:f95ad4a6-e842-4065-8e23-a74c02124bc3/as/Event5-Markdowns-Highlight-Carousel.avif?quality=85&width=1280": "./images/ff8f0d5f53d4e8e5cb83aa5f07173304.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:c4c2266f-10b9-4e54-9761-5692138ba3fb/as/Event5-Dining-Highlight-Carousel.avif?quality=85&width=1280": "./images/be95d8dd4b15e69bff67ebfdaa099374.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:85af8af9-4825-4fa5-a937-910c37c4ef11/as/Event5-Living-Highlight-Carousel.avif?quality=85&width=1280": "./images/a25fea51430022b466874ea7180e1953.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/arrow-left.svg": "./images/e463f68cf7b7ad58f87032ce16671c21.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:04d472be-e61a-48df-9e7a-2beca7b9d4d4/as/Pompon-Button-Flowers-blurred.avif?quality=85&width=1280": "./images/cdb818c53e1d931958f9429a6d2960be.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/HavertysLogo-White-Large.svg": "./images/0ae0173ba0f3be84b2997bfe868ce3ac.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:990fabdd-efb9-485b-b92f-bb3823dfb27e/as/Event5-Bedrooms-Highlight-Carousel.avif?quality=85&width=1280": "./images/a21dc4535d61ca1854c0557b1bb3689c.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:da7fcf40-dc68-4d5f-993d-1832e63e267d/as/BlueFabric.avif?quality=85&width=1280": "./images/4a02b56b67cbab790a133bacb2d4ba9a.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:cf95b712-1d5c-4559-92b0-bddc98fd1868/as/Event5-Mattresses-Highlight-Carousel.avif?quality=85&width=1280": "./images/9278728f09d7e460bb5342478a0056a5.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/youtube-footer.svg": "./images/7a4dfe0a20f87bf4587ebaced19b1ec7.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/instagram-footer.svg": "./images/3fb14c87a2404f25bae5cfb1938ff5c8.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/facebook-footer.svg": "./images/272239677cb46c7469f51fb8da86a7af.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/pinterest-footer.svg": "./images/bd3e3472d38b596ebec8583731924af8.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/small-logo.svg": "./images/9806087aa9326d76245f2a97aa323ca2.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:d44bb869-f7de-4ce1-90ec-81ac4b3bb4db/as/AdobeStock_1227652220.avif?quality=85&width=1280": "./images/4d16e593f0371e2dd47ca66733bc136a.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/myhavertys-icon-hover.svg": "./images/6d96d86e45b16cc34d0b0173ff02b7b8.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/cart-icon-hover.svg": "./images/f95d8f0807642b05378e328b7eb8a0d1.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/storelocator-icon-hover.svg": "./images/519d40d74dea466ebcbe82a594be7c3e.png",
+      "https://cdn.cookielaw.org/logos/3872861d-1837-4003-81d7-57bc12bc4b2f/01900cb2-8440-753e-b17b-ce1a0de40ec2/d2fd6604-26f7-4032-bcec-56f7ef33f92a/HavertysLogo.jpg": "./images/7252fb11bfca22f801cfe99e1c6b3ba0.jpg",
+      "https://cdn.cookielaw.org/logos/static/ot_close.svg": "./images/cec4a77b663a079574d478e06d310304.png",
+      "https://cdn.cookielaw.org/logos/static/powered_by_logo.svg": "./images/a9584a367ebcccfac48987ce1fec5eae.png",
+      "https://usage.trackjs.com/usage.gif?token=fa4fa70c885b4aa9bd6cc4084e6bd795&correlationId=05296ba8-929e-40a2-8644-bac63575aa7a&application=havertyscom&x=e45616ae-56e8-4765-b762-5343aede7c96&": "./images/557671deb41eaa44527351d35d77026c.png",
+      "https://delivery-p48208-e247412.adobeaemcloud.com/adobe/assets/urn:aaid:aem:40ef5209-b3d4-4ecf-81b0-e246e39010ac/as/KVP_7674_cc.avif?quality=85&width=1280": "./images/862a3e31843ed52d045cb11d5bbf7ef0.png",
+      "https://arttrk.com/pixel/?ad_log=referer&action=lead&pixid=6803097d-03c2-4100-bb55-49d68c2fd2d1": "./images/596c7fefbb89f9d904040b85f9add51c.png",
+      "https://www.google.com/pagead/1p-user-list/16665050467/?random=1779213509341&cv=11&fst=1779210000000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be65i0h1v9196502266z871489176za20gzb71489176zd71489176xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115616985~115938465~115938469&u_w=1280&u_h=720&url=https%3A%2F%2Fmain--hvt-eds--havertys-furniture.aem.live%2F&rcb=6&frm=0&tiba=Furniture%20%26%20Home%20D%C3%A9cor%20%7C%20Havertys&did=dYWJhMj&gdid=dYWJhMj&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=264893022.1779213509&uaa=x86&uab=64&uafvl=Not%253AA-Brand%3B99.0.0.0%7CHeadlessChrome%3B145.0.7632.6%7CChromium%3B145.0.7632.6&uamb=0&uam=&uap=Linux&uapv=&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=3&is_vtc=1&cid=CAQS4gEABaugff6bSkBPmLYePsjN9UfCoT-juYYMSBtaVj4c8d9y9kMWxzkt3ZmHNoNglr57OFBJi_O2oyIWQCu2_bdODrRjH90IQcoLaFy9Z9DF2v1Ap6LR_BvTBKLU4CmDqHcEGCgegHLkhoItKFVu60cFZDb59KihcOCbbT4zWMB2Gqo5gCeW0UKBrMNqQB3reTwoetiPI_2ibKXtbTPyD-hCbDOPX33Kx5LlRX_QmUuJPzeDNj-carM0nyDXd_gmrVFnVVbkRDjpWh_geD9N1F5HNw_ETHj9ylug-9gmEUA3A1JT&random=1310273876&rmt_tld=0&ipr=y": "./images/bae936d013dcacc9d905e39390fd988f.png",
+      "https://ib.adnxs.com/setuid?entity=18&code=978758926013456519&gdpr=&gdpr_consent=&redir=https%3A%2F%2Fdpm.demdex.net%2Fibs%3Adpid%3D1121%26dpuuid%3D978758926013456519%26redir%3Dhttps%253A%252F%252Fimage2.pubmatic.com%252FAdServer%252FPug%253Fvcode%253Dbz0yJnR5cGU9MSZjb2RlPTI3MzkmdGw9MTI5NjAw%253D%253D%2526piggybackCookie%253D978758926013456519%2526r%253Dhttps%25253A%25252F%25252Fus-u.openx.net%25252Fw%25252F1.0%25252Fsd%25253Fid%25253D537073062%252526val%25253D978758926013456519%252526r%25253Dhttps%2525253A%2525252F%2525252Fp.rfihub.com%2525252Fcm%2525253Fpub%2525253D24472%25252526in%2525253D1%25252526gdpr%2525253D%25252526gdpr_consent%2525253Dhttps%252525253A%252525252F%252525252Fcontextual.media.net%252525252Fcksync.php%252525253Fcs%252525253D3%2525252526type%252525253Drkt%2525252526ovsid%252525253D978758926013456519https%25252525253A%25252525252F%25252525252Fwt.rqtrk.eu%25252525253Fpid%25252525253Dafd6afd5-a807-471d-940d-aa3c19fc7dca%252525252526src%25252525253Dwww%252525252526type%25252525253D100%252525252526sid%25252525253D1%252525252526cb%25252525253DXYX0RLQMvFBa%252525252526uid%25252525253D978758926013456519%252525252526url%25252525253Dhttps%2525252525253A%2525252525252F%2525252525252Fmain--hvt-eds--havertys-furniture.aem.live%2525252525252F%252525252526gdpr%25252525253D%252525252526gdpr_pd%25252525253D0%252525252526gdpr_consent%25252525253Dhttps%2525252525253A%2525252525252F%2525252525252Fi.liadm.com%2525252525252Fs%2525252525252F90096%2525252525253Fbidder_id%2525252525253D246506%25252525252526bidder_uuid%2525252525253D978758926013456519https%252525252525253A%252525252525252F%252525252525252Fx.bidswitch.net%252525252525252Fsync%252525252525253Fdsp_id%252525252525253D119%2525252525252526user_id%252525252525253D978758926013456519%2525252525252526expires%252525252525253D30%2525252525252526gdpr%252525252525253D%2525252525252526gdpr_consent%252525252525253D%2525252525252526gdpr_pd%252525252525253D": "./images/495a976a52bc4a93eb8d342a441a7da6.png",
+      "https://www.google.com/pagead/1p-user-list/1063656013/?random=1779213509449&cv=11&fst=1779210000000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be65i0h1v886919534z871489176za20gzb71489176zd71489176xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938468&u_w=1280&u_h=720&url=https%3A%2F%2Fmain--hvt-eds--havertys-furniture.aem.live%2F&rcb=1&frm=0&tiba=Furniture%20%26%20Home%20D%C3%A9cor%20%7C%20Havertys&did=dYWJhMj&gdid=dYWJhMj&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=264893022.1779213509&uaa=x86&uab=64&uafvl=Not%253AA-Brand%3B99.0.0.0%7CHeadlessChrome%3B145.0.7632.6%7CChromium%3B145.0.7632.6&uamb=0&uam=&uap=Linux&uapv=&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=3&is_vtc=1&cid=CAQS4gEABaugfa4SYWYAxIDbv3IWVeaUBlPYtyz756_0rbQuDiUp9VcOmqaWaaNI8w-2_IwKv92PN9IB7ApdEkJCTdwYeyFEyTE2mZRYbufChOXpS3QyagRbOHviSjnSjVxe75PineFJV2VL_DQpk8aV3HCsGKqjmNiaT9cMd9xg6Lt1DB1ISZ-cJ9J0hcM3DHQ2GVjWd2yAno5IGuGo2Zeya3T9U1Xph_JsCBXx4sTyC4tBCZd1OA6Xkb49CuMq9Lv0DrkE8lgCfDVjbQ6f08HyM86D5z8oXW_-4uI3A3vWKmY-Mlzf&random=993073650&rmt_tld=0&ipr=y": "./images/22c0d53a298f652b9f8da99d579b148a.png",
+      "https://www.google.com/pagead/1p-user-list/10880006955/?random=1779213509574&cv=11&fst=1779210000000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be65i0h1z871489176za20gzb71489176zd71489176xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=0~115938465~115938468&u_w=1280&u_h=720&url=https%3A%2F%2Fmain--hvt-eds--havertys-furniture.aem.live%2F&rcb=16&frm=0&tiba=Furniture%20%26%20Home%20D%C3%A9cor%20%7C%20Havertys&did=dYWJhMj&gdid=dYWJhMj&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=264893022.1779213509&uaa=x86&uab=64&uafvl=Not%253AA-Brand%3B99.0.0.0%7CHeadlessChrome%3B145.0.7632.6%7CChromium%3B145.0.7632.6&uamb=0&uam=&uap=Linux&uapv=&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=3&is_vtc=1&cid=CAQS4gEABaugfX8qUOtOpIHepO6z5uw-OvwsmmoTKfgbHkax7N3ezDt1aGGaOPw7MZNxLjv1HEKdh-e9PQxGoov-DUk29EeM7loNO7vd9VmwLFsk-CriPUY8YZkjZDfpg5gQuIlHO3BkYmm_DOXXSGW9GDqRnQoZACZzWTGERMKi3GCsgAgrtmbwUpe9MuQ2Oa0tXQjdPB1YqDDwTd1JOXva0rZLyx8laZY0I45Da6RJSomKl6ZeeyhhTsGSjo38rJdVQpzjnRk3vayStfq2OGHsMXpuGqSf3r8q94kzOo6Ec-D3ROzM&random=2485153495&rmt_tld=0&ipr=y": "./images/5429558a2ab5dee4dde946049be7a6d9.png",
+      "https://pixel.sitescout.com/up/b6dc37e938ae9fc2?cookieQ=1&cntr_url=https%3A%2F%2Fmain--hvt-eds--havertys-furniture.aem.live%2F": "./images/a07f971f46cac9c0a20d84afda18d0da.png",
+      "https://us.mgln.ai/pixel?tapad_id=ba19bdce-e943-4093-9657-90eb905af5d2": "./images/8bde625f4ee399f4a3d0ffd2a9df37d1.png",
+      "https://main--hvt-eds--havertys-furniture.aem.live/icons/nav-arrow-right.svg": "./images/b99757166ba0e01c6a4c6b2f370b3d7b.png"
+    },
+    "stats": {
+      "total": 54,
+      "converted": 40,
+      "skipped": 1,
+      "failed": 13,
+      "tooLarge": 0,
+      "limitReached": 0
+    }
+  }
+}

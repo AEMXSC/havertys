@@ -1,0 +1,41 @@
+{
+  "variantName": "product-carousel-sale",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:08:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/sale",
+    "originPage": "Havertys Memorial Day sale page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "product-commerce",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "heading + product grid carousel with commerce data",
+    "buttonCount": 0,
+    "imageCount": 4,
+    "hasVideo": false,
+    "hasCommerceIntegration": true
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "sale pages with product savings carousels by category",
+      "product recommendation carousels",
+      "commerce-integrated scrollable product grids"
+    ],
+    "notSuitableFor": [
+      "image-only gallery carousels",
+      "testimonial or content-focused carousels",
+      "hero banner carousels with overlay text"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/sale"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T18:08:00.000Z"
+  }
+}

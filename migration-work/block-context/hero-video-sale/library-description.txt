@@ -1,0 +1,14 @@
+This block is used to capture users' attention with a prominent image, a headline, and an optional call-to-action, typically placed at the top of a page.
+
+Implementation:
+This block's table has 1 column and 3 rows, with the first row containing only the block name and optional variants.
+
+The single cell in the 2nd row should contain:
+1. Background Image (optional)
+
+The single cell in the 3rd row should contain:
+1. Title (optional) - styled as a Heading.
+2. Subheading (optional) - additional text
+3. Call-to-Action (optional) - text with a link.
+
+When rendered, CSS and JavaScript will display this block as a large banner, combining the background asset with text and an optional button.

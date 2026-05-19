@@ -1,0 +1,6 @@
+Call to Action Promo block - a promotional banner with text content and a CTA button.
+Structure: Single row containing all content (eyebrow heading, main heading, body text, and CTA button link) in one cell.
+The block decoration separates the text content from buttons and renders them in distinct containers.
+Content pattern: eyebrow (h4) + main heading (h2) + optional body paragraph + CTA button link.
+Used for: financing offers, newsletter signups, seasonal promotions.
+UE model field: "content" (richtext) - single field containing all text and link elements.

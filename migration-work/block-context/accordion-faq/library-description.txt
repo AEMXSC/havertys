@@ -1,0 +1,1 @@
+Accordion FAQ block renders expandable question-answer pairs. Each row contains two columns: the first column holds the question/label (displayed as the clickable summary header), and the second column holds the answer/body content (revealed when expanded). Used for FAQ sections, help content, and expandable information panels.

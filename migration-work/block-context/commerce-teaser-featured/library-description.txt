@@ -1,0 +1,8 @@
+Commerce Teaser Featured block - a large side-by-side feature teaser with image and content.
+Structure: Single row with two columns - [image, content].
+Column 1: Large featured image (picture element).
+Column 2: Content combining heading (h3), description paragraph, and multiple CTA button links.
+The block JS detects which column has only a picture and adds an img-col class for layout.
+Supports featured-right (image left, content right) and featured-left (content left, image right) variants via wrapper classes.
+Used for: full-width promotional features, service highlights, brand messaging sections.
+UE model fields: "image" (reference/image), "content" (richtext containing heading, description, CTAs).

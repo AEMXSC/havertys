@@ -1,0 +1,212 @@
+{
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/free-design-service",
+  "templateName": "service-page",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "style": "dark blue fabric background image (full-width)",
+      "overview": "Hero area with design service branding and image carousel",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Eyebrow text 'DESIGN SERVICE', large heading 'Always Free. Always Inspired.', bold subtitle about offerings (in-store, in-home, virtual design consultations)"
+        },
+        {
+          "sequenceNumber": 2,
+          "description": "Full-width auto-playing image carousel showing designer-curated room photos with click-to-chat links, navigation arrows and dots"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "style": "light/white background",
+      "overview": "Value proposition heading with appointment CTA",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Centered heading 'From floorplans to finishing touches, we have solutions for every space, any size.' followed by a primary 'Book An Appointment' button"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "style": "light background with grid layout",
+      "overview": "Two side-by-side full-width image carousels of 3D room renderings",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Grid of two full-width carousel sliders, each containing 6 product/room 3D rendering images with links to product pages, navigation arrows and pagination dots"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "style": "light background",
+      "overview": "Design project spotlights carousel with vertical images and project titles",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Named carousel with heading 'Design Project Spotlights' showing vertical image cards - each card has a project photo and linked title (Easy Lake Living, Downsizing, New Construction, Mountain Retreat, Family Friendly) with navigation arrows"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 5,
+      "style": "light background",
+      "overview": "Featured project video with product recommendations",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Split layout: left side has an auto-playing video of a design project, right side has eyebrow 'OUR LATEST PROJECT', heading 'Rooted in Comfort', description paragraph about Cedar Park TX project"
+        },
+        {
+          "sequenceNumber": 2,
+          "description": "Small product carousel labeled 'Shop the look' showing related furniture items from the featured project"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 6,
+      "style": "light/white background",
+      "overview": "FAQ section with accordion",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Heading 'Your Questions, Answered.'"
+        },
+        {
+          "sequenceNumber": 2,
+          "description": "Expandable accordion with 8 FAQ items: 'What do I get with the Havertys Free Design Service?', 'What does a Havertys Designer Expert do?', 'How do I get started?', 'Do I need an appointment?', 'What type of appointment should I make?', 'What can I expect during my personalized design presentation?', 'What is my Sales Consultant role in the design process?', 'How long should I expect the design process to take?'"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 7,
+      "style": "light background with decorative border",
+      "overview": "Customer testimonial quote",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Styled blockquote with decorative quote marks: 'My designer worked with me to customize a space that I've always wanted. Best of all the design help was free. Win. Win.' attributed to '-Bella'"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 8,
+      "style": "light background with grid layout",
+      "overview": "Two promotional cards for customization and room planning",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Grid of two card-style commerce teasers, each with: product image, heading, description paragraph, and CTA button. Card 1: 'Customize Something One-of-a-Kind' with 'Learn More' link. Card 2: 'Envision Your Space' with 'Get Started' link"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 9,
+      "style": "green/teal brand color background",
+      "overview": "Email signup call-to-action banner",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Full-width banner with heading 'GET EXCLUSIVE ACCESS', subtitle 'Be the first to know about offers, inspiration, and new products.', and 'Sign Up' button linking to signup modal"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 10,
+      "style": "light/white background",
+      "overview": "SEO text content block",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Long-form SEO paragraph with bold heading 'Free Design Service' followed by detailed description of the design service process, with inline links to room planning tool and store locations"
+        }
+      ]
+    }
+  ],
+  "blockInventory": {
+    "localBlocks": [
+      {
+        "name": "call-to-action-promo",
+        "baseBlock": "call-to-action",
+        "purpose": "Promotional banner with eyebrow, heading, body text and CTA button"
+      },
+      {
+        "name": "carousel-category",
+        "baseBlock": "carousel",
+        "purpose": "Category navigation carousel with images and linked headings"
+      },
+      {
+        "name": "commerce-teaser-split",
+        "baseBlock": "commerce-teaser",
+        "purpose": "Split-layout promotional teaser with media and text content"
+      },
+      {
+        "name": "hero-video-sale",
+        "baseBlock": "hero",
+        "purpose": "Homepage hero with video background and promotional text"
+      }
+    ],
+    "blockCollectionAvailable": [
+      {
+        "name": "hero",
+        "purpose": "Large heading, text, buttons for page intro"
+      },
+      {
+        "name": "cards",
+        "purpose": "Grid of items with images/text"
+      },
+      {
+        "name": "columns",
+        "purpose": "Side-by-side content layout"
+      },
+      {
+        "name": "accordion",
+        "purpose": "Expandable Q&A sections"
+      },
+      {
+        "name": "carousel",
+        "purpose": "Rotating image/content displays"
+      },
+      {
+        "name": "tabs",
+        "purpose": "Switchable content panels"
+      },
+      {
+        "name": "quote",
+        "purpose": "Highlighted testimonials or blockquotes"
+      },
+      {
+        "name": "fragment",
+        "purpose": "Reusable content sections"
+      }
+    ],
+    "siteSpecificBlocks": [
+      {
+        "name": "hvt-text",
+        "purpose": "Havertys custom text block with paragraph styling"
+      },
+      {
+        "name": "hvt-button",
+        "purpose": "Havertys custom button block with alignment options"
+      },
+      {
+        "name": "commerce-teaser",
+        "purpose": "Product/service promotional teaser with image, text, CTAs"
+      },
+      {
+        "name": "call-to-action",
+        "purpose": "CTA banner with heading, text, and button"
+      },
+      {
+        "name": "product-carousel",
+        "purpose": "Product item slider for shop-the-look features"
+      },
+      {
+        "name": "dynamic-media-image",
+        "purpose": "Dynamic Media hosted image display"
+      }
+    ]
+  }
+}

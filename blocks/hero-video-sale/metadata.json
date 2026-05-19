@@ -1,0 +1,40 @@
+{
+  "variantName": "hero-video-sale",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:01:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/",
+    "originPage": "Havertys furniture homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "sale-hero",
+    "imagePattern": "video"
+  },
+  "contentPattern": {
+    "structure": "video background + eyebrow + heading + feature link + CTA",
+    "buttonCount": 1,
+    "imageCount": 0,
+    "hasVideo": true
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "homepage hero with promotional video",
+      "seasonal sale landing pages",
+      "event-driven promotional hero banners"
+    ],
+    "notSuitableFor": [
+      "text-only hero sections",
+      "static image hero without video",
+      "product detail page headers"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T18:01:00.000Z"
+  }
+}

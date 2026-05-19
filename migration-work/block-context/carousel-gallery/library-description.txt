@@ -1,0 +1,1 @@
+Carousel Gallery: A full-width image carousel/slideshow block. Each row represents one slide containing a linked image. The block renders as a horizontal swiper with navigation arrows and pagination dots. Each slide has one cell containing an image (optionally wrapped in a link). This is a container block where each child item is a slide row with one column for the image content.

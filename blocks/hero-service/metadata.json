@@ -1,0 +1,41 @@
+{
+  "variantName": "hero-service",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:08:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/free-design-service",
+    "originPage": "Havertys free design service page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "service-hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "background image + eyebrow + heading + description",
+    "buttonCount": 0,
+    "imageCount": 1,
+    "hasVideo": false
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "service landing pages with background texture/image",
+      "informational hero sections without CTA buttons",
+      "design service or consultation pages",
+      "pages with text overlay on decorative backgrounds"
+    ],
+    "notSuitableFor": [
+      "hero sections with video backgrounds",
+      "sale/promotional hero banners with CTAs",
+      "product-focused hero sections"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/free-design-service"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T18:08:00.000Z"
+  }
+}

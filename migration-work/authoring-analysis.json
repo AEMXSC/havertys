@@ -1,0 +1,240 @@
+{
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/",
+  "templateName": "homepage",
+  "analysisDate": "2026-05-19",
+  "variantMapping": {
+    "hero": "hero-video-sale",
+    "carousel": "carousel-category",
+    "call-to-action": "call-to-action-promo",
+    "commerce-teaser": "commerce-teaser-split",
+    "fragment": "fragment"
+  },
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "className": "hero-container",
+      "sectionMetadata": null,
+      "sectionMetadataReason": "Hero has its own full-width video background and gradient - this is block-specific design, not section styling",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Full-width video background with overlaid heading 'MEMORIAL DAY SALE', subheading 'Shop Our Best Savings of the Year', featured product link, and a CTA button",
+          "decision": "BLOCK",
+          "blockName": "hero-video-sale",
+          "blockVariant": "hero-video-sale",
+          "reason": "Video background with gradient overlay, positioned text, and CTA buttons requires hero block structure. Cannot be authored as default content - needs video element, overlay positioning, and gradient effects.",
+          "contentDetails": {
+            "video": "event5-extended-audrey-desktop.mp4",
+            "eyebrow": "MEMORIAL DAY SALE",
+            "heading": "Shop Our Best Savings of the Year",
+            "featureLink": "Shop our featured Audrey collection",
+            "cta": {"text": "Don't Miss Out", "href": "/sale", "style": "tertiary"}
+          }
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "className": "call-to-action-container",
+      "sectionMetadata": null,
+      "sectionMetadataReason": "Light background, single block section but call-to-action is a structured promotional component with its own layout",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Promotional banner with eyebrow, heading, body text, and CTA button for financing offer",
+          "decision": "BLOCK",
+          "blockName": "call-to-action-promo",
+          "blockVariant": "call-to-action-promo",
+          "reason": "Structured promotional layout with specific eyebrow/heading/body/CTA pattern. While the content could theoretically be typed, the call-to-action block provides the specific visual treatment (structured layout, styling) that differentiates this from plain content.",
+          "contentDetails": {
+            "eyebrow": "LIMITED-TIME OFFER",
+            "heading": "0% Interest for 60 Months*",
+            "body": "On furniture purchases of $9,999 or more...",
+            "cta": {"text": "Learn More", "href": "/financing", "style": "primary"}
+          }
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "className": "carousel-container",
+      "sectionMetadata": null,
+      "sectionMetadataReason": "Light background, carousel block has its own interactive sliding behavior",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Horizontal card carousel with 5 category slides, each with vertical image and linked heading",
+          "decision": "BLOCK",
+          "blockName": "carousel-category",
+          "blockVariant": "carousel-category",
+          "reason": "Interactive sliding carousel with navigation arrows and pagination dots. Requires JavaScript decoration for Swiper/sliding behavior. Repeating structured pattern of image+link items that cycle through.",
+          "contentDetails": {
+            "variant": "vertical-image card-slide",
+            "slideCount": 5,
+            "slides": [
+              {"image": "Event5-Markdowns-Highlight-Carousel.avif", "heading": "DON'T MISS OUT", "link": "/sale/memorial-day-sale"},
+              {"image": "Event5-Living-Highlight-Carousel.avif", "heading": "SHOP LIVING ROOMS", "link": "/products/category-page/living-room"},
+              {"image": "Event5-Dining-Highlight-Carousel.avif", "heading": "SHOP DINING ROOMS", "link": "/products/category-page/dining-room"},
+              {"image": "Event5-Bedrooms-Highlight-Carousel.avif", "heading": "SHOP BEDROOMS", "link": "/products/category-page/bedroom"},
+              {"image": "Event5-Mattresses-Highlight-Carousel.avif", "heading": "SHOP MATTRESSES", "link": "/products/category-page/mattresses-bedding/mattresses"}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "className": "bg-image call-to-action-container",
+      "sectionMetadata": {"style": "bg-image"},
+      "sectionMetadataReason": "Background image is section-level styling that wraps the call-to-action block. The blurred floral image provides container context.",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Call-to-action with background image of blurred flowers, eyebrow text, heading, and frosted glass CTA button",
+          "decision": "BLOCK",
+          "blockName": "call-to-action-promo",
+          "blockVariant": "call-to-action-promo",
+          "reason": "Same call-to-action block pattern as Section 2 but with background image styling at section level. Structured promotional component with eyebrow/heading/CTA pattern.",
+          "contentDetails": {
+            "backgroundImage": "Pompon-Button-Flowers-blurred.avif",
+            "eyebrow": "Shop Our 2026",
+            "heading": "SPRING LOOKBOOK",
+            "cta": {"text": "Get Inspired", "href": "https://heyzine.com/flip-book/d168a6d05f.html", "style": "frostedGlass"}
+          }
+        }
+      ]
+    },
+    {
+      "sectionNumber": 5,
+      "className": "bg-image commerce-teaser-container",
+      "sectionMetadata": {"style": "bg-image"},
+      "sectionMetadataReason": "Blue fabric texture background is section-level styling. The commerce-teaser block sits within this styled container.",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Commerce teaser with product image, eyebrow, heading, description, and three CTA buttons on blue fabric background",
+          "decision": "BLOCK",
+          "blockName": "commerce-teaser-split",
+          "blockVariant": "commerce-teaser-split",
+          "reason": "Complex split layout teaser with image container, structured text content (eyebrow, heading, description), and multiple CTA buttons. Cannot be default content due to the structured image+content layout and multiple action buttons.",
+          "contentDetails": {
+            "backgroundImage": "BlueFabric.avif",
+            "productImage": "KVP_7674_cc.avif",
+            "eyebrow": "Design Service",
+            "heading": "Always Free. Always Inspired.",
+            "description": "From floorplans to finishing touches, we have solutions for every space, any size.",
+            "layout": "featured-right",
+            "ctas": [
+              {"text": "Learn More", "href": "/free-design-service"},
+              {"text": "Book an Appointment", "href": "/make-an-appointment"},
+              {"text": "3D Room Planning Tool", "href": "/rfg/design-inspiration/room-planning-tool"}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sectionNumber": 6,
+      "className": "bg-image commerce-teaser-container",
+      "sectionMetadata": {"style": "bg-image"},
+      "sectionMetadataReason": "Lifestyle background image is section-level styling for the commerce-teaser block.",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Commerce teaser with video element, eyebrow, heading, description, and CTA button on lifestyle background",
+          "decision": "BLOCK",
+          "blockName": "commerce-teaser-split",
+          "blockVariant": "commerce-teaser-split",
+          "reason": "Same commerce-teaser pattern as Section 5 but with video instead of static image, and featured-left layout. Complex structured component with media + text + CTAs.",
+          "contentDetails": {
+            "backgroundImage": "AdobeStock_1227652220.avif",
+            "video": "RFG-katrina-animation.mp4",
+            "eyebrow": "HAVERTYS",
+            "heading": "Happiness in Every Moment",
+            "description": "For over 140 years, we've been committed to craftsmanship, honesty in every interaction, and always finding a way to say 'yes.'...",
+            "layout": "featured-left",
+            "ctas": [
+              {"text": "Regret-Free Guarantee", "href": "/rfg"}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sectionNumber": 7,
+      "className": "call-to-action-container",
+      "sectionMetadata": null,
+      "sectionMetadataReason": "Light background, call-to-action block provides its own visual treatment",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Newsletter signup CTA with heading, subheading, and signup button",
+          "decision": "BLOCK",
+          "blockName": "call-to-action-promo",
+          "blockVariant": "call-to-action-promo",
+          "reason": "Structured call-to-action component with heading, subtitle, and button. The block provides specific visual treatment (centered layout, spacing) for the newsletter signup pattern.",
+          "contentDetails": {
+            "heading": "GET EXCLUSIVE ACCESS",
+            "subheading": "Be the first to know about offers, inspiration, and new products.",
+            "cta": {"text": "Sign Up", "href": "fragments/modals/signup-modal", "style": "tertiary"}
+          }
+        }
+      ]
+    },
+    {
+      "sectionNumber": 8,
+      "className": "read-more-container fragment-container hvt-text-container",
+      "sectionMetadata": null,
+      "sectionMetadataReason": "Light background with small legal text - fragment provides reusability across pages",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Fragment containing legal disclaimer text paragraphs about sale terms and financing details",
+          "decision": "BLOCK",
+          "blockName": "fragment",
+          "blockVariant": "fragment",
+          "reason": "Legal disclaimers are loaded as a fragment for reuse across multiple pages. This is standard EDS pattern for shared content like terms and conditions.",
+          "contentDetails": {
+            "fragmentPath": "fragments/legal/memorial-day-sale-terms",
+            "contentType": "legal-disclaimer"
+          }
+        }
+      ]
+    }
+  ],
+  "blockStructures": {
+    "hero-video-sale": {
+      "source": "custom (havertys) - based on vanilla hero",
+      "structure": "Video/image background with gradient overlay, positioned text content (eyebrow, heading, CTA), optional feature product link",
+      "variants": ["video hero", "image hero"]
+    },
+    "call-to-action-promo": {
+      "source": "custom (havertys)",
+      "structure": "Container with text area (eyebrow h4, heading h2, optional paragraph) + CTA button area. Supports background images at section level.",
+      "variants": ["default (light bg)", "bg-image (with background image)", "frostedGlass button style"]
+    },
+    "carousel-category": {
+      "source": "custom (havertys) - based on vanilla carousel",
+      "structure": "Swiper-based carousel with slides. Each slide has image + text. Supports vertical-image card-slide variant. Navigation arrows + pagination dots.",
+      "variants": ["vertical-image card-slide"]
+    },
+    "commerce-teaser-split": {
+      "source": "custom (havertys)",
+      "structure": "Split layout with image/video container + content container (eyebrow, heading, description, multiple CTAs). Supports featured-left and featured-right layouts.",
+      "variants": ["featured-right (image right, text left)", "featured-left (image/video left, text right)"]
+    },
+    "fragment": {
+      "source": "Block Collection",
+      "structure": "Reference to reusable content fragment loaded from a separate document path",
+      "variants": ["default"]
+    }
+  },
+  "summary": {
+    "totalSections": 8,
+    "totalSequences": 8,
+    "defaultContentSequences": 0,
+    "blockSequences": 8,
+    "uniqueBlocks": ["hero-video-sale", "call-to-action-promo", "carousel-category", "commerce-teaser-split", "fragment"],
+    "notes": "This homepage is entirely block-driven with no plain default content sequences. All sections use custom Havertys blocks (hero-video-sale, call-to-action-promo, commerce-teaser-split, carousel-category) plus a standard fragment block for legal text. The page heavily relies on background images/videos for visual impact."
+  }
+}

@@ -1,0 +1,1 @@
+The Fragment block loads and displays content from another AEM page/fragment path. It contains a single cell with a link reference to the fragment content path. In xwalk/Universal Editor, this uses an aem-content field called "reference" that points to the fragment path.

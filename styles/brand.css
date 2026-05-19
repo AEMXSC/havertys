@@ -1,0 +1,19 @@
+:root {
+  --heading-font-family: "orpheuspro", serif;
+  --body-font-family: "soleil", -apple-system, blinkmacsystemfont, sans-serif;
+  --background-color: #ffffff;
+  --text-color: #4d4d4d;
+  --link-color: #252a2f;
+  --link-hover-color: #000000;
+  --color-light: #f5f5f5;
+  --color-dark: #252a2f;
+  --section-padding: 16px;
+  --content-max-width: 1900px;
+  --nav-height: 116px;
+  --heading-size-xxl: 36px;
+  --heading-size-xl: 28px;
+  --heading-size-l: 24px;
+  --heading-size-m: 18px;
+  --heading-size-s: 15px;
+  --heading-size-xs: 14px;
+}

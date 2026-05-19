@@ -1,0 +1,41 @@
+{
+  "variantName": "call-to-action-signup",
+  "baseBlock": "call-to-action",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:08:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/free-design-service",
+    "originPage": "Havertys free design service page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "accent",
+    "density": "compact",
+    "purpose": "email-signup",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "heading + subtitle text + signup CTA button",
+    "buttonCount": 1,
+    "imageCount": 0,
+    "hasVideo": false
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "email newsletter signup banners",
+      "exclusive access signup CTAs",
+      "bottom-of-page signup prompts",
+      "accent-colored CTA banners for subscription"
+    ],
+    "notSuitableFor": [
+      "promotional sale banners (use call-to-action-promo)",
+      "hero-style CTAs with background images",
+      "multi-button CTAs with complex content"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/free-design-service"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T18:08:00.000Z"
+  }
+}

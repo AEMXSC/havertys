@@ -1,0 +1,140 @@
+{
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/rfg",
+  "templateName": "brand-page",
+  "pageTitle": "Regret Free Guarantee | Havertys Furniture",
+  "totalSections": 6,
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "style": "light",
+      "backgroundColor": "#ffffff",
+      "overview": "Centered page title and brand promise tagline",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Large centered H1 heading 'Shop With Confidence' followed by a short paragraph describing the Regret-Free Guarantee promise"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "style": "light",
+      "backgroundColor": "#ffffff",
+      "overview": "Featured commerce teaser with image on right and text/CTAs on left - 'Beyond the Furniture' section",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Large promotional teaser with lifestyle image on the right side, H3 heading 'Beyond the Furniture', descriptive paragraph, and three CTA links (Worry-Free Returns, Protect Your Investment, Quality & Craftsmanship) stacked vertically on the left"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "style": "light",
+      "backgroundColor": "#ffffff",
+      "overview": "Two-column grid of linked image cards - delivery and planning tool",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Grid of 2 items side-by-side, each with a large image and a linked heading below it (Top Drawer Delivery, 3D Room Planning Tool) - card-style teasers with no description text"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "style": "light",
+      "backgroundColor": "#ffffff",
+      "overview": "Featured commerce teaser with text/CTAs on left and image on right - 'Design & Inspiration' section",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Large promotional teaser with text content on the left side (H3 heading 'Design & Inspiration', descriptive paragraph, three CTA links: Furniture Customization, 3D Room Planning, Decorating Tips) and lifestyle image on the right"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 5,
+      "style": "light",
+      "backgroundColor": "#ffffff",
+      "overview": "Two-column grid of linked image cards - design service and furniture care",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Grid of 2 items side-by-side, each with a large image and a linked heading below it (Free Design Service, Furniture Care) - card-style teasers with no description text"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 6,
+      "style": "light",
+      "backgroundColor": "#ffffff",
+      "overview": "Long-form guarantee text paragraph with inline links",
+      "contentSequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Bold 'Our Regret-Free Guarantee' lead-in followed by a long paragraph of body text containing multiple inline hyperlinks to various service pages (quality craftsmanship, design service, 3D room planner, furniture care, financing, delivery, store locations)"
+        }
+      ]
+    }
+  ],
+  "blockInventory": {
+    "localBlocks": [
+      {
+        "name": "commerce-teaser-split",
+        "baseBlock": "commerce-teaser",
+        "purpose": "Split-layout promotional teaser with dark background, media + text + CTAs"
+      },
+      {
+        "name": "hero-video-sale",
+        "baseBlock": "hero",
+        "purpose": "Homepage hero with video background for sale promotions"
+      },
+      {
+        "name": "call-to-action-promo",
+        "baseBlock": "call-to-action",
+        "purpose": "Compact promotional banner with text and CTA button"
+      },
+      {
+        "name": "carousel-category",
+        "baseBlock": "carousel",
+        "purpose": "Category navigation carousel with images and linked headings"
+      }
+    ],
+    "blockCollectionAvailable": [
+      {
+        "name": "hero",
+        "purpose": "Large heading, text, buttons for page intro"
+      },
+      {
+        "name": "cards",
+        "purpose": "Grid of items with images/text"
+      },
+      {
+        "name": "columns",
+        "purpose": "Side-by-side content layout"
+      },
+      {
+        "name": "accordion",
+        "purpose": "Expandable Q&A sections"
+      },
+      {
+        "name": "tabs",
+        "purpose": "Switchable content panels"
+      },
+      {
+        "name": "carousel",
+        "purpose": "Rotating image/content displays"
+      },
+      {
+        "name": "commerce-teaser",
+        "purpose": "Promotional teaser with image, heading, description, and CTAs"
+      }
+    ]
+  },
+  "excludedContent": {
+    "header": "Havertys navigation with mega-menu, search, account/cart links",
+    "footer": "Multi-column footer with company links, social icons, legal text",
+    "cookieBanner": "OneTrust cookie consent banner",
+    "chatWidget": "Gladly live chat widget"
+  }
+}

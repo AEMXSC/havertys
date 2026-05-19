@@ -1,0 +1,41 @@
+{
+  "variantName": "commerce-teaser-card",
+  "baseBlock": "commerce-teaser",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:08:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/free-design-service",
+    "originPage": "Havertys free design service page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "service-card",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "grid of cards with image + heading + description + CTA button",
+    "buttonCount": 1,
+    "imageCount": 1,
+    "hasVideo": false
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "service feature cards with images and CTAs",
+      "two-column promotional card grids",
+      "feature highlight sections with learn more links",
+      "tool or service offerings with visual previews"
+    ],
+    "notSuitableFor": [
+      "split layout teasers with video",
+      "full-width promotional banners",
+      "dark background promotional sections"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/free-design-service"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T18:08:00.000Z"
+  }
+}

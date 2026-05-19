@@ -1,0 +1,41 @@
+{
+  "variantName": "quote-testimonial",
+  "baseBlock": "quote",
+  "version": "1.0.0",
+  "created": "2026-05-19T18:08:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://main--hvt-eds--havertys-furniture.aem.live/free-design-service",
+    "originPage": "Havertys free design service page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "testimonial",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "blockquote with decorative quotes + attribution name",
+    "buttonCount": 0,
+    "imageCount": 0,
+    "hasVideo": false
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "customer testimonials on service pages",
+      "single customer quote with attribution",
+      "social proof sections with centered text",
+      "design service feedback quotes"
+    ],
+    "notSuitableFor": [
+      "multi-testimonial carousels (use carousel variant)",
+      "quotes with customer photos",
+      "expert/professional quotes with credentials"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/free-design-service"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-19T18:08:00.000Z"
+  }
+}

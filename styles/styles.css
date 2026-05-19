@@ -1,0 +1,254 @@
+@import url('brand.css');
+
+:root {
+  --body-font-size-m: 16px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 12px;
+  --heading-font-size-xxl: var(--heading-size-xxl);
+  --heading-font-size-xl: var(--heading-size-xl);
+  --heading-font-size-l: var(--heading-size-l);
+  --heading-font-size-m: var(--heading-size-m);
+  --heading-font-size-s: var(--heading-size-s);
+  --heading-font-size-xs: var(--heading-size-xs);
+  --container-padding: 1rem;
+  --container-max-width: 1400px;
+}
+
+@font-face {
+  font-family: soleil-fallback;
+  size-adjust: 100%;
+  src: local('Arial');
+}
+
+@font-face {
+  font-family: orpheuspro-fallback;
+  size-adjust: 105%;
+  src: local('Georgia');
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+}
+
+body.appear {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+  min-height: 100dvh;
+}
+
+header {
+  grid-row: 1;
+  height: var(--nav-height);
+}
+
+main {
+  grid-row: 2;
+}
+
+footer {
+  grid-row: 3;
+  background-color: var(--color-dark);
+  color: #fff;
+}
+
+header .header,
+footer .footer {
+  visibility: hidden;
+}
+
+header .header[data-block-status="loaded"],
+footer .footer[data-block-status="loaded"] {
+  visibility: visible;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0.8em;
+  margin-bottom: 0.25em;
+  font-family: var(--heading-font-family);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-dark);
+  scroll-margin: calc(var(--nav-height) + 16px);
+}
+
+h1 { font-size: var(--heading-font-size-xxl); }
+h2 { font-size: var(--heading-font-size-xl); }
+h3 { font-size: var(--heading-font-size-l); }
+h4 { font-size: var(--heading-font-size-m); font-family: var(--body-font-family); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+h5 { font-size: var(--heading-font-size-s); }
+h6 { font-size: var(--heading-font-size-xs); }
+
+p, dl, ol, ul, pre, blockquote {
+  margin-top: 0.8em;
+  margin-bottom: 0.25em;
+}
+
+/* links */
+a:any-link {
+  color: var(--link-color);
+  text-decoration: underline;
+  overflow-wrap: break-word;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+/* button reset for EDS */
+main .button-container {
+  display: inline;
+}
+
+main a.button:any-link {
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 100%;
+  margin: 8px 0;
+  border: 2px solid var(--color-dark);
+  border-radius: 0;
+  padding: 12px 32px;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: var(--color-dark);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+main a.button:hover {
+  background-color: #fff;
+  color: var(--color-dark);
+}
+
+main a.button.secondary {
+  background-color: transparent;
+  border: 2px solid var(--color-dark);
+  color: var(--color-dark);
+}
+
+main a.button.secondary:hover {
+  background-color: var(--color-dark);
+  color: #fff;
+}
+
+main img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+.icon {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+}
+
+.icon img {
+  height: 100%;
+  width: 100%;
+}
+
+/* sections */
+main > .section {
+  margin: 0;
+  padding: var(--section-padding) 0;
+  max-width: 100%;
+}
+
+main > .section > div {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  box-sizing: border-box;
+}
+
+/* section styles */
+main .section.dark {
+  background-color: var(--color-dark);
+  color: #fff;
+}
+
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3,
+main .section.dark h4 {
+  color: #fff;
+}
+
+main .section.light {
+  background-color: var(--color-light);
+}
+
+main .section.bg-image {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+main .section.navy-fabric {
+  background-color: #1a2a3a;
+  color: #fff;
+}
+
+main .section.navy-fabric h1,
+main .section.navy-fabric h2,
+main .section.navy-fabric h3 {
+  color: #fff;
+}
+
+main .section.teal-accent {
+  background-color: #2a5a4a;
+  color: #fff;
+}
+
+main .section.sale-red {
+  background-color: #c41e3a;
+  color: #fff;
+}
+
+/* full-bleed hero */
+main .section:has(> div > .hero-video-sale-wrapper),
+main .section:has(> div > .hero-service-wrapper) {
+  padding: 0;
+}
+
+main .section:has(> div > .hero-video-sale-wrapper) > div,
+main .section:has(> div > .hero-service-wrapper) > div {
+  max-width: 100%;
+  padding: 0;
+}
+
+input, textarea, select, button {
+  font: inherit;
+}
+
+@media (width >= 900px) {
+  :root {
+    --body-font-size-m: 16px;
+    --body-font-size-s: 14px;
+    --container-padding: 2rem;
+  }
+}

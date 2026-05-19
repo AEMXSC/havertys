@@ -1,0 +1,57 @@
+.call-to-action-promo-container .call-to-action-promo-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.call-to-action-promo {
+  display: block;
+}
+
+.call-to-action-promo .call-to-action-promo-main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.call-to-action-promo .call-to-action-promo-text h4 {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.call-to-action-promo .call-to-action-promo-text h2 {
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+}
+
+.call-to-action-promo .call-to-action-promo-text p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+.call-to-action-promo .call-to-action-promo-cta .button-container {
+  margin-top: 16px;
+}
+
+@media (width >= 900px) {
+  .call-to-action-promo-container .call-to-action-promo-wrapper {
+    padding: 40px 32px;
+  }
+
+  .call-to-action-promo .call-to-action-promo-main-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .call-to-action-promo .call-to-action-promo-text {
+    flex: 1;
+  }
+
+  .call-to-action-promo .call-to-action-promo-cta {
+    flex-shrink: 0;
+  }
+}

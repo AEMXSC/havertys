@@ -1,0 +1,200 @@
+{
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/rfg",
+  "templateName": "brand-page",
+  "documentPath": "/rfg",
+  "analysisDate": "2026-05-19",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "style": "light",
+      "sectionMetadata": null,
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Large centered H1 heading 'Shop With Confidence' followed by short paragraph about the Regret-Free Guarantee",
+          "decision": "DEFAULT_CONTENT",
+          "reason": "Author can type heading and paragraph normally. Centered alignment is a CSS concern handled by section styling.",
+          "blockName": null
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "style": "light",
+      "sectionMetadata": null,
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Featured promotional teaser with lifestyle image on right, H3 heading 'Beyond the Furniture', description paragraph, and 3 vertical CTA links on left",
+          "decision": "BLOCK",
+          "reason": "Structured split layout with image on one side and text/CTAs on the other requires block structure. Matches commerce-teaser block (featured-right variant).",
+          "blockName": "commerce-teaser-featured",
+          "blockVariant": "featured-right",
+          "contentPattern": {
+            "structure": "image + heading + description + 3 CTAs",
+            "buttonCount": 3,
+            "imageCount": 1,
+            "layout": "featured-right"
+          }
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "style": "light",
+      "sectionMetadata": null,
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Grid of 2 items side-by-side, each with large image and linked heading below (Top Drawer Delivery, 3D Room Planning Tool)",
+          "decision": "BLOCK",
+          "reason": "Repeating structured card pattern in a grid layout requires block. Matches cards block with image + linked title per card (no description text).",
+          "blockName": "cards-linked-image",
+          "blockVariant": null,
+          "contentPattern": {
+            "structure": "image + linked heading per card",
+            "buttonCount": 0,
+            "imageCount": 2,
+            "itemCount": 2,
+            "layout": "2-column grid"
+          }
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "style": "light",
+      "sectionMetadata": null,
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Featured promotional teaser with text content on left (H3 heading 'Design & Inspiration', description, 3 CTA links) and lifestyle image on right",
+          "decision": "BLOCK",
+          "reason": "Structured split layout with text/CTAs and image side-by-side requires block structure. Matches commerce-teaser block (featured-left variant).",
+          "blockName": "commerce-teaser-featured",
+          "blockVariant": "featured-left",
+          "contentPattern": {
+            "structure": "heading + description + 3 CTAs + image",
+            "buttonCount": 3,
+            "imageCount": 1,
+            "layout": "featured-left"
+          }
+        }
+      ]
+    },
+    {
+      "sectionNumber": 5,
+      "style": "light",
+      "sectionMetadata": null,
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Grid of 2 items side-by-side, each with large image and linked heading below (Free Design Service, Furniture Care)",
+          "decision": "BLOCK",
+          "reason": "Same repeating card pattern as Section 3 - grid of image cards with linked headings. Reuses same cards block variant.",
+          "blockName": "cards-linked-image",
+          "blockVariant": null,
+          "contentPattern": {
+            "structure": "image + linked heading per card",
+            "buttonCount": 0,
+            "imageCount": 2,
+            "itemCount": 2,
+            "layout": "2-column grid"
+          }
+        }
+      ]
+    },
+    {
+      "sectionNumber": 6,
+      "style": "light",
+      "sectionMetadata": null,
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Bold 'Our Regret-Free Guarantee' lead-in followed by long paragraph with multiple inline hyperlinks to service pages",
+          "decision": "DEFAULT_CONTENT",
+          "reason": "Author can type a bold lead-in and paragraph with inline links normally. This is standard rich text content.",
+          "blockName": null
+        }
+      ]
+    }
+  ],
+  "step3eValidation": {
+    "applicable": true,
+    "validatedSections": [
+      {
+        "sectionNumber": 2,
+        "blockType": "commerce-teaser-featured",
+        "backgroundAnalysis": "Light/white background, content has visible section padding on sides",
+        "layout": "Standard content width, not full-bleed",
+        "decision": "SKIP section-metadata",
+        "reason": "White background is default page color, no distinct section styling needed"
+      },
+      {
+        "sectionNumber": 3,
+        "blockType": "cards-linked-image",
+        "backgroundAnalysis": "Light/white background, grid content centered with padding",
+        "layout": "Standard content width, not full-bleed",
+        "decision": "SKIP section-metadata",
+        "reason": "White background is default page color, no distinct section styling needed"
+      },
+      {
+        "sectionNumber": 4,
+        "blockType": "commerce-teaser-featured",
+        "backgroundAnalysis": "Light/white background with standard page padding",
+        "layout": "Standard content width, not full-bleed",
+        "decision": "SKIP section-metadata",
+        "reason": "White background is default page color, no distinct section styling needed"
+      },
+      {
+        "sectionNumber": 5,
+        "blockType": "cards-linked-image",
+        "backgroundAnalysis": "Light/white background, grid content centered with padding",
+        "layout": "Standard content width, not full-bleed",
+        "decision": "SKIP section-metadata",
+        "reason": "White background is default page color, no distinct section styling needed"
+      }
+    ]
+  },
+  "variantMapping": {
+    "commerce-teaser": "commerce-teaser-featured",
+    "cards": "cards-linked-image"
+  },
+  "variantDecisions": [
+    {
+      "genericName": "commerce-teaser",
+      "variantName": "commerce-teaser-featured",
+      "decision": "CREATE_NEW",
+      "reason": "Existing commerce-teaser-split is dark background with video (45% similarity). This page uses light background with static image and multiple CTAs. New variant created.",
+      "similarityScore": 0.45,
+      "comparedTo": "commerce-teaser-split"
+    },
+    {
+      "genericName": "cards",
+      "variantName": "cards-linked-image",
+      "decision": "CREATE_NEW",
+      "reason": "No existing cards variants in project. Created new variant for image + linked heading card pattern without description text.",
+      "similarityScore": 0,
+      "comparedTo": null
+    }
+  ],
+  "blockStructures": {
+    "commerce-teaser-featured": {
+      "description": "Split-layout promotional teaser on light background with image, heading, description, and multiple CTAs. Supports featured-left and featured-right layouts via content column ordering.",
+      "htmlPattern": "Single row with 2 columns: image column and content column (heading + description + buttons). Column order determines left/right layout."
+    },
+    "cards-linked-image": {
+      "description": "Grid of navigation cards with large images and linked headings. No description body text.",
+      "htmlPattern": "Multiple rows, each row = 1 card. Each card has image column + content column (linked title only)."
+    }
+  },
+  "summary": {
+    "totalSequences": 6,
+    "defaultContentCount": 2,
+    "blockCount": 4,
+    "uniqueBlocks": ["commerce-teaser-featured", "cards-linked-image"],
+    "newVariantsCreated": ["commerce-teaser-featured", "cards-linked-image"],
+    "variantsReused": [],
+    "notes": "Page uses a repeating pattern of featured teasers alternating with card grids. All sections have white/light backgrounds with no distinct section styling needed. Two new variants created - no existing variants were similar enough (>70%) to reuse."
+  }
+}

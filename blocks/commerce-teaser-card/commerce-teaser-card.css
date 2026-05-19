@@ -1,0 +1,33 @@
+.commerce-teaser-card > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.commerce-teaser-card img {
+  width: 100%;
+}
+
+.commerce-teaser-card > div > div {
+  order: 1;
+}
+
+.commerce-teaser-card > div > .commerce-teaser-card-img-col {
+  order: 0;
+}
+
+.commerce-teaser-card > div > .commerce-teaser-card-img-col img {
+  display: block;
+}
+
+@media (width >= 900px) {
+  .commerce-teaser-card > div {
+    align-items: center;
+    flex-direction: unset;
+    gap: 24px;
+  }
+
+  .commerce-teaser-card > div > div {
+    flex: 1;
+    order: unset;
+  }
+}
