@@ -1,4 +1,5 @@
 {
   "project": "Havertys",
-  "editUrl": "https://da.live/canvas?nx=exp-workspace#/aemxsc/havertys{path}"
+  "editUrlLabel": "Experience Workspace",
+  "editUrlPattern": "https://da.live/canvas?nx=exp-workspace#/{{org}}/{{site}}/{{pathname}}"
 }
