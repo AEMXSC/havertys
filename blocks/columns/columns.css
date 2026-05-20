@@ -1,0 +1,101 @@
+.columns > div {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.columns img {
+  width: 100%;
+}
+
+.columns > div > div {
+  order: 1;
+}
+
+.columns > div > .columns-img-col {
+  order: 0;
+}
+
+.columns > div > .columns-img-col img {
+  display: block;
+}
+
+.columns-4-cols.columns > div {
+  flex-flow: row wrap;
+}
+
+.columns-4-cols.columns > div > div {
+  width: 50%;
+  padding: 0 8px;
+}
+
+.columns-4-cols.columns > div > div > p.button-container {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.columns-4-cols.columns > div > div > p {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.columns-4-cols.columns > div > div > p > a {
+  text-decoration: none;
+  font-size: 1.75rem;
+  letter-spacing: .56px;
+  line-height: 2pc;
+  font-weight: 400;
+  color: var(--c-secondary-copy);
+  font-family: var(--ff-secondary);
+} 
+
+.section:has(.columns-wrapper > .columns-4-cols) {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media(width >= 768px) {
+  .columns-4-cols.columns > div > div > p > a {
+    letter-spacing: .8px;
+  }
+}
+
+@media (width < 900px ) {
+  .columns-4-cols.columns > div > div > p > a > picture{
+    display: flex;
+  }
+}
+
+@media (width >= 900px) {
+  .columns > div {
+    flex-direction: unset;
+    gap: 32px;
+  }
+
+  .section:has(.columns-4-cols) .columns > div {
+    gap: 0;
+  }
+  
+  .section:has(.columns-wrapper > .columns-4-cols)  > div {
+    max-width: unset;
+  }
+
+  .columns-4-cols.columns > div > div > p > a {
+    font-size: 2.5rem;
+    letter-spacing: .8px;
+    line-height: 0px;
+  }
+}
+
+@media (width <992px) {
+  .columns > div > div {
+    order: 0;
+  }
+}
+
+@media (width >992px) {
+  .columns > div > div {
+    flex: 1;
+    order: unset;
+  }
+}
