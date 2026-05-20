@@ -930,6 +930,9 @@ async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadSections(main);
 
+  // Add schema.org structured data
+  import('./schema.js').then((mod) => mod.default()).catch(() => {});
+
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) {

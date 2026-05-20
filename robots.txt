@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aemxsc.com/sitemap.xml
+Sitemap: https://main--havertys--aemxsc.aem.live/sitemap.xml
