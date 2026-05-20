@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="button-arrow-white" transform="translate(-166 -9)">
+    <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(166 9)" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1">
+      <circle cx="16" cy="16" r="16" stroke="none"/>
+      <circle cx="16" cy="16" r="15.5" fill="none"/>
+    </g>
+    <path id="arrow-right" d="M75.853,3.658l1.646-1.8v9.592a.5.5,0,1,0,1,0V1.862l1.646,1.8a.471.471,0,0,0,.707,0,.581.581,0,0,0,0-.771L78.353.159a.471.471,0,0,0-.707,0l-2.5,2.727a.581.581,0,0,0,0,.771A.471.471,0,0,0,75.853,3.658Z" transform="translate(188 -53) rotate(90)" fill="#fff"/>
+  </g>
+</svg>

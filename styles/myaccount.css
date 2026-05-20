@@ -1,0 +1,778 @@
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable selector-id-pattern */
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper {
+  display: none;
+  height: unset;
+  left: auto;
+  max-width: 482px;
+  overflow-y: auto;
+  top: 4rem;
+}
+
+.header-my-account ~ .dropdown-wrapper.dropdownWrapper--show {
+  display: block;
+}
+
+.header-my-account ~ .dropdown-wrapper > button {
+  display: none;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper:has(.nav-tools-panel--show) {
+  display: block;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .nav-dropdown-button {
+  display: none;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper > div {
+  max-height: calc(94.625vh);
+  overflow-y: auto;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .hide-dropdown {
+  background: none;
+  color: var(--c-black);
+  cursor: pointer;
+  margin: 2px -7px 0 0;
+  min-width: 0;
+  padding: 0;
+  position: static;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .hide-dropdown::after {
+  content: none;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .hide-dropdown svg {
+  display: block !important;
+  stroke: var(--c-brand-name);
+  stroke-width: 3;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .auth-sign-in-form.auth-sign-in-form--small,
+.auth-reset-password-form.auth-reset-password-form--small,
+.auth-sign-up-form.auth-sign-up-form--default {
+  padding: 0;
+}
+
+.auth-reset-password-form.auth-reset-password-form--small {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .auth-sign-in-form__title,
+.auth-reset-password-form.auth-reset-password-form--small .auth-reset-password-form__title,
+.auth-sign-up-form .dropin-header-container.auth-sign-up-form__title {
+  border-bottom: 1px solid #f6f6f6;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 0;
+}
+
+.auth-reset-password-form.auth-reset-password-form--small .auth-reset-password-form__title,
+.auth-sign-up-form .dropin-header-container.auth-sign-up-form__title {
+  margin-bottom: 0;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .dropin-header-container__title--medium {
+  font-family: var(--ff-primary);
+  font-size: 0.9375rem;
+  font-weight: var(--fw-semi-bold);
+  letter-spacing: -0.24px;
+  line-height: 30px;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper form.auth-sign-in-form__form {
+  background: var(--c-white);
+  padding: 76px 24px 63px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .auth-sign-in-form.auth-sign-in-form--small .auth-sign-in-form__form__email {
+  margin-bottom: 52px;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .dropin-input-password__eye-icon {
+  background-color: transparent;
+  min-width: 0;
+  pointer-events: inherit !important;
+  right: -4px !important;
+  top: 21px;
+  width: 36px !important;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .dropin-input-password__eye-icon::after {
+  content: none;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .dropin-input-password__eye-icon--hide {
+  background-image: url('../icons/eye-icon.svg');
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .dropin-input-password__eye-icon--show {
+  background-image: url('../icons/eye-icon-show.svg');
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .dropin-input-password__eye-icon svg {
+  display: none;
+}
+
+.header-my-account
+  ~ .dropdown-wrapper.nav-tools-wrapper
+  .dropin-input-password
+  .dropin-input-password__eye-icon--hide:hover,
+  .header-my-account
+  ~ .dropdown-wrapper.nav-tools-wrapper
+  .dropin-input-password
+  .dropin-input-password__eye-icon--hide:focus {
+  background-image: url('../icons/eye-icon-hover.svg');
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .dropin-input {
+  background: var(--c-sent-cart-bg);
+  border: 1px solid var(--c-gray-border-dark);
+  font-family: var(--ff-primary);
+  font-size: 1rem;
+  height: 50px;
+  margin-top: 8px;
+  padding: 12px 5px;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .dropin-input--error {
+  border: 1px solid #af5252 !important;
+  color: #af5252 !important;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .dropin-field__hint--error {
+  letter-spacing: normal;
+  margin: 5px 0 20px 4px;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .auth-sign-in-form__form__password {
+  height: 100px;
+  margin-bottom: 0;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .auth-sign-in-form__form__password .dropin-input-label-container {
+  gap: 10px;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper input[type='password'] {
+  padding: 12px 35px 12px 5px;
+}
+
+.auth-sign-in-form__button--forgot {
+  background: transparent;
+  color: var(--c-black);
+  font-family: var(--ff-primary);
+  font-size: 0.8125rem;
+  justify-content: flex-start;
+  letter-spacing: normal;
+  line-height: normal;
+  min-width: 0;
+  padding: 0;
+  text-decoration: underline;
+  width: 110px;
+}
+
+.auth-sign-in-form__button--forgot::after {
+  display: none;
+}
+
+.auth-sign-in-form__button--forgot:hover,
+.auth-sign-in-form__button--forgot:focus {
+  background: transparent !important;
+  color: var(--c-black);
+  text-decoration: underline;
+}
+
+.auth-sign-in-form__button--forgot:focus,
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .dropin-input-password__eye-icon:focus {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.auth-sign-in-form__form__buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0 3rem;
+}
+
+.auth-sign-in-form.auth-sign-in-form--small .auth-sign-in-form__form__buttons {
+  gap: 45px;
+}
+
+.auth-sign-in-form__form__buttons button::after, .commerce-create-account .auth-sign-up .auth-sign-up-form-buttons button[type="submit"]::after{
+  position: absolute;
+  content: url("../../icons/button-arrow-white.svg");
+  right: 10px;
+  top: 50%;
+  transform: translateY(-45%);
+}
+
+/* MY Account */
+.commerce-create-account .auth-sign-up-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 16px 24px;
+}
+
+
+
+.dropin-password-status-indicator {
+  display: flex;
+  flex-direction: column;
+}
+.dropin-password-status-indicator__item--error { order: 1; }
+.dropin-password-status-indicator__item--success { order: 2; }
+
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-create-account .dropin-design {
+  max-width: 100%;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-create-account .dropin-design .dropin-button:not(.dropin-button--tertiary) span {
+  text-decoration: none;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-create-account .dropin-design .dropin-password-status-indicator__item {
+  display: grid;
+  gap: 0 8px;
+}
+
+.commerce-create-account .dropin-input-password {
+  margin: 0;
+}
+
+.commerce-create-account .dropin-input-password .dropin-input-label-container {
+  gap: 0;
+}
+
+.dropin-input-password>div:first-child {
+  margin-bottom: 0;
+}
+
+.commerce-create-account .dropin-password-status-indicator .dropin-password-status-indicator__item:not(.dropin-password-status-indicator__item--error),
+.commerce-create-account .dropin-password-status-indicator .dropin-password-status-indicator__item svg {
+  display: none !important;
+}
+
+.commerce-create-account .dropin-password-status-indicator .dropin-password-status-indicator__item:first-child {
+  color: #212121;
+  display: block !important;
+  font-family: var(--ff-primary);
+  font-size: 0.875rem;
+  font-weight: var(--fw-regular);
+  letter-spacing: normal;
+  line-height: 1.125rem;
+  margin: -2px 0 20px;
+  padding: 0 10px;
+}
+
+.commerce-create-account .dropin-password-status-indicator .dropin-password-status-indicator__item.dropin-password-status-indicator__item--error {
+  color: var(--c-warning);
+  font-family: var(--ff-primary);
+  font-size: 0.875rem;
+  font-weight: var(--fw-regular);
+  justify-content: flex-start !important;
+  line-height: 1rem;
+  padding: 0.375rem 0.125rem 0.125rem;
+  margin-bottom: 1rem;
+  letter-spacing: normal;
+}
+
+.commerce-create-account .auth-sign-up-form__checkbox:has(#is_subscribed-label) {
+  margin: -8px 0 0;
+}
+
+.commerce-create-account .dropin-checkbox__box {
+  appearance: none;
+  background-color: var(--c-sent-cart-bg);
+  border: 1px solid #9a9a9a;
+  border-radius: 3px;
+  display: inline-block;
+  height: 20px;
+  margin: -1px 0 0;
+  min-width: 20px;
+  vertical-align: middle;
+  width: 20px;
+}
+
+.commerce-create-account .dropin-checkbox__checkbox:checked+.dropin-checkbox__box {
+  background-color: var(--c-secondary-copy);
+}
+
+.commerce-create-account .dropin-checkbox__checkbox:checked+.dropin-checkbox__box .dropin-checkbox__checkmark {
+  background: var(--c-secondary-copy) 0% 0% no-repeat padding-box;
+  left: 2px;
+  top: 1px;
+}
+
+.commerce-create-account #is_subscribed-label {
+  color: var(--c-primary-dark);
+  font-family: var(--ff-primary);
+  font-size: 1rem;
+  font-weight: var(--fw-regular);
+  letter-spacing: -0.13px;
+  line-height: 24px;
+  padding-left: 14px;
+}
+
+.commerce-create-account .auth-sign-up-form-buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin: 5px 0 18px;
+}
+
+.commerce-create-account .privacy-policy-text p,
+.commerce-create-account .privacy-policy-text p a {
+  font-family: var(--ff-primary);
+  font-size: 0.875rem !important;
+  letter-spacing: normal;
+  line-height: 24.5px !important;
+  margin: 0 0 8px !important;
+}
+
+.commerce-create-account .privacy-policy-text p {
+  color: var(--c-body-copy);
+  display: flex;
+  font-weight: var(--fw-regular);
+  justify-content: center;
+  text-align: center;
+}
+
+.commerce-create-account .privacy-policy-text p a {
+  color: var(--c-tertiary-copy) !important;
+  display: inline-block;
+  font-weight: var(--fw-semi-bold);
+  padding: 0 !important;
+  text-decoration: underline !important;
+}
+
+.commerce-create-account .privacy-policy-text p a:hover {
+  text-underline-offset: initial;
+}
+
+.commerce-create-account .privacy-policy-text p:last-child {
+  margin-bottom: 38px !important;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-forgot-password.hide,
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper #auth-dropin-container.hide,
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-create-account.hide {
+  display: none;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-forgot-password .auth-reset-password {
+  width: 100%;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-forgot-password .auth-reset-password-form__form {
+  padding: 51px 24px 47px;
+}
+
+.auth-reset-password-form.auth-reset-password-form--small .auth-reset-password-form__form__item {
+  margin-bottom: 14px;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-forgot-password .auth-reset-password-form__buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+.commerce-forgot-password .recover-password-text {
+  display: block !important;
+}
+
+.commerce-forgot-password .recover-password-text p {
+  background: #f6f6f6;
+  font-family: var(--ff-primary);
+  font-size: 0.875rem !important;
+  font-weight: 300;
+  letter-spacing: normal;
+  line-height: 20px !important;
+  padding: 16px 24px;
+}
+
+.auth-reset-password-form .dropin-in-line-alert--error {
+  background: transparent;
+  justify-content: flex-start !important;
+  margin: 0;
+  min-height: 52px;
+  order: 3;
+  padding: 16px 24px;
+}
+
+.auth-reset-password-form .dropin-in-line-alert--error svg {
+  color: #c9252d;
+  width: 13.008px;
+}
+
+.auth-reset-password-form .dropin-in-line-alert--error .dropin-in-line-alert__title {
+  color: #c9252d;
+  font-family: var(--ff-primary);
+  font-size: 0.813rem;
+  font-weight: var(--fw-semi-bold);
+  letter-spacing: normal;
+  line-height: 1.25;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper:has(.commerce-forgot-password:not(.hide)) .hide-dropdown {
+  display: none;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-forgot-password .link-sent {
+  background-color: transparent;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-forgot-password .link-failed {
+  background: transparent;
+  margin-bottom: 0;
+  margin-top: 36px;
+  padding-left: 0;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-forgot-password .link-failed .dropin-in-line-alert__title {
+  color: rgb(201 37 45);
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-semi-bold);
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-forgot-password .link-failed svg {
+  display: none;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-forgot-password .link-sent .dropin-in-line-alert__title-container {
+  svg {
+    display: none;
+  }
+
+  .dropin-in-line-alert__title {
+    color: var(--c-black);
+    font-family: var(--ff-primary);
+    font-weight: 300;
+  }
+}
+
+.dropin-in-line-alert__heading {
+  display: inline-block;
+  margin: 0 auto 0 0;
+}
+
+.dropin-in-line-alert__title-container {
+  svg {
+    display: none;
+  }
+
+  .dropin-in-line-alert__title {
+    color: var(--c-black);
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-regular);
+  }
+}
+
+.dropin-in-line-alert--secondary {
+  background: none;
+}
+
+.auth-sign-in {
+  .dropin-in-line-alert__title-container {
+    .dropin-in-line-alert__title {
+      color: rgb(201 37 45);
+      font-size: 0.813rem;
+      font-weight: var(--fw-semi-bold);
+    }
+  }
+}
+
+.response-message-alert {
+  color: rgb(192 18 63);
+  font-family: var(--ff-primary);
+  font-size: 0.725rem;
+  font-weight: var(--fw-regular);
+  line-height: 1.8;
+}
+
+.auth-sign-up .auth-sign-up-form__notification {
+  display: none !important;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-forgot-password .auth-button {
+    min-width: 0 !important;
+    padding: 8px 16px !important;
+    width: auto !important;
+
+  &::after {
+    content: none;
+  }
+
+  svg {
+    display: none;
+  }
+}
+
+.header-my-account
+  ~ .dropdown-wrapper.nav-tools-wrapper
+  .commerce-forgot-password
+  .dropin-button:not(.dropin-button--with-icon)
+  span {
+  text-decoration: none;
+}
+
+h1.auth-title__heading {
+  font-family: var(--ff-primary);
+  font-size: 0.9375rem;
+  font-weight: var(--fw-semi-bold);
+  letter-spacing: -0.24px;
+  line-height: 30px;
+}
+
+/* My Account */
+.dropdown-wrapper.nav-tools-wrapper {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: var(--c-white);
+  background-image: none;
+  background-origin: padding-box;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-size: auto;
+  border-top: 0.25rem solid var(--c-brand-name);
+  box-shadow: #17202633 0 1px 6px 0;
+  box-sizing: border-box;
+  color: var(--c-black);
+  column-gap: 16px;
+  display: grid;
+  font-family: var(--ff-primary);
+  font-size: 0.813rem;
+  font-style: normal;
+  font-weight: var(--fw-regular);
+  grid-gap: 16px 0;
+  height: unset;
+  left: 50%;
+  line-height: 22.764px;
+  min-width: 22rem;
+  opacity: 1;
+  position: absolute;
+  right: -32px;
+  top: 3.3rem;
+  transform: translate3d(-50%, 0, 0);
+  transition-duration: 224ms;
+  transition-property: opacity, transform, visibility;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  visibility: visible;
+  width: 398px;
+  z-index: 4;
+}
+
+label.dropin-input__label--floating.dropin-input__label--floating--icon-left,
+label.dropin-input__label--floating {
+  color: #212121;
+  display: block;
+  font-family: var(--ff-primary);
+  font-size: 0.8125rem;
+  font-weight: var(--fw-regular) !important;
+  left: 0;
+  letter-spacing: normal;
+  line-height: 1rem;
+  padding: 0 0 8px 6px;
+  top: 0;
+}
+
+button.dropin-button.dropin-button--medium.dropin-button--primary.auth-button,
+button.dropin-button.dropin-button--medium.dropin-button--tertiary.auth-button.auth-sign-in-form__button.auth-sign-in-form__button--signup,
+button.dropin-button.dropin-button--medium.dropin-button--primary.auth-button.auth-sign-in-form__button.auth-sign-in-form__button--submit,
+button.dropin-button.dropin-button--medium.dropin-button--tertiary.auth-button:not(.auth-sign-in-form__button--forgot) {
+  background-color: var(--c-green);
+  border: 1px solid transparent;
+  border-radius: 50px;
+  color: var(--c-white);
+  cursor: pointer;
+  display: inline-block;
+  font-family: var(--ff-primary);
+  font-size: 0.813rem;
+  font-weight: var(--fw-semi-bold);
+  justify-content: flex-start;
+  line-height: 1.25;
+  max-width: 14pc;
+  min-width: 208px;
+  padding: 16px 60px 16px 25px;
+  position: relative;
+  text-align: left;
+  transition: background-color 0.35s ease-in-out;
+}
+
+button.dropin-button.dropin-button--medium.dropin-button--tertiary.auth-button:hover,
+button.dropin-button.dropin-button--medium.dropin-button--tertiary.auth-button:focus,
+button.dropin-button.dropin-button--medium.dropin-button--primary.auth-button.auth-sign-in-form__button.auth-sign-in-form__button--submit:hover,
+button.dropin-button.dropin-button--medium.dropin-button--primary.auth-button.auth-sign-in-form__button.auth-sign-in-form__button--submit:focus {
+  background-color: var(--c-tertiary-copy);
+}
+
+button.dropin-button.dropin-button--medium.dropin-button--primary.auth-button,
+button.dropin-button.dropin-button--medium.dropin-button--tertiary.auth-button.auth-sign-in-form__button.auth-sign-in-form__button--signup {
+  background-color: var(--c-primary);
+  margin: 0;
+}
+
+button.dropin-button.dropin-button--medium.dropin-button--tertiary.auth-button.auth-sign-in-form__button.auth-sign-in-form__button--signup {
+  padding: 16px 60px 16px 25px !important;
+}
+
+button.dropin-button.dropin-button--medium.dropin-button--primary.auth-button:hover,
+button.dropin-button.dropin-button--medium.dropin-button--primary.auth-button:focus,
+button.dropin-button.dropin-button--medium.dropin-button--tertiary.auth-button.auth-sign-in-form__button.auth-sign-in-form__button--signup:hover,
+button.dropin-button.dropin-button--medium.dropin-button--tertiary.auth-button.auth-sign-in-form__button.auth-sign-in-form__button--signup:focus {
+  background-color: var(--c-primary-dark);
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .commerce-forgot-password .auth-reset-password-form__buttons button {
+  padding: 6px 16px !important;
+}
+
+.commerce-create-account .auth-sign-up-form-buttons .dropin-button--tertiary {
+  background: transparent !important;
+  color: var(--c-secondary-copy) !important;
+  cursor: default !important;
+  font-size: 0.813rem;
+  font-weight: var(--fw-regular) !important;
+  letter-spacing: normal;
+  max-width: none;
+  min-width: 0 !important;
+  padding: 0;
+}
+
+.commerce-create-account .auth-sign-up-form-buttons .dropin-button--tertiary span {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: var(--fw-semi-bold);
+  text-decoration: underline;
+}
+
+.commerce-create-account .auth-sign-up-form-buttons .dropin-button--tertiary::after {
+  display: none !important;
+}
+
+span.auth-button__text {
+  letter-spacing: normal;
+  text-decoration: none;
+}
+
+.dropin-field__hint--error {
+  color: #c0123f;
+  font-size: 0.875rem;
+  font-weight: var(--fw-regular);
+  justify-content: flex-start !important;
+  line-height: 1rem;
+  padding: 0.375rem 0.125rem 0.125rem;
+}
+
+.dropin-icon--shape-stroke-2,
+.dropin-input__field-icon--left,
+.dropin-input__field-icon--right.dropin-input__field-icon--error {
+  display: none;
+}
+
+@media (width > 1024px) {
+  .header-my-account ~ .dropdown-wrapper.nav-tools-wrapper.logged-in-user {
+    min-width: 0;
+    width: auto;
+  }
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper.logged-in-user .hide-dropdown {
+  display: none;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper.anonymous-user .authenticated-user-menu {
+  display: none;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper.logged-in-user .authenticated-user-menu {
+  padding: 24px 0;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper.logged-in-user .authenticated-user-menu a,
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper.logged-in-user .authenticated-user-menu button {
+  color: var(--color-neutral-800) !important;
+  font-family: var(--ff-primary);
+  font-size: 0.9375rem !important;
+  font-weight: var(--fw-semi-bold) !important;
+  letter-spacing: -0.24px !important;
+  line-height: 30px !important;
+  margin-left: 0;
+  padding: 4px 24px !important;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper.logged-in-user .authenticated-user-menu a:hover {
+  background-color: lightgray !important;
+}
+
+.header-my-account ~ .dropdown-wrapper.nav-tools-wrapper.logged-in-user .authenticated-user-menu button::after {
+  content: none;
+}
+
+@media (width <= 1024px) {
+  .header-my-account ~ .dropdown-wrapper.nav-tools-wrapper {
+    border-top: 0.25rem solid var(--c-brand-name);
+    left: 0;
+    max-width: 100%;
+    min-width: 0;
+    position: fixed;
+    top: 3.25rem;
+    transform: none;
+    width: 100%;
+  }
+
+  .header-my-account ~ .dropdown-wrapper.nav-tools-wrapper > div {
+    margin-bottom: 15%;
+  }
+}
+
+@media (430px < width <= 1024px) {
+  .dropin-password-status-indicator .dropin-password-status-indicator__item {
+    justify-content: center !important;
+  }
+
+}
+
+@media (width <= 1199px) {
+  .auth-sign-in-form__button--forgot {
+    font-size: 0.6875rem;
+  }
+
+  .header-my-account ~ .dropdown-wrapper.nav-tools-wrapper .auth-sign-in-form__title,
+  .auth-reset-password-form.auth-reset-password-form--small .auth-reset-password-form__title,
+  .auth-sign-up-form .dropin-header-container.auth-sign-up-form__title {
+    margin-top: 24px;
+  }
+
+  .auth-reset-password-form.auth-reset-password-form--small {
+    margin-bottom: 80%;
+  }
+}
+
+.nav-auth-menu-panel .auth-sign-in .auth-sign-in-form__form input:focus, .commerce-create-account .auth-sign-up .auth-sign-up-form__form input:focus, .auth-sign-in-form__form .auth-sign-in-form__button--forgot:focus {
+  outline: 3px solid #b9cad8;
+  box-shadow: none;
+  border: none;
+}
+
+.commerce-create-account .auth-sign-up .dropin-password-status-indicator .pending {
+font-size: 0.8125rem;
+}
