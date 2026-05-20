@@ -1,0 +1,66 @@
+.hvt-button.block a.button {
+    border-width: 1px;
+    border-radius: 25px;
+    font-weight: 600;
+    letter-spacing: 0;
+    min-width: 208px;
+    height: 50px;
+}
+
+.hvt-button.block a.button.small {
+    height: 30px;
+}
+
+/* Desktop Alignment */
+@media screen and (width >= 1200px) {
+    .hvt-button.block.align-desktop-left {
+        text-align: left;
+    }
+
+    .hvt-button.block.align-desktop-center {
+        text-align: center;
+    }
+
+    .hvt-button.block.align-desktop-right {
+        text-align: right;
+    }
+}
+
+/* Tablet Alignment */
+@media screen and (width < 1200px) and (width >= 768px) {
+    .hvt-button.block.align-tablet-left {
+        text-align: left;
+    }
+
+    .hvt-button.block.align-tablet-center {
+        text-align: center;
+    }
+
+    .hvt-button.block.align-tablet-right {
+        text-align: right;
+    }
+}
+
+/* Mobile Alignment */
+@media screen and (width < 768px) {
+    .hvt-button.block.align-mobile-left {
+        text-align: left;
+    }
+
+    .hvt-button.block.align-mobile-center {
+        text-align: center;
+    }
+
+    .hvt-button.block.align-mobile-right {
+        text-align: right;
+    }
+}
+
+.section.hvt-button-container:has(.default-content-wrapper) .hvt-button:has(a.button.cta) {
+    text-align: inherit;
+}
+
+.section.hvt-button-container:has(.default-content-wrapper) .hvt-button a.button.cta {
+    padding-left: 0;
+    padding-right: 5px;
+}
