@@ -11,42 +11,41 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   footer.classList.add('footer-container');
 
-  const sections = tmp.querySelectorAll(':scope > div');
-  const sectionArray = [...sections];
+  // Structure: 0=logo, 1=buttons, 2=socials, 3=about links, 4=service links, 5=copyright, 6=legal
+  const sections = [...tmp.querySelectorAll(':scope > div')];
 
-  sectionArray.forEach((section) => {
-    section.classList.add('default-content-wrapper');
-    footer.append(section);
-  });
+  // Row 1: Logo + Buttons
+  const row1 = document.createElement('div');
+  row1.classList.add('footer-row', 'footer-row-top');
+  if (sections[0]) row1.append(sections[0]);
+  if (sections[1]) row1.append(sections[1]);
+  footer.append(row1);
 
-  // Find the section with both h2 headings and split into a grid
-  const linksSection = footer.querySelector('.default-content-wrapper:has(h2)');
-  if (linksSection) {
-    linksSection.classList.add('footer-links');
-    const headings = linksSection.querySelectorAll('h2');
-    if (headings.length >= 2) {
-      const grid = document.createElement('div');
-      grid.classList.add('footer-links-grid');
+  // Row 2: Socials + Link columns
+  const row2 = document.createElement('div');
+  row2.classList.add('footer-row', 'footer-row-main');
 
-      const col1 = document.createElement('div');
-      col1.classList.add('footer-col');
-      const col2 = document.createElement('div');
-      col2.classList.add('footer-col');
+  const socialsCol = document.createElement('div');
+  socialsCol.classList.add('footer-socials');
+  if (sections[2]) socialsCol.append(sections[2]);
+  row2.append(socialsCol);
 
-      let currentCol = col1;
-      [...linksSection.children].forEach((child) => {
-        if (child === headings[1]) currentCol = col2;
-        currentCol.append(child);
-      });
+  const linksGrid = document.createElement('div');
+  linksGrid.classList.add('footer-links-grid');
+  if (sections[3]) linksGrid.append(sections[3]);
+  if (sections[4]) linksGrid.append(sections[4]);
+  row2.append(linksGrid);
 
-      grid.append(col1);
-      grid.append(col2);
-      linksSection.innerHTML = '';
-      linksSection.append(grid);
-    }
-  }
+  footer.append(row2);
 
-  // decorate icons
+  // Row 3: Copyright + Legal
+  const row3 = document.createElement('div');
+  row3.classList.add('footer-row', 'footer-row-bottom');
+  if (sections[5]) row3.append(sections[5]);
+  if (sections[6]) row3.append(sections[6]);
+  footer.append(row3);
+
+  // Decorate icons
   footer.querySelectorAll('span.icon').forEach((icon) => {
     const name = [...icon.classList].find((c) => c.startsWith('icon-') && c !== 'icon')?.replace('icon-', '');
     if (name) {
@@ -58,7 +57,7 @@ export default async function decorate(block) {
     }
   });
 
-  // remove button classes from footer links
+  // Remove button classes
   footer.querySelectorAll('.button').forEach((link) => link.classList.remove('button'));
 
   block.append(footer);
