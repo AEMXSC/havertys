@@ -2145,7 +2145,7 @@ main .section > div .block:not([class*='m-']) {
     border: 0;
 }
 
-/* DA background image support - DA stores backgroundImage as data attribute */
+/* DA background image support */
 main > .section[data-backgroundimage] {
   background-size: cover;
   background-position: center center;

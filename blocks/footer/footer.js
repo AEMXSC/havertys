@@ -14,8 +14,7 @@ export default async function decorate(block) {
   const sections = tmp.querySelectorAll(':scope > div');
   const sectionArray = [...sections];
 
-  // Section with both "ABOUT HAVERTYS" and "CUSTOMER SERVICE" needs to be split into 2 columns
-  sectionArray.forEach((section, i) => {
+  sectionArray.forEach((section) => {
     section.classList.add('default-content-wrapper');
     footer.append(section);
   });

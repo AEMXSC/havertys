@@ -53,8 +53,7 @@ const getConfigForEnvironment = async (environment) => {
   } catch (e) {
     let configJSON = await fetch(buildConfigURL(env));
     if (!configJSON.ok) {
-      console.warn(`Config not found for ${env}, using defaults`);
-      return { data: [] };
+      console.warn(`Config not found for ${env}, using defaults`); return { data: [] };
     }
     configJSON = await configJSON.json();
     configJSON[':expiry'] = Math.round(Date.now() / 1000) + 7200;
