@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="facebook-icon" transform="translate(-104 -6151)">
+    <g id="Ellipse_26" data-name="Ellipse 26" transform="translate(104 6151)" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1">
+      <circle cx="20" cy="20" r="20" stroke="none"/>
+      <circle cx="20" cy="20" r="19.5" fill="none"/>
+    </g>
+    <g id="facebook-icon-2" data-name="facebook-icon" transform="translate(43.297 6162)">
+      <path id="XMLID_835_" d="M76.961,8.522h1.754v7.22a.258.258,0,0,0,.258.258h2.974a.258.258,0,0,0,.258-.258V8.556h2.016a.258.258,0,0,0,.256-.229l.306-2.658a.258.258,0,0,0-.256-.288H82.2V3.715c0-.5.27-.757.8-.757h1.518a.258.258,0,0,0,.258-.258V.26A.258.258,0,0,0,84.527,0H82.435l-.1,0a4.01,4.01,0,0,0-2.622.988A2.75,2.75,0,0,0,78.8,3.433V5.381H76.961a.258.258,0,0,0-.258.258V8.263A.258.258,0,0,0,76.961,8.522Z" fill="#fff"/>
+    </g>
+  </g>
+</svg>
