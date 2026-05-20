@@ -447,6 +447,17 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+
+  // Apply background images from DA data attributes (DA converts section-metadata to data attrs)
+  main.querySelectorAll('.section[data-backgroundimage]').forEach((section) => {
+    const bgImg = section.dataset.backgroundimage;
+    if (bgImg) {
+      section.style.backgroundImage = `url(${bgImg})`;
+      section.style.backgroundSize = 'cover';
+      section.style.backgroundPosition = 'center center';
+    }
+  });
+
   decorateBlocks(main);
 }
 
