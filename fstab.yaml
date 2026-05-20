@@ -2,3 +2,4 @@ mountpoints:
   /:
     url: https://content.da.live/aemxsc/havertys
     type: markup
+    editUrl: https://da.live/canvas?nx=exp-workspace#/aemxsc/havertys{path}
