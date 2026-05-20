@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="drawer_icon_open_tablet" data-name="drawer icon open tablet" transform="translate(-134 -350)">
+    <g id="Ellipse_154" data-name="Ellipse 154" transform="translate(134 350)" fill="none" stroke="rgba(154,106,76,0.5)" stroke-width="1">
+      <circle cx="15" cy="15" r="15" stroke="none"/>
+      <circle cx="15" cy="15" r="14.5" fill="none"/>
+    </g>
+    <path id="open-icon" d="M11,5.091H6.909V1H5.091V5.091H1V6.909H5.091V11H6.909V6.909H11Z" transform="translate(143 359)" fill="#96674a"/>
+  </g>
+</svg>

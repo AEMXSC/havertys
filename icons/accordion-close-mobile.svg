@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="drawer_icon_close_tablet" data-name="drawer icon close tablet" transform="translate(-134 -350)">
+    <g id="Ellipse_154" data-name="Ellipse 154" transform="translate(134 350)" fill="none" stroke="rgba(154,106,76,0.5)" stroke-width="1">
+      <circle cx="15" cy="15" r="15" stroke="none"/>
+      <circle cx="15" cy="15" r="14.5" fill="none"/>
+    </g>
+    <rect id="close-icon" width="9.87" height="1.76" transform="translate(144 364)" fill="#96674a"/>
+  </g>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="overlay-slider-arrow-right" transform="translate(-287 -590)">
+    <circle id="Ellipse_3" data-name="Ellipse 3" cx="15" cy="15" r="15" transform="translate(287 590)" fill="#252a2f" opacity="0.6"/>
+    <path id="arrow-right" d="M76.138,4.877l2.2-2.395v12.79a.669.669,0,1,0,1.333,0V2.483l2.2,2.395a.628.628,0,0,0,.943,0,.775.775,0,0,0,0-1.029L79.471.213a.628.628,0,0,0-.943,0L75.195,3.849a.775.775,0,0,0,0,1.029A.628.628,0,0,0,76.138,4.877Z" transform="translate(310 526) rotate(90)" fill="#fff"/>
+  </g>
+</svg>
