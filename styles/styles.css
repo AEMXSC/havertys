@@ -2144,3 +2144,13 @@ main .section > div .block:not([class*='m-']) {
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+
+/* Full-width carousel section */
+main > .section:has(.carousel-wrapper) > div {
+  max-width: 100%;
+  padding: 0;
+}
+
+main > .section:has(.carousel-wrapper) {
+  padding: 0;
+}
