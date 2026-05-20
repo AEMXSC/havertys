@@ -1,59 +1,43 @@
-import { decorateWithLazyLoad, getMetadata } from '../../scripts/aem.js';
-import { loadFragment } from '../fragment/fragment.js';
-
-/**
- * loads and decorates the footer
- * @param {Element} block The footer block element
- */
-async function decorate(block) {
-  const footerMeta = getMetadata('footer');
+export default async function decorate(block) {
   block.textContent = '';
 
-  // load footer fragment
-  const footerPath = footerMeta.footer || '/footer';
-  const fragment = await loadFragment(footerPath);
+  const resp = await fetch('/footer.plain.html');
+  if (!resp.ok) return;
 
-  // decorate footer DOM
+  const html = await resp.text();
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+
   const footer = document.createElement('div');
-  while (fragment.firstElementChild) {
-    footer.append(fragment.firstElementChild);
-    footer.classList.add('footer-container');
-  }
+  footer.classList.add('footer-container');
 
-  footer.childNodes.forEach((child, i) => {
-    child.classList.add(`footer-section${i}`);
+  const sections = tmp.querySelectorAll(':scope > div');
+  sections.forEach((section, i) => {
+    section.classList.add(`footer-section${i}`);
+    section.classList.add('default-content-wrapper');
+    footer.append(section);
   });
 
-  const socials = footer.querySelector('.footer-section2');
-  socials.querySelectorAll('.button').forEach((social, i) => {
-    social.classList.add(`social${i}`);
-    social.querySelector('.icon').classList.remove('icon');
+  // decorate icons
+  footer.querySelectorAll('span.icon').forEach((icon) => {
+    const name = [...icon.classList].find((c) => c.startsWith('icon-') && c !== 'icon')?.replace('icon-', '');
+    if (name) {
+      const img = document.createElement('img');
+      img.src = `/icons/${name}.svg`;
+      img.alt = name;
+      img.loading = 'lazy';
+      icon.append(img);
+    }
   });
 
-  // removing button class to default these to links instead
-  const buttonRemovalSections = ['.footer-section0', '.footer-section2', '.footer-section3', '.footer-section4'];
-  buttonRemovalSections.forEach((section) => {
-    const sectionEls = footer.querySelectorAll(`${section}`);
+  // remove button classes from footer links
+  footer.querySelectorAll('.button').forEach((link) => link.classList.remove('button'));
 
-    sectionEls.forEach((element) => {
-      element.querySelectorAll('.button').forEach((link) => {
-        link.classList.remove('button');
-      });
-    });
-  });
-
-  function getCurrentYear() {
-    return new Date().getFullYear();
+  // update copyright year
+  const copyright = footer.querySelector('.footer-section6 p, .footer-section5 p');
+  if (copyright && copyright.textContent.includes('{currentYear}')) {
+    copyright.textContent = copyright.textContent.replace('{currentYear}', new Date().getFullYear());
   }
 
   block.append(footer);
-
-  const currentYear = getCurrentYear();
-  const copyrightElement = document.querySelector('.footer-section6 .default-content-wrapper p');
-  if (copyrightElement) {
-    // set the new text with dynamic year
-    copyrightElement.innerHTML = copyrightElement.innerHTML.replace('{currentYear}', currentYear);
-  }
 }
-
-export default (block) => decorateWithLazyLoad(block, decorate);
