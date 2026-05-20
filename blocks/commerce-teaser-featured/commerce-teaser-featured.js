@@ -1,18 +1,372 @@
-export default function decorate(block) {
-  const cols = [...block.firstElementChild.children];
-  block.classList.add(`commerce-teaser-featured-${cols.length}-cols`);
+// Import required helper function.
+import { getDynamicMediaImage } from 'scripts/scripts.js';
 
-  // setup image columns
-  [...block.children].forEach((row) => {
-    [...row.children].forEach((col) => {
-      const pic = col.querySelector('picture');
-      if (pic) {
-        const picWrapper = pic.closest('div');
-        if (picWrapper && picWrapper.children.length === 1) {
-          // picture is only content in column
-          picWrapper.classList.add('commerce-teaser-featured-img-col');
-        }
+/**
+ * Decorate a single button element.
+ * @param {Object} opts - Options for button decoration.
+ * @param {HTMLElement} opts.button - The button element to decorate.
+ * @param {number} opts.index - The index of the button.
+ */
+const decorateButton = ({ button, index }) => {
+  if (!button) {
+    return;
+  }
+
+  // Add base classes to button container.
+  button.classList.add('button-container', `button-${index + 1}`);
+
+  // Create a temporary container to hold the anchor tag.
+  const container = document.createDocumentFragment();
+
+  // Find the anchor tag inside the button.
+  const btnEle = button.querySelector('a[href]');
+  const anchorContainer = btnEle?.parentNode;
+
+  if (!btnEle) {
+    button.innerHTML = '';
+    return;
+  }
+
+  // Move the anchor tag to the temporary container.
+  container.append(btnEle);
+
+  // Remove the original container element.
+  if (anchorContainer) {
+    anchorContainer.remove();
+  }
+
+  // Extract button text and type from the first child div.
+  const [buttonText, buttonType, buttonColor] = Array.from(button.querySelector('div').children).map((child) =>
+    child?.textContent?.trim(),
+  );
+
+  // Determine flags for link behavior and styling.
+  const openInNewTab = button.textContent.includes('openInNewTab');
+  const noArrow = button.textContent.includes('noarrow');
+  const smallSize = button.textContent.includes('smallsize');
+  const target = openInNewTab === 'true' ? '_blank' : '_self';
+  const isTextLinkCTA = buttonType === 'cta';
+
+  btnEle.classList.add('button');
+
+  if (buttonType) {
+    btnEle.classList.add(buttonType);
+  } else {
+    btnEle.classList.add('cta');
+  }
+
+  // Adjust size and arrow classes based on button type and flags.
+  if (buttonColor && isTextLinkCTA) {
+    btnEle.dataset.textColor = buttonColor;
+  }
+  if (!isTextLinkCTA && smallSize) {
+    btnEle.classList.add('small');
+  }
+  if (!isTextLinkCTA && noArrow) {
+    btnEle.classList.add('noarrow');
+  }
+
+  btnEle.setAttribute('target', target);
+  btnEle.replaceChildren(buttonText);
+
+  button.replaceChildren(container);
+};
+
+/**
+ * Decorate an array of button elements.
+ * @param {HTMLElement[]} buttons - List of button elements.
+ */
+const decorateButtons = (buttons) => buttons.forEach((button, index) => decorateButton({ button, index }));
+
+/**
+ * Decorate the titles section.
+ * @param {Object} opts - Options for title decoration.
+ * @param {HTMLElement} opts.titles - The container element for titles.
+ * @param {string} opts.titleStyle - The style class for the title.
+ * @param {boolean} opts.openInNewTab - Whether the title link should open in a new tab.
+ * @param {HTMLElement} opts.titleLink - The title link element.
+ */
+const decorateTitles = ({ titles, titleStyle, openInNewTab, titleLink }) => {
+  const title = titles.querySelector('h1,h2,h3,h4,h5,h6');
+  const pretitle = titles.querySelector('p');
+
+  const titlesPlaceholder = document.createDocumentFragment();
+
+  // If pretitle is present, wrap it in a container.
+  if (pretitle) {
+    const pretitleContainer = document.createElement('div');
+    pretitleContainer.append(pretitle);
+    pretitleContainer.dataset.propName = 'pretitle';
+    titlesPlaceholder.append(pretitleContainer);
+  }
+
+  // Decorate the main title.
+  if (title) {
+    title.dataset.propName = 'title';
+
+    // If a titleLink is provided and CTA is disabled, wrap title with it.
+    if (titleLink) {
+      const titleText = title.textContent?.trim() || 'Title';
+      titleLink.textContent = titleText;
+      titleLink.title = titleText;
+      titleLink.target = openInNewTab ? '_blank' : '_self';
+      title.replaceChildren(titleLink);
+      title.classList.add('linked-title');
+    }
+
+    title.classList.add(titleStyle);
+    titlesPlaceholder.append(title);
+  }
+  titles.replaceChildren(titlesPlaceholder);
+  titles.classList.add('titles');
+};
+
+/**
+ * Decorate the description section.
+ * @param {Object} opts - Options for description decoration.
+ * @param {HTMLElement} opts.description - The container element for description.
+ * @param {string} opts.descriptionStyle - The style class for the description.
+ */
+const decorateDescription = ({ description, descriptionStyle }) => {
+  const descriptionPlaceholder = document.createDocumentFragment();
+  Array.from(description.querySelector('div').children).forEach((child) => descriptionPlaceholder.append(child));
+  description.dataset.propName = 'description';
+  description.classList.add(descriptionStyle, 'description');
+  description.replaceChildren(descriptionPlaceholder);
+};
+
+/**
+ * Decorate the text content of the teaser.
+ * @param {Object} opts - Options for text content decoration.
+ * @param {HTMLElement} opts.titles - The titles container element.
+ * @param {HTMLElement} opts.description - The description container element.
+ * @param {HTMLElement[]} opts.buttons - List of button elements.
+ * @param {HTMLElement} opts.block - The block element to decorate.
+ * @param {HTMLElement} opts.titleLink - The title link element.
+ * @param {boolean} opts.enableCTA - Flag to indicate if CTA is enabled.
+ * @param {boolean} opts.openInNewTab - Flag to indicate if links should open in a new tab.
+ * @returns {HTMLElement} The decorated content container.
+ */
+const decorateTextContent = ({ titles, description, buttons, block, titleLink, enableCTA, openInNewTab }) => {
+  // Create a container with a padding style from the block.
+  const contentContainer = document.createElement('div');
+  contentContainer.className = `content-container ${block.dataset.paddingStyle}`;
+  contentContainer.dataset.backgroundColor = block.dataset.bgColor;
+
+  // If there is a titleLink and CTA is disabled, add specific styling.
+  if (titleLink && !enableCTA && block.closest('.card-variation')) {
+    contentContainer.classList.add('no-cta-text', 'button');
+  }
+
+  // Decorate the title and description.
+  decorateTitles({ titles, titleStyle: block.dataset.titleStyle, openInNewTab, titleLink });
+  decorateDescription({ description, descriptionStyle: block.dataset.descriptionStyle });
+
+  // Append all parts to the content container.
+  contentContainer.append(titles);
+  contentContainer.append(description);
+
+  // If CTA is enabled, decorate and append buttons.
+  if (enableCTA) {
+    decorateButtons(buttons);
+    buttons.forEach((button) => contentContainer.append(button));
+  }
+
+  return contentContainer;
+};
+
+/**
+ * Decorate a video container by configuring the video element, source, and play/pause functionality.
+ * @param {HTMLElement} videoContainer - The container element that holds the video markup.
+ */
+const decorateVideo = (videoContainer) => {
+  const [video, noEnableVideoControl, lazyload] = videoContainer.children;
+
+  const videoTag = video?.querySelector('a[href]');
+  const videoURL = videoTag?.getAttribute('href');
+
+  // Ensure the video URL is valid and points to an mp4 file.
+  if (!videoURL || !videoURL.endsWith('.mp4')) {
+    return;
+  }
+
+  // Create and configure the video element.
+  const videoElement = document.createElement('video');
+  videoElement.setAttribute('muted', '');
+  videoElement.setAttribute('loop', '');
+  videoElement.setAttribute('playsinline', '');
+  videoElement.setAttribute('preload', 'auto');
+  videoElement.muted = true;
+
+  // Determine if controls should be enabled.
+  const hasControlValue = noEnableVideoControl?.textContent.trim() === 'true';
+  if (hasControlValue) {
+    videoElement.setAttribute('controls', '');
+  }
+
+  // Enable lazy loading if flagged.
+  if (lazyload?.textContent.trim() === 'true') {
+    videoElement.setAttribute('loading', 'lazy');
+  }
+
+  // Create and append the source element.
+  const source = document.createElement('source');
+  source.setAttribute('src', videoURL);
+  source.setAttribute('type', 'video/mp4');
+  videoElement.appendChild(source);
+
+  // Create a play/pause button if controls are not enabled.
+  let buttonWrapper;
+  if (!hasControlValue) {
+    buttonWrapper = document.createElement('div');
+    buttonWrapper.classList.add('commerce-video-placeholder-play-pause');
+
+    const playPauseButton = document.createElement('button');
+    playPauseButton.setAttribute('aria-label', 'Toggle Play/Pause');
+    playPauseButton.classList.add('paused');
+    buttonWrapper.appendChild(playPauseButton);
+
+    // Toggle play/pause on button click.
+    playPauseButton.addEventListener('click', () => {
+      if (videoElement.paused) {
+        videoElement.play().then(() => playPauseButton.classList.remove('paused'));
+      } else {
+        videoElement.pause();
+        playPauseButton.classList.add('paused');
       }
     });
+
+    // Sync button state with video events.
+    videoElement.addEventListener('play', () => playPauseButton.classList.remove('paused'));
+    videoElement.addEventListener('pause', () => playPauseButton.classList.add('paused'));
+  }
+
+  // Attempt to autoplay the video.
+  videoElement.play();
+
+  // Create a fragment to hold the video and optional button.
+  const videoPlaceholder = document.createDocumentFragment();
+  videoPlaceholder.append(videoElement);
+  if (buttonWrapper) {
+    videoPlaceholder.appendChild(buttonWrapper);
+  }
+
+  // Update video container styling and replace its content.
+  videoContainer.classList.add('video-container', 'commerce-teaser-wrapper');
+  videoContainer.replaceChildren(videoPlaceholder);
+};
+
+/**
+ * Decorate an image container by loading a dynamic media image.
+ * @param {HTMLElement} image - The container element for the image.
+ */
+const decorateImage = (image) => {
+  image.classList.add('image-container');
+  const dynamicMedia = image.querySelector('a[href]');
+
+  if (!dynamicMedia) {
+    return;
+  }
+
+  // Retrieve the dynamic media image and update image container.
+  const container = document.createDocumentFragment();
+  const img = getDynamicMediaImage(image);
+  container.append(img);
+  image.replaceChildren(img);
+  image.classList.add('image-container', 'scene7-image');
+};
+
+/**
+ * Apply style settings from a set of style parameters to a block and its wrapper.
+ * @param {HTMLElement} styles - The container with style parameters.
+ * @param {HTMLElement} block - The block element.
+ * @param {HTMLElement} wrapper - The wrapper element.
+ */
+const applyStylesToBlock = (styles, block, wrapper) => {
+  if (!styles) {
+    return;
+  }
+
+  // Extract required style parameters from the style container.
+  const [titleStyle, descriptionStyle, backgroundColor, featuredPosition, hoverEffect, textAlignment, paddingStyle] =
+    Array.from(styles.querySelectorAll('p')).map((style) => style.textContent.trim());
+
+  // Set data attributes for the block.
+  block.dataset.bgColor = backgroundColor;
+  block.dataset.titleStyle = titleStyle;
+  block.dataset.descriptionStyle = descriptionStyle;
+  block.dataset.paddingStyle = paddingStyle;
+
+  // Apply text alignment and hover effects to the wrapper.
+  if (textAlignment) {
+    wrapper.classList.add(textAlignment);
+  }
+  if (hoverEffect) {
+    wrapper.classList.add(hoverEffect);
+  }
+  // Apply positioning: if featuredPosition exists, use it, otherwise default.
+  if (featuredPosition !== 'default') {
+    wrapper.classList.add(featuredPosition);
+  } else {
+    wrapper.classList.add('card-variation');
+  }
+};
+
+/**
+ * Main function to decorate the commerce teaser block.
+ * @param {HTMLElement} block - The block element to decorate.
+ */
+export default function decorate(block) {
+  // Destructure block children that represent various parts of the teaser.
+  const [titles, description, image, video, actions, button1, button2, button3, styles] = block.children;
+  const buttons = [button1, button2, button3];
+  const wrapper = block.closest('.commerce-teaser-wrapper');
+
+  // Determine flag values from the actions element.
+  const openInNewTab = actions.textContent.includes('openInNewTab');
+  const enableCTA = actions.textContent.includes('enableCTA');
+  const titleLink = !enableCTA && actions.querySelector('a[href]');
+
+  // Apply style configuration to the block.
+  applyStylesToBlock(styles, block, wrapper);
+
+  // Create and decorate the text content container.
+  const contentContainer = decorateTextContent({
+    titles,
+    description,
+    buttons,
+    block,
+    titleLink,
+    enableCTA,
+    openInNewTab,
   });
+
+  // Determine if a video is present; if not, fallback to image.
+  const isVideo = video?.textContent?.trim() !== '';
+  const imageVideoContainer = isVideo ? video : image;
+
+  // Decorate video or image accordingly.
+  if (isVideo) {
+    decorateVideo(video);
+  } else {
+    decorateImage(image);
+  }
+
+  // Arrange the content orientation based on wrapper CSS class.
+  const mainContainer = document.createDocumentFragment();
+  if (wrapper.classList.contains('featured-left')) {
+    mainContainer.append(contentContainer);
+    mainContainer.append(imageVideoContainer);
+  } else {
+    mainContainer.append(imageVideoContainer);
+    mainContainer.append(contentContainer);
+  }
+
+  // Additional block adjustments for card variation with linked title.
+  if (block.parentElement.classList.contains('card-variation') && block.querySelector('.linked-title')) {
+    block.classList.add('no-cta-text', 'button');
+  }
+
+  // Update the block’s content with the arranged container.
+  block.replaceChildren(mainContainer);
 }

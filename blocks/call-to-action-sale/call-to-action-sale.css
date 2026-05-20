@@ -1,153 +1,97 @@
-.call-to-action-sale .call-to-action-sale-slides-container {
-  position: relative;
+.call-to-action-wrapper {
+    padding: 0;
 }
 
-.call-to-action-sale .call-to-action-sale-slides,
-.call-to-action-sale .call-to-action-sale-slide-indicators {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.call-to-action .call-to-action-main-container {
+    padding: 30px 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25em;
 }
 
-.call-to-action-sale .call-to-action-sale-slides {
-  display: flex;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  overflow: scroll clip;
+.call-to-action .call-to-action-main-container * {
+    margin: 0;
 }
 
-.call-to-action-sale .call-to-action-sale-slides::-webkit-scrollbar {
-  display: none;
+.icon-success img,
+.email-signup-success div p {
+    position: relative;
+    top: -20px;
 }
 
-.call-to-action-sale .call-to-action-sale-slide {
-  flex: 0 0 100%;
-  scroll-snap-align: start;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  min-height: min(50vw, calc(100dvh - var(--header-height)));
+.call-to-action .call-to-action-text {
+    word-break: break-word;
 }
 
-.call-to-action-sale .call-to-action-sale-slide:has(.call-to-action-sale-slide-content[data-align='center']) {
-  align-items: center;
+.call-to-action .call-to-action-text p {
+    margin: 0;
+    font-family: Soleil, sans-serif;
+    font-size: 0.875rem;
+    line-height: 24.5px;
 }
 
-.call-to-action-sale .call-to-action-sale-slide:has(.call-to-action-sale-slide-content[data-align='right']) {
-  align-items: flex-end;
+@media (width >= 1024px) {
+    .call-to-action .call-to-action-text * {
+        margin-bottom: 0;
+    }
 }
 
-.call-to-action-sale .call-to-action-sale-slide .call-to-action-sale-slide-image picture {
-  position: absolute;
-  inset: 0;
+@media (width <= 1024px) {
+    .call-to-action .call-to-action-main-container * {
+        text-align: center;
+    }
+
+    .call-to-action .call-to-action-main-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 42px 20px;
+        /* Grabs background color from styles.css determined by data-background-color */
+        border-image: conic-gradient(var(--background-color) 0 0) fill 0 / auto/0 100vmax;
+    }
+
+    .call-to-action .call-to-action-main-container[data-background-color='transparent'] {
+        border-image: none;
+    }
+
+    .call-to-action .call-to-action-cta {
+        width: 100%;
+    }
+
+    .icon-success img {
+        top: -20px;
+    }
+
+    .email-signup-success div p {
+        top: -25px;
+    }
 }
 
-.call-to-action-sale .call-to-action-sale-slide .call-to-action-sale-slide-image picture > img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
+@media (width <= 440px) {
+    .call-to-action .call-to-action-main-container {
+        padding: 2.625rem 1.25rem 3.5rem;
+    }
 
-.call-to-action-sale .call-to-action-sale-slide .call-to-action-sale-slide-content {
-  z-index: 1;
-  margin: 68px;
-  padding: 16px;
-  color: white;
-  background-color: rgba(19 19 19 / 75%);
-  position: relative;
-  width: var(--slide-content-width, auto);
-}
+    form.email-signup-form {
+        height: auto;
+    }
 
-.call-to-action-sale .call-to-action-sale-slide-indicators {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px 12px;
-  padding: 12px;
-  background-color: var(--light-color);
-  line-height: 0;
-}
+    .email-signup-captcha p {
+        width: 284px !important;
+    }
 
-.call-to-action-sale .call-to-action-sale-slide-indicator button {
-  width: 24px;
-  height: 24px;
-  margin: 0;
-  padding: 0;
-  border-radius: 50%;
-  background-color: #dadada;
-  transition: background-color 0.2s;
-}
+    .icon-success img,
+    .email-signup-success div p {
+        top: -40px;
+    }
 
-.call-to-action-sale .call-to-action-sale-slide-indicator button:disabled,
-.call-to-action-sale .call-to-action-sale-slide-indicator button:hover,
-.call-to-action-sale .call-to-action-sale-slide-indicator button:focus-visible {
-  background-color: var(--text-color);
-}
+    .email-signup-cta-btn-error-visible {
+        top: -35px;
+    }
 
-.call-to-action-sale .call-to-action-sale-navigation-buttons {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 12px;
-  right: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 1;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-.call-to-action-sale .call-to-action-sale-navigation-buttons button {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  margin: 0;
-  border-radius: 50%;
-  padding: 0;
-  background-color: rgba(19 19 19 / 25%);
-  transition: background-color 0.2s;
-}
-
-.call-to-action-sale .call-to-action-sale-navigation-buttons button:hover,
-.call-to-action-sale .call-to-action-sale-navigation-buttons button:focus-visible {
-  background-color: rgba(19 19 19 / 75%);
-}
-
-.call-to-action-sale .call-to-action-sale-navigation-buttons button::after {
-  display: block;
-  content: '';
-  border: 2px solid;
-  border-bottom: 0;
-  border-left: 0;
-  height: 12px;
-  width: 12px;
-  position: absolute;
-  top: 50%;
-  left: calc(50% + 2px);
-  transform: translate(-50%, -50%) rotate(-135deg);
-}
-
-.call-to-action-sale .call-to-action-sale-navigation-buttons button.slide-next::after {
-  transform: translate(-50%, -50%) rotate(45deg);
-  left: calc(50% - 2px);
-}
-
-@media (width >= 600px) {
-  .call-to-action-sale .call-to-action-sale-navigation-buttons {
-    left: 24px;
-    right: 24px;
-  }
-
-  .call-to-action-sale .call-to-action-sale-slide .call-to-action-sale-slide-content {
-    --slide-content-width: calc((100% - 184px) / 2);
-
-    margin: 92px;
-  }
-
-  .call-to-action-sale .call-to-action-sale-slide .call-to-action-sale-slide-content[data-align='justify'] {
-    --slide-content-width: auto;
-  }
+    .email-signup-captcha-msg-error-visible {
+        width: auto;
+        position: relative;
+        top: -32px;
+    }
 }

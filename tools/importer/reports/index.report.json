@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/",
+  "path": "index",
+  "timestamp": "2026-05-20T01:43:36.872Z",
+  "title": "Furniture & Home Décor | Havertys",
+  "template": "homepage",
+  "blocks": [
+    "hero-video-sale",
+    "call-to-action-promo",
+    "call-to-action-promo",
+    "call-to-action-promo",
+    "carousel-category",
+    "commerce-teaser-split",
+    "commerce-teaser-split",
+    "fragment"
+  ]
+}

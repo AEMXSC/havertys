@@ -1,152 +1,714 @@
-import { fetchPlaceholders } from '../../scripts/aem.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { loadSwiperSetup } from 'scripts/helper.js';
+import { loadScript } from '../../scripts/aem.js';
+import { loadFragment } from '../fragment/fragment.js';
 
-function updateActiveSlide(slide) {
-  const block = slide.closest('.carousel-gallery');
-  const slideIndex = parseInt(slide.dataset.slideIndex, 10);
-  block.dataset.activeSlide = slideIndex;
+const getElementOffset = () =>
+  Math.max(
+    document.body.scrollWidth,
+    document.documentElement.scrollWidth,
+    document.body.offsetWidth,
+    document.documentElement.offsetWidth,
+    document.documentElement.clientWidth,
+  );
 
-  const slides = block.querySelectorAll('.carousel-gallery-slide');
+// Identify the which block is rendered
+function getBaseOption(block) {
+  return [...block.classList].filter((c) => !['block', 'carousel'].includes(c));
+}
 
-  slides.forEach((aSlide, idx) => {
-    aSlide.setAttribute('aria-hidden', idx !== slideIndex);
-    aSlide.querySelectorAll('a').forEach((link) => {
-      if (idx !== slideIndex) {
-        link.setAttribute('tabindex', '-1');
-      } else {
-        link.removeAttribute('tabindex');
+export default async function decorate(block) {
+  const blockChildrenArray = Array.from(block.children);
+
+  const [
+    isTwoImageBetweenPadding,
+    heroVariationName,
+    carouselOverlayImage,
+    carouselOverlayImageAlt,
+    overlayImgLinkEl,
+    carouselPathEl,
+    solidBackgroundEl,
+    marginStyles,
+    heroContentBGEl,
+    preTitleEl,
+    preTitleStyle,
+    titleEl,
+    titleStyle,
+    descriptionEl,
+    descriptionStyle,
+    textAlignment,
+    desktopTextAlignment,
+    tabletTextAlignment,
+    mobileTextAlignment,
+    ...buttonEls
+  ] = blockChildrenArray;
+
+  const heroVariationVal = heroVariationName.textContent.trim();
+  const twoImageBetweenPadding = isTwoImageBetweenPadding.textContent.trim();
+  const carouselPath = carouselPathEl.textContent.trim();
+  const solidBackground = solidBackgroundEl.textContent.trim();
+  const carouselOverlayImageAltText = carouselOverlayImageAlt.textContent.trim();
+  const overlayImgLink = overlayImgLinkEl.textContent.trim();
+  const heroContentBG = heroContentBGEl.textContent.trim();
+  const preTitle = preTitleEl.textContent.trim();
+  const preTitleClass = preTitleStyle.textContent.trim();
+  const title = titleEl.textContent.trim();
+  const isTitleStyle = titleStyle.textContent.trim();
+  const [titleStyleClass, titleStyleTag] = isTitleStyle ? isTitleStyle.split('-') : ['titleStyle', 'h3'];
+  const description = descriptionEl.querySelector('div > div').innerHTML;
+  const alignmentValue = textAlignment.textContent.trim();
+  const alignmentDesktopTextAlignment = desktopTextAlignment.textContent.trim();
+  const alignmentTabletTextAlignment = tabletTextAlignment.textContent.trim();
+  const alignmentMobileTextAlignment = mobileTextAlignment.textContent.trim();
+  const buttonDetails = buttonEls.map((btn) => btn.textContent.trim());
+
+  const generateButton = (data) => {
+    const buttonsFormatedData = [];
+    for (let i = 0; i < data.length; i += 5) {
+      const link = data[i];
+      const text = data[i + 1];
+      const btnType = data[i + 2];
+      const isArrow = data[i + 3];
+      const openInNewTab = data[i + 4];
+
+      if (link && text) {
+        buttonsFormatedData.push({
+          link,
+          text,
+          btnType,
+          isArrow,
+          openInNewTab,
+        });
+      }
+    }
+
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('button-container');
+
+    buttonsFormatedData.forEach((item, index) => {
+      const anchor = document.createElement('a');
+      anchor.textContent = item.text;
+      anchor.className = `button ${item.btnType !== '' && item.btnType !== 'textLink' ? item.btnType : 'cta'} ${item.isArrow === 'noarrow' ? 'noarrow' : ''}`;
+      anchor.href = item.link;
+      anchor.setAttribute('target', `${item.openInNewTab === 'true' ? '_blank' : ''}`);
+      buttonContainer.appendChild(anchor);
+
+      // Add a line separator after each button except the last one
+      if (index < buttonsFormatedData.length - 1) {
+        const separator = document.createElement('div');
+        separator.className = 'hero-line-separator';
+        buttonContainer.appendChild(separator);
       }
     });
-  });
 
-  const indicators = block.querySelectorAll('.carousel-gallery-slide-indicator');
-  indicators.forEach((indicator, idx) => {
-    if (idx !== slideIndex) {
-      indicator.querySelector('button').removeAttribute('disabled');
+    return buttonContainer;
+  };
+
+  const contentCreation = () => {
+    const createContentDiv = document.createElement('div');
+    const preTitleTag = document.createElement('p');
+    const titleTag = document.createElement(titleStyleTag);
+    const descriptionTag = document.createElement('div');
+
+    // Insert html into containers.
+    preTitleTag.innerHTML = preTitle;
+    titleTag.innerHTML = title;
+    descriptionTag.innerHTML = description;
+
+    // Apply classes to elements.
+    preTitleTag.classList.add(preTitleClass !== '' ? preTitleClass : 'para-sm');
+    titleTag.classList.add(`${titleStyleClass}-${titleStyleTag}`);
+    descriptionTag.classList.add('description-content', descriptionStyle?.textContent?.trim() || 'para');
+    createContentDiv.classList.add('feature-card-container');
+
+    const variationsWithScreenSizeAlignment = ['single-image-hero-carousel', 'two-image-hero-carousel'];
+    const blockHasVariation = variationsWithScreenSizeAlignment.some((variant) => block.classList.contains(variant));
+
+    // Set alignment for carousel on mobile, tablet, and desktop. If not specific variations, use global alignment.
+    if (blockHasVariation) {
+      createContentDiv.classList.add(`desktop-${alignmentDesktopTextAlignment || 'align-left'}`);
+      createContentDiv.classList.add(`tablet-${alignmentTabletTextAlignment || 'align-left'}`);
+      createContentDiv.classList.add(`mobile-${alignmentMobileTextAlignment || 'align-left'}`);
     } else {
-      indicator.querySelector('button').setAttribute('disabled', 'true');
+      createContentDiv.dataset.align = alignmentValue !== '' ? alignmentValue : '';
     }
-  });
-}
 
-export function showSlide(block, slideIndex = 0) {
-  const slides = block.querySelectorAll('.carousel-gallery-slide');
-  let realSlideIndex = slideIndex < 0 ? slides.length - 1 : slideIndex;
-  if (slideIndex >= slides.length) realSlideIndex = 0;
-  const activeSlide = slides[realSlideIndex];
+    // Append content to content wrapper.
+    createContentDiv.append(preTitleTag);
+    createContentDiv.append(titleTag);
+    createContentDiv.append(descriptionTag);
+    createContentDiv.append(generateButton(buttonDetails));
 
-  activeSlide.querySelectorAll('a').forEach((link) => link.removeAttribute('tabindex'));
-  block.querySelector('.carousel-gallery-slides').scrollTo({
-    top: 0,
-    left: activeSlide.offsetLeft,
-    behavior: 'smooth',
-  });
-}
+    return createContentDiv;
+  };
 
-function bindEvents(block) {
-  const slideIndicators = block.querySelector('.carousel-gallery-slide-indicators');
-  if (!slideIndicators) return;
+  const autoPlayEnable = (swiperBlock) => {
+    const swiperElement = swiperBlock.querySelector('.swiper'); // define swiperElement here
+    if (!swiperElement || !swiperBlock.swiper) {
+      return;
+    }
 
-  slideIndicators.querySelectorAll('button').forEach((button) => {
-    button.addEventListener('click', (e) => {
-      const slideIndicator = e.currentTarget.parentElement;
-      showSlide(block, parseInt(slideIndicator.dataset.targetSlide, 10));
+    // Attach swiperInstance to element for later reference
+    swiperElement.swiperInstance = swiperBlock.swiper;
+
+    // Resize Event Listener
+    window.addEventListener('resize', () => {
+      if (swiperElement.swiperInstance) {
+        swiperElement.swiperInstance.update();
+      }
     });
-  });
 
-  block.querySelector('.slide-prev').addEventListener('click', () => {
-    showSlide(block, parseInt(block.dataset.activeSlide, 10) - 1);
-  });
-  block.querySelector('.slide-next').addEventListener('click', () => {
-    showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
-  });
+    // Intersection Observer to manage autoplay
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const instance = swiperElement.swiperInstance;
+          if (!instance || !instance.autoplay) {
+            return;
+          }
 
-  const slideObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) updateActiveSlide(entry.target);
+          if (entry.isIntersecting) {
+            instance.autoplay.start();
+          } else {
+            instance.autoplay.stop();
+          }
+        });
+      },
+      { threshold: 0.25 },
+    );
+
+    observer.observe(swiperElement);
+  };
+
+  const updateHeroSlideWidths = (swiper) => {
+    if (!swiper || !swiper.slides) {
+      return;
+    }
+
+    const screenWidth = window.innerWidth;
+
+    // Only apply on tablet and desktop
+    if (screenWidth < 768) {
+      return;
+    }
+
+    swiper.slides.forEach((slide) => {
+      slide.style.width = '';
     });
-  }, { threshold: 0.5 });
-  block.querySelectorAll('.carousel-gallery-slide').forEach((slide) => {
-    slideObserver.observe(slide);
-  });
-}
 
-function createSlide(row, slideIndex, carouselId) {
-  const slide = document.createElement('li');
-  slide.dataset.slideIndex = slideIndex;
-  slide.setAttribute('id', `carousel-gallery-${carouselId}-slide-${slideIndex}`);
-  slide.classList.add('carousel-gallery-slide');
+    const { activeIndex } = swiper;
+    const { slides } = swiper;
+    const activeSlide = slides[activeIndex];
+    const nextSlide = slides[(activeIndex + 1) % slides.length];
 
-  row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
-    column.classList.add(`carousel-gallery-slide-${colIdx === 0 ? 'image' : 'content'}`);
-    slide.append(column);
-  });
+    // Tablet
+    if (screenWidth >= 768 && screenWidth < 1025) {
+      if (activeSlide && activeSlide.style.width !== '37.5%') {
+        activeSlide.style.width = '37.5%';
+      }
+      if (nextSlide && nextSlide.style.width !== '62.5%') {
+        nextSlide.style.width = '62.5%';
+      }
+    }
 
-  const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
-  if (labeledBy) {
-    slide.setAttribute('aria-labelledby', labeledBy.getAttribute('id'));
+    // Desktop
+    else if (screenWidth >= 1025) {
+      if (activeSlide && activeSlide.style.width !== '33.33%') {
+        activeSlide.style.width = '33.33%';
+      }
+      if (nextSlide && nextSlide.style.width !== '66.66%') {
+        nextSlide.style.width = '66.66%';
+      }
+    }
+  };
+
+  const customSlidesData = [];
+
+  const getHeroCarouselHtmlData = (item) => {
+    const picture = item.querySelector('picture');
+    const getLink = item.querySelector('a');
+    getLink.removeAttribute('class');
+    getLink.textContent = '';
+    getLink.append(picture);
+    customSlidesData.push(getLink);
+  };
+
+  function updateCarouselTabOrder(swiper) {
+    const { slides, realIndex } = swiper;
+
+    slides.forEach((slide, index) => {
+      const anchor = slide.querySelector('a');
+      if (index === realIndex) {
+        anchor.setAttribute('tabindex', '0');
+      } else {
+        anchor.setAttribute('tabindex', '-1');
+      }
+    });
   }
 
-  return slide;
-}
+  const generateHeroCarousel = (heroVariationType) => {
+    block.classList.add(...(twoImageBetweenPadding !== '' ? [twoImageBetweenPadding] : []));
+    const heroCarouselContainer = document.createElement('div');
+    heroCarouselContainer.classList.add('swiper', 'hero-carousel-swiper');
 
-let carouselId = 0;
-export default async function decorate(block) {
-  carouselId += 1;
-  block.setAttribute('id', `carousel-gallery-${carouselId}`);
-  const rows = block.querySelectorAll(':scope > div');
-  const isSingleSlide = rows.length < 2;
+    const heroCarouselTrack = document.createElement('div');
+    heroCarouselTrack.classList.add('swiper-wrapper');
 
-  const placeholders = await fetchPlaceholders();
+    let setHeroBreakpoints;
+    let otherParams;
 
-  block.setAttribute('role', 'region');
-  block.setAttribute('aria-roledescription', placeholders.carousel || 'Carousel');
+    if (heroVariationType === 'single-image-hero-carousel') {
+      for (let i = 0; i < customSlidesData.length; i += 1) {
+        const singleAssest = document.createElement('div');
+        singleAssest.classList.add('hero-single-asset');
+        const heroSwiperSlide = document.createElement('div');
+        heroSwiperSlide.classList.add('swiper-slide');
+        const heroSlideWrapper = document.createElement('div');
+        heroSlideWrapper.classList.add('hero-slide-wrapper');
+        singleAssest.append(customSlidesData[i]);
+        heroSlideWrapper.append(singleAssest);
+        heroSwiperSlide.append(heroSlideWrapper);
+        heroCarouselTrack.append(heroSwiperSlide);
+      }
 
-  const container = document.createElement('div');
-  container.classList.add('carousel-gallery-slides-container');
+      otherParams = {
+        loop: true,
+        autoplay: { delay: 3000 },
+        paginationAttrs: {
+          el: '.swiper-pagination',
+          clickable: true,
+          dynamicBullets: true,
+        },
+      };
+    } else {
+      const fragment = document.createDocumentFragment();
 
-  const slidesWrapper = document.createElement('ul');
-  slidesWrapper.classList.add('carousel-gallery-slides');
-  block.prepend(slidesWrapper);
+      for (let i = 0; i < customSlidesData.length; i += 1) {
+        const assetImg = document.createElement('div');
+        assetImg.classList.add('hero-asset-img');
+        assetImg.append(customSlidesData[i]);
 
-  let slideIndicators;
-  if (!isSingleSlide) {
-    const slideIndicatorsNav = document.createElement('nav');
-    slideIndicatorsNav.setAttribute('aria-label', placeholders.carouselSlideControls || 'Carousel Slide Controls');
-    slideIndicators = document.createElement('ol');
-    slideIndicators.classList.add('carousel-gallery-slide-indicators');
-    slideIndicatorsNav.append(slideIndicators);
-    block.append(slideIndicatorsNav);
+        const heroSlideWrapper = document.createElement('div');
+        heroSlideWrapper.classList.add('hero-slide-wrapper');
+        heroSlideWrapper.append(assetImg);
 
-    const slideNavButtons = document.createElement('div');
-    slideNavButtons.classList.add('carousel-gallery-navigation-buttons');
-    slideNavButtons.innerHTML = `
-      <button type="button" class= "slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
-      <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
-    `;
+        const heroSwiperSlide = document.createElement('div');
+        heroSwiperSlide.classList.add('swiper-slide');
 
-    container.append(slideNavButtons);
+        // Add odd/even class based on index
+        heroSwiperSlide.classList.add(i % 2 === 0 ? 'hero-slide-odd' : 'hero-slide-even');
+
+        // Append wrapper inside swiper slide
+        heroSwiperSlide.append(heroSlideWrapper);
+
+        // Append swiper slide to the fragment
+        fragment.append(heroSwiperSlide);
+      }
+
+      // Append everything once to the DOM
+      heroCarouselTrack.append(fragment);
+
+      setHeroBreakpoints = {
+        0: {
+          slidesPerView: 1.2,
+          centeredSlides: true,
+          slidesPerGroup: 1,
+          initialSlide: 1,
+        },
+        576: {
+          centeredSlides: true,
+          slidesPerView: 1.2,
+          slidesPerGroup: 1,
+          initialSlide: 1,
+        },
+        768: {
+          slidesPerView: 'auto',
+          centeredSlides: true,
+          slidesPerGroup: 1,
+        },
+        1025: {
+          slidesPerView: 'auto',
+          centeredSlides: true,
+          slidesPerGroup: 1,
+        },
+      };
+
+      otherParams = {
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
+        },
+        loop: true,
+        autoplay: { delay: 3000 },
+        paginationAttrs: {
+          el: '.swiper-pagination',
+          clickable: true,
+          dynamicBullets: true,
+        },
+        on: {
+          init: (swiper) => {
+            requestAnimationFrame(() => updateHeroSlideWidths(swiper));
+            updateCarouselTabOrder(swiper);
+          },
+          slideChange: (swiper) => {
+            setTimeout(() => updateHeroSlideWidths(swiper), 0);
+            updateCarouselTabOrder(swiper);
+          },
+          resize: (swiper) => {
+            updateHeroSlideWidths(swiper);
+            updateCarouselTabOrder(swiper);
+          },
+        },
+      };
+    }
+
+    heroCarouselContainer.append(heroCarouselTrack);
+
+    const navigation = {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    };
+
+    // Slide actions wrapper
+    const slideActionsWrapper = document.createElement('div');
+    slideActionsWrapper.classList.add('slide-actions-wrapper');
+
+    const carouselHeroPrevCta = document.createElement('button');
+    carouselHeroPrevCta.classList.add('carousel-prev-cta', 'swiper-button-prev');
+    carouselHeroPrevCta.setAttribute('aria-label', 'Previous Slide');
+    slideActionsWrapper.append(carouselHeroPrevCta);
+
+    const carouselHeroNextCta = document.createElement('button');
+    carouselHeroNextCta.classList.add('carousel-next-cta', 'swiper-button-next');
+    carouselHeroNextCta.setAttribute('aria-label', 'Next Slide');
+    slideActionsWrapper.append(carouselHeroNextCta);
+
+    const carouselHeroPlayPauseCta = document.createElement('button');
+    carouselHeroPlayPauseCta.classList.add('swiper-button', 'swiper-button-play-pause');
+    carouselHeroPlayPauseCta.setAttribute('aria-label', 'start slider');
+    slideActionsWrapper.append(carouselHeroPlayPauseCta);
+
+    heroCarouselContainer.append(slideActionsWrapper);
+
+    // Create carousel dots navigation markup
+    const carouselHeorDotsContainer = document.createElement('div');
+    carouselHeorDotsContainer.classList.add('carousel-hero-dots-container', 'swiper-pagination');
+    heroCarouselContainer.append(carouselHeorDotsContainer);
+
+    block.append(heroCarouselContainer);
+    loadSwiperSetup(block, '.hero-carousel-swiper', setHeroBreakpoints, navigation, otherParams, (swiper) => {
+      block.swiper = swiper; // ensure this line exists
+      autoPlayEnable(block);
+    });
+
+    carouselHeroPlayPauseCta.addEventListener('click', () => {
+      if (carouselHeroPlayPauseCta.classList.contains('paused')) {
+        carouselHeroPlayPauseCta.classList.remove('paused');
+        carouselHeroPlayPauseCta.setAttribute('aria-label', 'start slider');
+        block.swiper.autoplay.start();
+      } else {
+        carouselHeroPlayPauseCta.classList.add('paused');
+        carouselHeroPlayPauseCta.setAttribute('aria-label', 'stop slider');
+        block.swiper.autoplay.stop();
+      }
+    });
+
+    // overlay container
+    const overlayContainer = document.createElement('div');
+    overlayContainer.classList.add('hero-overlay-container', ...(heroVariationVal !== '' ? [heroVariationVal] : []));
+    overlayContainer.dataset.backgroundColor = heroContentBG !== '' ? heroContentBG : '';
+    if (heroVariationVal === 'hero-overlay-image') {
+      if (carouselOverlayImageAltText !== '') {
+        const imgElement = carouselOverlayImage?.querySelector('img');
+        imgElement.alt = carouselOverlayImageAltText;
+      }
+
+      if (overlayImgLink !== '') {
+        const linkTag = document.createElement('a');
+        linkTag.href = overlayImgLink;
+        linkTag.append(carouselOverlayImage);
+        overlayContainer.append(linkTag);
+      } else {
+        overlayContainer.append(carouselOverlayImage);
+      }
+    }
+
+    if (heroVariationVal === 'hero-overlay-text') {
+      overlayContainer.append(contentCreation());
+    }
+    block.append(overlayContainer);
+  };
+
+  const generateTitle = (className, styleName, text) => {
+    const titleEle = document.createElement(styleName);
+    titleEle.classList.add(`${className}-${styleName}`);
+    titleEle.innerHTML = text;
+    return titleEle;
+  };
+
+  await loadScript(`${window.hlx.codeBasePath}/scripts/swiper-bundle.min.js`, { async: true });
+  if (!carouselPath) {
+    return;
   }
 
-  rows.forEach((row, idx) => {
-    const slide = createSlide(row, idx, carouselId);
-    moveInstrumentation(row, slide);
-    slidesWrapper.append(slide);
+  // load footer fragment
+  const fragment = await loadFragment(carouselPath);
 
-    if (slideIndicators) {
-      const indicator = document.createElement('li');
-      indicator.classList.add('carousel-gallery-slide-indicator');
-      indicator.dataset.targetSlide = idx;
-      indicator.innerHTML = `<button type="button" aria-label="${placeholders.showSlide || 'Show Slide'} ${idx + 1} ${placeholders.of || 'of'} ${rows.length}"></button>`;
-      slideIndicators.append(indicator);
+  block.textContent = '';
+  block.classList.add(marginStyles?.textContent?.trim() || 'm-b-sm');
+
+  // Single image hero carousel
+  if (getBaseOption(block).includes('single-image-hero-carousel')) {
+    block.classList.add('hero-image-carousel');
+    [...fragment.children].forEach((item) => {
+      getHeroCarouselHtmlData(item);
+    });
+    generateHeroCarousel('single-image-hero-carousel');
+  }
+  // Two image hero carousel
+  else if (getBaseOption(block).includes('two-image-hero-carousel')) {
+    block.classList.add('hero-image-carousel');
+    [...fragment.children].forEach((item) => {
+      getHeroCarouselHtmlData(item);
+    });
+    generateHeroCarousel();
+  } else {
+    // Create carousel markup
+    const carouselTrackContainer = document.createElement('div');
+    carouselTrackContainer.classList.add('swiper');
+    const carouselTrack = document.createElement('div');
+    carouselTrack.classList.add('swiper-wrapper');
+    if (solidBackground === 'true') {
+      carouselTrackContainer.classList.add('solid-background');
     }
-    row.remove();
-  });
+    [...fragment.children].forEach((item) => {
+      const carouselSlideContainer = document.createElement('div');
+      carouselSlideContainer.classList.add('carousel-slide-container', 'swiper-slide');
+      carouselSlideContainer.append(item);
+      carouselTrack.append(carouselSlideContainer);
+      item.classList.add('carousel-slide');
 
-  container.append(slidesWrapper);
-  block.prepend(container);
+      // removing the button class for vertical image only
+      if (
+        getBaseOption(block).includes('vertical-image') ||
+        getBaseOption(block).includes('vertical-image-with-carousel-name')
+      ) {
+        item.querySelectorAll('.button-container').forEach((el) => {
+          el.classList.remove('button-container');
+        });
+      }
 
-  if (!isSingleSlide) {
-    bindEvents(block);
+      /* handle hover for carousel */
+      item.addEventListener('mouseenter', () => {
+        const applyColor = item.querySelector('.default-content-wrapper .button');
+        const hoverColor = '#9a6a4c';
+        if (applyColor && item.querySelector('picture')) {
+          applyColor.style.color = hoverColor;
+          item.querySelector('picture').style.cursor = 'pointer';
+        }
+      });
+      item.addEventListener('mouseleave', () => {
+        const removeColor = item.querySelector('.default-content-wrapper .button');
+        if (removeColor) {
+          removeColor.style.color = '';
+        }
+      });
+    });
+    carouselTrackContainer.append(carouselTrack);
+
+    const actionButtonWrapper = document.createElement('div');
+    actionButtonWrapper.classList.add('action-button-wrapper');
+    // Create carousel navigation markup
+    const carouselPrevCta = document.createElement('button');
+    carouselPrevCta.classList.add('carousel-prev-cta', 'swiper-button-prev');
+    carouselPrevCta.setAttribute('aria-label', 'Previous slide');
+    actionButtonWrapper.append(carouselPrevCta);
+
+    const carouselNextCta = document.createElement('button');
+    carouselNextCta.classList.add('carousel-next-cta', 'swiper-button-next');
+    carouselNextCta.setAttribute('aria-label', 'Next slide');
+    actionButtonWrapper.append(carouselNextCta);
+
+    const carouselPlayPauseCta = document.createElement('button');
+    carouselPlayPauseCta.classList.add('swiper-button', 'swiper-button-play-pause');
+    carouselPlayPauseCta.setAttribute('aria-label', 'start slider');
+    actionButtonWrapper.append(carouselPlayPauseCta);
+
+    // Create carousel dots navigation markup
+    const carouselDotsContainer = document.createElement('div');
+    carouselDotsContainer.classList.add('carousel-dots-container', 'swiper-pagination');
+    carouselTrackContainer.append(carouselDotsContainer);
+
+    block.append(carouselTrackContainer);
+
+    // fix the action button
+    block.append(actionButtonWrapper);
+    // Full width carousel variation
+    if (getBaseOption(block).includes('full-width-slide')) {
+      const setFullWidthNavigation = {
+        nextEl: block.querySelector(`.swiper-button-next`),
+        prevEl: block.querySelector(`.swiper-button-prev`),
+      };
+
+      const otherFullWidthParams = {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        paginationAttrs: {
+          el: '.swiper-pagination',
+          clickable: true,
+          dynamicBullets: true,
+        },
+        a11y: {
+          enabled: true,
+        },
+      };
+
+      loadSwiperSetup(block, '.swiper', {}, setFullWidthNavigation, otherFullWidthParams, (swiper) => {
+        block.swiper = swiper; // ensure this line exists
+        autoPlayEnable(block);
+      });
+    }
+    // Feature left/right carousel variation
+    else if (getBaseOption(block).includes('feature-left') || getBaseOption(block).includes('feature-right')) {
+      block.classList.add('full-width-slide', 'feature-carousel-container');
+      block.append(contentCreation());
+
+      const setFetaureNavigation = {
+        nextEl: block.querySelector(`.swiper-button-next`),
+        prevEl: block.querySelector(`.swiper-button-prev`),
+      };
+
+      const otherFeatureParams = {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        paginationAttrs: {
+          el: '.swiper-pagination',
+          clickable: true,
+          dynamicBullets: true,
+        },
+        a11y: {
+          enabled: true,
+        },
+      };
+
+      loadSwiperSetup(block, '.swiper', {}, setFetaureNavigation, otherFeatureParams, (swiper) => {
+        block.swiper = swiper; // ensure this line exists
+        autoPlayEnable(block);
+      });
+    }
+    // Vertical image carousel variation
+    else if (getBaseOption(block).includes('vertical-image')) {
+      block.classList.add('card-slide', 'vertical-image');
+      const setVerticalImgNavigation = {
+        nextEl: block.querySelector(`.swiper-button-next`),
+        prevEl: block.querySelector(`.swiper-button-prev`),
+      };
+
+      const otherVerticalImgParams = {
+        spaceBetween: 12,
+        slidesPerView: 'auto',
+        paginationAttrs: {
+          el: '.swiper-pagination',
+          clickable: true,
+          dynamicBullets: true,
+        },
+        a11y: {
+          enabled: true,
+        },
+      };
+
+      loadSwiperSetup(block, '.swiper', {}, setVerticalImgNavigation, otherVerticalImgParams);
+    }
+
+    // Vertical image carousel variation with carousel name
+    else if (getBaseOption(block).includes('vertical-image-with-carousel-name')) {
+      const createCarouselNameContainer = document.createElement('div');
+      createCarouselNameContainer.classList.add('carousel-name-container');
+      createCarouselNameContainer.append(generateTitle(titleStyleClass, titleStyleTag, title));
+      block.insertBefore(createCarouselNameContainer, block.firstChild);
+      block.classList.add('card-slide', 'vertical-image');
+      const setVerticalImgV2Navigation = {
+        nextEl: block.querySelector(`.swiper-button-next`),
+        prevEl: block.querySelector(`.swiper-button-prev`),
+      };
+
+      const otherVerticalImgV2Params = {
+        spaceBetween: 12,
+        slidesPerView: 'auto',
+        paginationAttrs: {
+          el: '.swiper-pagination',
+          clickable: true,
+          dynamicBullets: true,
+        },
+      };
+
+      loadSwiperSetup(block, '.swiper', {}, setVerticalImgV2Navigation, otherVerticalImgV2Params);
+    }
+    // Default & card variation
+    else {
+      setTimeout(() => {
+        // eslint-disable-next-line no-undef
+        block.swiper = new Swiper(block.querySelector('.swiper'), {
+          spaceBetween: 1,
+          speed: 600,
+          breakpoints: {
+            0: {
+              slidesPerView: 1.4,
+              slidesOffsetBefore: 16,
+              slidesOffsetAfter: 100,
+            },
+            576: {
+              slidesPerView: 1.75,
+              slidesOffsetBefore: 16,
+              slidesOffsetAfter: 100,
+            },
+            768: {
+              slidesPerView: 2.7,
+              slidesOffsetBefore: 56,
+              slidesOffsetAfter: 166,
+            },
+            1200: {
+              slidesPerView: 4.7,
+              slidesOffsetBefore: 104,
+              slidesOffsetAfter: 340,
+            },
+            1400: {
+              slidesPerView: 6,
+              slidesPerGroup: 2,
+              slidesOffsetBefore: (getElementOffset() - 1232) / 2,
+            },
+          },
+          navigation: {
+            nextEl: block.querySelector(`.swiper-button-next`),
+            prevEl: block.querySelector(`.swiper-button-prev`),
+          },
+          pagination: {
+            el: '.swiper-pagination',
+          },
+          a11y: {
+            enabled: true,
+          },
+        });
+      }, 100);
+    }
+
+    carouselPlayPauseCta.addEventListener('click', () => {
+      if (carouselPlayPauseCta.classList.contains('paused')) {
+        carouselPlayPauseCta.classList.remove('paused');
+        carouselPlayPauseCta.setAttribute('aria-label', 'start slider');
+        block.swiper.autoplay.start();
+      } else {
+        carouselPlayPauseCta.classList.add('paused');
+        carouselPlayPauseCta.setAttribute('aria-label', 'stop slider');
+        block.swiper.autoplay.stop();
+      }
+    });
   }
 }

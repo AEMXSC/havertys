@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/rfg",
+  "path": "rfg",
+  "timestamp": "2026-05-20T01:44:47.608Z",
+  "title": "Regret Free Guarantee | Havertys Furniture",
+  "template": "brand-page",
+  "blocks": [
+    "commerce-teaser-featured",
+    "commerce-teaser-featured",
+    "commerce-teaser-featured",
+    "commerce-teaser-featured",
+    "commerce-teaser-featured",
+    "commerce-teaser-featured",
+    "cards-linked-image",
+    "cards-linked-image",
+    "cards-linked-image",
+    "cards-linked-image"
+  ]
+}

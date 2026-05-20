@@ -1,0 +1,27 @@
+{
+  "status": "success",
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/free-design-service",
+  "path": "free-design-service",
+  "timestamp": "2026-05-20T01:44:34.934Z",
+  "title": "Free Design Service | Havertys Furniture",
+  "template": "service-page",
+  "blocks": [
+    "hero-service",
+    "carousel-gallery",
+    "carousel-gallery",
+    "carousel-gallery",
+    "carousel-gallery",
+    "carousel-gallery",
+    "carousel-gallery",
+    "carousel-spotlight",
+    "commerce-teaser-video",
+    "commerce-teaser-video",
+    "commerce-teaser-video",
+    "commerce-teaser-card",
+    "commerce-teaser-card",
+    "accordion-faq",
+    "quote-testimonial",
+    "call-to-action-signup",
+    "product-carousel"
+  ]
+}

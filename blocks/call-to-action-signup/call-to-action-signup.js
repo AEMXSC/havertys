@@ -1,30 +1,70 @@
-export default function decorate(block) {
-  const mainContainer = document.createElement('div');
-  mainContainer.classList.add('call-to-action-signup-main-container');
+import { loadBlock } from 'scripts/aem.js';
 
-  const textDiv = document.createElement('div');
-  textDiv.classList.add('call-to-action-signup-text');
+/**
+ * Load the hvt-button block.
+ * @param {Element} buttonBlock
+ * @returns {Element} buttonBlock
+ */
+export const loadButtonBlock = async (buttonBlock) => {
+  if (!buttonBlock) {
+    return null;
+  }
 
-  const ctaDiv = document.createElement('div');
-  ctaDiv.classList.add('call-to-action-signup-cta');
+  buttonBlock.dataset.blockName = 'hvt-button';
+  buttonBlock.classList.add('block', 'hvt-button');
 
-  const rows = [...block.querySelectorAll(':scope > div')];
-  rows.forEach((row) => {
-    const cols = [...row.querySelectorAll(':scope > div')];
-    if (cols.length > 0) {
-      const content = cols[0];
-      const buttons = content.querySelectorAll('.button-container');
-      if (buttons.length > 0) {
-        buttons.forEach((btn) => ctaDiv.append(btn));
-        textDiv.append(content);
-      } else {
-        textDiv.append(content);
-      }
-    }
-    row.remove();
-  });
+  await loadBlock(buttonBlock);
 
-  mainContainer.append(textDiv);
-  mainContainer.append(ctaDiv);
-  block.append(mainContainer);
+  return buttonBlock;
+};
+
+/**
+ * Grab all necessary data for the call to action from the given block.
+ * @param {Element} block The Call to Action block element
+ * @returns {{callToActionContent: string, ctaButton: string}}
+ */
+export const useCallToAction = (block) => {
+  const [callToActionContent, textColorEl, backgroundColorEl, buttonBlock] = block.children;
+
+  return {
+    callToActionContent: callToActionContent.innerHTML,
+    buttonBlock,
+    backgroundColor: backgroundColorEl.textContent.trim() || 'transparent',
+    textColor: textColorEl.textContent.trim() ?? 'inherit',
+  };
+};
+
+/**
+ * Creates the Call To Action element using the provided data.
+ * @param {{callToActionContent: string, ctaButton: string}} ctaData
+ * @returns {Element} The new Call To Action element.
+ */
+export const buildCallToAction = ({ callToActionContent, backgroundColor, textColor, ctaButton }) => {
+  const fragment = document.createRange().createContextualFragment(`
+    <div class="call-to-action-main-container" data-background-color="${backgroundColor}" data-text-color="${textColor}">
+      <div class='call-to-action-text'>${callToActionContent}</div>
+      <div class='call-to-action-cta'></div>
+    </div>
+  `);
+
+  // Insert button into fragment (can't insert innerHTML since button is a block item).
+  if (ctaButton) {
+    fragment.querySelector('.call-to-action-cta').replaceChildren(ctaButton);
+  }
+
+  return fragment;
+};
+
+export default async function decorate(block) {
+  const ctaData = useCallToAction(block);
+  const { buttonBlock } = ctaData;
+
+  const ctaButton = await loadButtonBlock(buttonBlock);
+  const callToActionElement = buildCallToAction({ ...ctaData, ctaButton });
+
+  // Remove existing content from block.
+  block.textContent = '';
+
+  // Append the new call to action element to block.
+  block.append(callToActionElement);
 }

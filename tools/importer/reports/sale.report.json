@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://main--hvt-eds--havertys-furniture.aem.live/sale",
+  "path": "sale",
+  "timestamp": "2026-05-20T01:44:42.049Z",
+  "title": "Sale | Havertys",
+  "template": "sale-page",
+  "blocks": [
+    "carousel-category",
+    "call-to-action-sale",
+    "product-carousel-sale",
+    "product-carousel-sale",
+    "product-carousel-sale",
+    "commerce-teaser-split",
+    "commerce-teaser-split",
+    "fragment",
+    "fragment"
+  ]
+}

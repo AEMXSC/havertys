@@ -1,57 +1,97 @@
-.call-to-action-signup-container .call-to-action-signup-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px;
+.call-to-action-wrapper {
+    padding: 0;
 }
 
-.call-to-action-signup {
-  display: block;
-}
-
-.call-to-action-signup .call-to-action-signup-main-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.call-to-action-signup .call-to-action-signup-text h4 {
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 8px;
-}
-
-.call-to-action-signup .call-to-action-signup-text h2 {
-  font-size: 1.75rem;
-  margin-bottom: 12px;
-}
-
-.call-to-action-signup .call-to-action-signup-text p {
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: var(--text-color);
-}
-
-.call-to-action-signup .call-to-action-signup-cta .button-container {
-  margin-top: 16px;
-}
-
-@media (width >= 900px) {
-  .call-to-action-signup-container .call-to-action-signup-wrapper {
-    padding: 40px 32px;
-  }
-
-  .call-to-action-signup .call-to-action-signup-main-container {
-    flex-direction: row;
+.call-to-action .call-to-action-main-container {
+    padding: 30px 62px;
+    display: flex;
     align-items: center;
     justify-content: space-between;
-  }
+    gap: 1.25em;
+}
 
-  .call-to-action-signup .call-to-action-signup-text {
-    flex: 1;
-  }
+.call-to-action .call-to-action-main-container * {
+    margin: 0;
+}
 
-  .call-to-action-signup .call-to-action-signup-cta {
-    flex-shrink: 0;
-  }
+.icon-success img,
+.email-signup-success div p {
+    position: relative;
+    top: -20px;
+}
+
+.call-to-action .call-to-action-text {
+    word-break: break-word;
+}
+
+.call-to-action .call-to-action-text p {
+    margin: 0;
+    font-family: Soleil, sans-serif;
+    font-size: 0.875rem;
+    line-height: 24.5px;
+}
+
+@media (width >= 1024px) {
+    .call-to-action .call-to-action-text * {
+        margin-bottom: 0;
+    }
+}
+
+@media (width <= 1024px) {
+    .call-to-action .call-to-action-main-container * {
+        text-align: center;
+    }
+
+    .call-to-action .call-to-action-main-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 42px 20px;
+        /* Grabs background color from styles.css determined by data-background-color */
+        border-image: conic-gradient(var(--background-color) 0 0) fill 0 / auto/0 100vmax;
+    }
+
+    .call-to-action .call-to-action-main-container[data-background-color='transparent'] {
+        border-image: none;
+    }
+
+    .call-to-action .call-to-action-cta {
+        width: 100%;
+    }
+
+    .icon-success img {
+        top: -20px;
+    }
+
+    .email-signup-success div p {
+        top: -25px;
+    }
+}
+
+@media (width <= 440px) {
+    .call-to-action .call-to-action-main-container {
+        padding: 2.625rem 1.25rem 3.5rem;
+    }
+
+    form.email-signup-form {
+        height: auto;
+    }
+
+    .email-signup-captcha p {
+        width: 284px !important;
+    }
+
+    .icon-success img,
+    .email-signup-success div p {
+        top: -40px;
+    }
+
+    .email-signup-cta-btn-error-visible {
+        top: -35px;
+    }
+
+    .email-signup-captcha-msg-error-visible {
+        width: auto;
+        position: relative;
+        top: -32px;
+    }
 }

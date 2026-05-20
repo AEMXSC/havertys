@@ -1,5 +1,691 @@
-export default function decorate(block) {
-  if (!block.querySelector(':scope > div:first-child picture')) {
-    block.classList.add('no-image');
+/**
+ * decorates the header, mainly the nav
+ * @param {Element} block The header block element
+ */
+import { createOptimizedPicture } from 'scripts/aem.js';
+import { preloadHeroImage, getDynamicMediaImage, readBlockKeyValue, setAuthorDataProps } from 'scripts/scripts.js';
+
+export const getBlockFields = (block) => {
+  const config = readBlockKeyValue(block);
+
+  const getConfigText = (key) => {
+    const value = config[key];
+    if (!value) {
+      return '';
+    }
+
+    if (typeof value === 'string') {
+      return value.trim();
+    }
+    return value?.textContent?.trim?.() || '';
+  };
+
+  // If config is present, use it to populate the fields; otherwise, fall back to legacy parsing.
+  if (Object.keys(config).length > 0) {
+    return {
+      text: {
+        contentEl: config?.content,
+        featuredProductTextEl: config?.featuredProductText,
+      },
+      assets: {
+        desktopVideoEl: config?.desktopVideo,
+        mobileVideoEl: config?.mobileVideo,
+        backgroundImageEl: config?.backgroundImage,
+        backgroundMobileImageEl: config?.backgroundMobileImage,
+        overlayImageEl: config?.overlayImage,
+        overlayImageLinkEl: config?.overlayImageLink,
+      },
+      actions: {
+        button1: {
+          firstButtonLabel: getConfigText('firstButtonLabel'),
+          firstButtonType: getConfigText('firstButtonType'),
+          firstButtonUrl: getConfigText('firstButtonUrl'),
+        },
+        button2: {
+          secondButtonLabel: getConfigText('secondButtonLabel'),
+          secondButtonType: getConfigText('secondButtonType'),
+          secondButtonUrl: getConfigText('secondButtonUrl'),
+        },
+      },
+      styles: {
+        heroVariation: getConfigText('heroVariation'),
+        heroContentPosition: getConfigText('heroContentPosition'),
+        contentTextColor: getConfigText('contentTextColor'),
+        contentHeadingColor: getConfigText('contentHeadingColor'),
+        contentDescriptionStyle: getConfigText('contentDescriptionStyle') || 'para',
+        contentBackgroundColor: getConfigText('contentBackgroundColor'),
+        contentMaskOpacity: getConfigText('contentMaskOpacity'),
+        featuredProductTextColor: getConfigText('featuredProductTextColor'),
+        featuredProductTextStyle: getConfigText('featuredProductTextStyle'),
+        gradientVariation: getConfigText('gradientVariation'),
+        gradientOpacity: getConfigText('gradientOpacity'),
+        isFrosted: getConfigText('isFrosted'),
+        enableConfig: getConfigText('enableConfig') || 'enableButton, enablePosition, enableColor',
+      },
+    };
   }
+
+  const [
+    heroVariationEl,
+    desktopVideoEl,
+    mobileVideoEl,
+    backgroundImageEl,
+    backgroundMobileImageEl,
+    overlayImageEl,
+    overlayImageLinkEl,
+    contentEl,
+    contentDescriptionStyleEl,
+    featuredProductTextEl,
+    featuredProductTextStyleEl,
+    featuredProductTextColorEl,
+    ...rest
+  ] = block.children;
+
+  const [
+    contentBackgroundColor,
+    gradientOpacity,
+    isFrosted,
+    contentMaskOpacity,
+    enableConfig,
+    contentTextColor,
+    contentHeadingColor,
+    heroContentPosition,
+    gradientVariation,
+    getFirstBtnLable,
+    getFirstBtnType,
+    getFirstBtnUrl,
+    getSecondBtnLable,
+    getSecondBtnType,
+    getSecondBtnUrl,
+  ] = Array.from([...rest]).map((node) => node.textContent.trim());
+
+  const contentDescriptionStyle = (contentDescriptionStyleEl && contentDescriptionStyleEl.textContent.trim()) || 'para';
+  const featuredProductTextStyle = featuredProductTextStyleEl && featuredProductTextStyleEl.textContent.trim();
+  const featuredProductTextColor = featuredProductTextColorEl && featuredProductTextColorEl.textContent.trim();
+  const heroVariation = heroVariationEl && heroVariationEl.textContent.trim();
+
+  return {
+    text: {
+      contentEl,
+      featuredProductTextEl,
+    },
+    assets: {
+      desktopVideoEl,
+      mobileVideoEl,
+      backgroundImageEl,
+      backgroundMobileImageEl,
+      overlayImageEl,
+      overlayImageLinkEl,
+    },
+    actions: {
+      button1: { firstButtonLabel: getFirstBtnLable, firstButtonType: getFirstBtnType, firstButtonUrl: getFirstBtnUrl },
+      button2: {
+        secondButtonLabel: getSecondBtnLable,
+        secondButtonType: getSecondBtnType,
+        secondButtonUrl: getSecondBtnUrl,
+      },
+    },
+    styles: {
+      heroVariation,
+      heroContentPosition,
+      contentBackgroundColor,
+      contentDescriptionStyle,
+      contentMaskOpacity,
+      contentTextColor,
+      contentHeadingColor,
+      featuredProductTextColor,
+      featuredProductTextStyle,
+      gradientVariation,
+      gradientOpacity,
+      isFrosted,
+      enableConfig,
+    },
+  };
+};
+
+export default async function decorate(block) {
+  const { text, assets, actions, styles } = getBlockFields(block);
+  const { button1, button2 } = actions;
+
+  const { contentEl, featuredProductTextEl } = text;
+
+  const {
+    desktopVideoEl,
+    mobileVideoEl,
+    backgroundImageEl,
+    backgroundMobileImageEl,
+    overlayImageEl,
+    overlayImageLinkEl,
+  } = assets;
+
+  const {
+    heroVariation,
+    heroContentPosition,
+    contentBackgroundColor,
+    featuredProductTextColor,
+    contentDescriptionStyle,
+    featuredProductTextStyle,
+    gradientVariation,
+    gradientOpacity,
+    contentMaskOpacity,
+    contentTextColor,
+    contentHeadingColor,
+    isFrosted,
+    enableConfig,
+  } = styles;
+
+  const heroContainer = document.createElement('div');
+  heroContainer.classList.add('hero-main-container');
+  const heroImageContainer = document.createElement('div');
+  heroImageContainer.classList.add('hero-image-container');
+  const heroVideoContainer = document.createElement('div');
+  heroVideoContainer.classList.add('hero-video-wrapper');
+  const heroTextContent = document.createElement('div');
+  heroTextContent.classList.add('hero-text-content');
+
+  // class appending based on selection
+  function getColorTextBasedOnColorCode(colorCode) {
+    let setColor = 'black';
+    switch (colorCode) {
+      case '#FFFFFF':
+        setColor = 'white';
+        break;
+      case '#3D4E3C':
+        setColor = 'sage';
+        break;
+      case '#516372':
+        setColor = 'blue';
+        break;
+      case '#B2B2B2':
+        setColor = 'gray';
+        break;
+      case '#667A66':
+        setColor = 'green';
+        break;
+      case '#252A2F':
+        setColor = 'dark-blue';
+        break;
+      default:
+        setColor = 'black';
+        break;
+    }
+    return setColor;
+  }
+
+  // updated heroContent
+  function modifiedHeroContentHtml(heroContentData, buttonData) {
+    const wrapperDiv = document.createElement('div');
+    wrapperDiv.classList.add('hero-button-wrapper');
+    const buttonContainers = heroContentData.querySelectorAll('.button-container');
+    const hasAnchorsInHeroContent = heroContentData.querySelector('a[href]') !== null;
+    const variantSupportsConfiguredButtons = ['heroFrostedGlass', 'heroGradient'].includes(heroVariation);
+
+    if (buttonContainers.length > 0) {
+      buttonContainers.forEach((buttonContainer) => {
+        wrapperDiv.append(buttonContainer);
+      });
+    }
+
+    if (
+      enableConfig &&
+      enableConfig.includes('enableButton') &&
+      variantSupportsConfiguredButtons &&
+      !hasAnchorsInHeroContent &&
+      buttonData.length > 0
+    ) {
+      buttonData.forEach((data) => {
+        const customButton = document.createElement('a');
+        const createPTagWrapper = document.createElement('p');
+        customButton.href = data.url ? data.url : '#';
+        customButton.title = data.lable;
+        customButton.textContent = data.lable;
+        customButton.classList.add(`${data.type.split('--')[1]}`);
+        customButton.classList.add('button');
+        createPTagWrapper.classList.add('button-container');
+        createPTagWrapper.append(customButton);
+        wrapperDiv.append(createPTagWrapper);
+      });
+    }
+
+    const classNames = contentDescriptionStyle.split(/\s+/);
+    heroContentData.classList.add(...classNames);
+    if (wrapperDiv.children.length > 0) {
+      heroContentData.appendChild(wrapperDiv);
+    }
+    return heroContentData;
+  }
+
+  const variationOption = heroVariation;
+
+  // set hero content mask opacity
+  const maskStyleApply = (element, colorName, opacity) => {
+    const props = {
+      'hero-content-mask-color': `var(--${colorName})`,
+      'hero-content-opacity': parseFloat(opacity / 100) || 0.5,
+    };
+
+    Object.entries(props).forEach(([key, value]) => {
+      element.style.setProperty(`--${key}`, `${value}`);
+    });
+  };
+
+  // set hero gradient opacity
+  const setHeroGradientOpacity = (element, opacity) => {
+    element.style.setProperty(`--hero-gradient-opacity`, `${parseFloat(opacity / 100) || 0.3}`);
+  };
+
+  const buttonData = [];
+
+  if (enableConfig && enableConfig.includes('enableButton')) {
+    if (button1 && button1.firstButtonType && button1.firstButtonUrl) {
+      buttonData.push({
+        lable: button1.firstButtonLabel,
+        type: button1.firstButtonType,
+        url: button1.firstButtonUrl,
+        buttonNum: 1,
+      });
+    }
+
+    if (button2 && button2.secondButtonType && button2.secondButtonUrl) {
+      buttonData.push({
+        lable: button2.secondButtonLabel,
+        type: button2.secondButtonType,
+        url: button2.secondButtonUrl,
+        buttonNum: 2,
+      });
+    }
+  }
+
+  const featuredProductTextVal = featuredProductTextEl && featuredProductTextEl.textContent.trim();
+
+  function viewProductFeatureText() {
+    const createFeaturedProductTextContainer = document.createElement('div');
+    createFeaturedProductTextContainer.classList.add(
+      'feature-product-text',
+      ...(heroContentPosition !== '' ? [heroContentPosition] : []),
+    );
+    const getAnchor = featuredProductTextEl && featuredProductTextEl.querySelector('.button-container a');
+    const getFeatureTextColor = featuredProductTextColor;
+    const textStyle = featuredProductTextStyle;
+
+    setAuthorDataProps(
+      createFeaturedProductTextContainer,
+      'Featured Product Text',
+      'featuredProductText',
+      'richtext',
+      'hero',
+      'text',
+    );
+
+    if (getAnchor) {
+      getAnchor.classList.remove('button');
+      getAnchor.style.color = `${getFeatureTextColor !== '' ? getFeatureTextColor : '#fff'}`;
+    } else {
+      createFeaturedProductTextContainer.style.color = `${getFeatureTextColor !== '' ? getFeatureTextColor : '#fff'}`;
+    }
+    createFeaturedProductTextContainer.innerHTML = featuredProductTextEl && featuredProductTextEl.innerHTML.trim();
+
+    createFeaturedProductTextContainer.classList.add(
+      `hero-text-${getColorTextBasedOnColorCode(getFeatureTextColor)}`,
+      `${textStyle || 'para'}`,
+    );
+    heroContainer.classList.add('hero-feature-text-enabled');
+    return createFeaturedProductTextContainer;
+  }
+
+  function waitForUserGesture(video) {
+    const playOnUserInteraction = () => {
+      video.play().catch((err) => {
+        console.error('Still cannot play video after user interaction:', err);
+      });
+      document.removeEventListener('click', playOnUserInteraction);
+      document.removeEventListener('touchstart', playOnUserInteraction);
+    };
+
+    document.addEventListener('click', playOnUserInteraction);
+    document.addEventListener('touchstart', playOnUserInteraction);
+  }
+
+  function HeroVideoGenerate(isMobile) {
+    const desktopUrl = desktopVideoEl?.querySelector('a[href]')?.getAttribute('href')?.trim();
+    const mobileUrl = mobileVideoEl?.textContent.trim();
+    const videoUrl = isMobile ? mobileUrl : desktopUrl;
+
+    if (!videoUrl || !videoUrl.endsWith('.mp4')) {
+      return;
+    }
+
+    const video = document.createElement('video');
+    video.src = videoUrl;
+
+    // SAFARI MOBILE COMPATIBILITY
+    video.muted = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.loop = true;
+
+    // Add attributes explicitly for Safari/iOS
+    video.setAttribute('muted', '');
+    video.setAttribute('autoplay', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('loop', '');
+
+    video.classList.add('hero-video');
+
+    // Try autoplay once loaded
+    video.addEventListener('loadeddata', () => {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          waitForUserGesture(video);
+        });
+      }
+    });
+
+    // Play/pause button
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.title = 'Play/Pause';
+    btn.classList.add('playing');
+
+    btn.onclick = function handleButtonClick() {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    };
+
+    video.onplay = () => {
+      btn.classList.add('playing');
+      btn.classList.remove('paused');
+    };
+
+    video.onpause = () => {
+      btn.classList.add('paused');
+      btn.classList.remove('playing');
+    };
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'hero-video-placeholder-play-pause';
+    wrapper.appendChild(btn);
+
+    heroVideoContainer.innerHTML = '';
+    heroVideoContainer.append(video, wrapper);
+    heroContainer.prepend(heroVideoContainer);
+  }
+
+  // Detect mobile
+  function isMobileDevice() {
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  }
+
+  // Call function based on device
+  document.addEventListener('DOMContentLoaded', () => {
+    HeroVideoGenerate(isMobileDevice());
+  });
+
+  // Set background image based on device type
+  function setHeroBackground(isMobile) {
+    const sourceImage = isMobile ? backgroundMobileImageEl : backgroundImageEl;
+    if (!sourceImage) {
+      return;
+    }
+
+    // Resolve src/alt from current sourceImage.
+    const picture = sourceImage.querySelector('picture');
+    let src = '';
+    let alt = '';
+    let useOptimized = true; // toggle: false when we got the image from a link (dynamic media)
+
+    if (picture) {
+      const imgEl = picture.querySelector('img');
+      if (imgEl) {
+        // Prefer currentSrc in case responsive sources have already selected one
+        src = (imgEl.currentSrc || imgEl.src || '').trim();
+        alt = imgEl.alt || '';
+        useOptimized = true; // source was already a <picture>, okay to optimize
+      }
+    } else {
+      const link = sourceImage.querySelector('a[href]');
+      if (link) {
+        // Hint dynamic media about desired width (optional)
+        const dynamicImage = getDynamicMediaImage(sourceImage, { width: isMobile ? '750' : '1440' });
+        if (dynamicImage) {
+          src = (dynamicImage.src || dynamicImage.getAttribute('src') || '').trim();
+          alt = dynamicImage.alt || '';
+          useOptimized = false; // source from link → do NOT optimize; just wrap in <picture>
+        }
+      }
+    }
+
+    // Desktop fallback if nothing resolved and bgImage has a picture.
+    if (!src && !isMobile && backgroundImageEl) {
+      const fallbackPic = backgroundImageEl.querySelector('picture');
+      const fallbackImg = fallbackPic?.querySelector('img');
+      if (fallbackImg) {
+        src = (fallbackImg.currentSrc || fallbackImg.src || '').trim();
+        alt = fallbackImg.alt || '';
+        useOptimized = true;
+      }
+    }
+
+    // If we still don't have anything to render, bail early.
+    if (!src) {
+      return;
+    }
+
+    // Prevent redundant re-render when the same source is already shown for this viewport.
+    const renderKey = `${isMobile ? 'm' : 'd'}|${src}|${useOptimized ? 'opt' : 'raw'}`;
+    if (heroImageContainer.dataset.renderKey === renderKey) {
+      return;
+    }
+
+    // Clean container before rendering.
+    heroImageContainer.innerHTML = '';
+
+    let pictureNode;
+
+    if (useOptimized) {
+      // Build an optimized <picture> from resolved src/alt.
+      const breakpoints = isMobile
+        ? [{ media: '(max-width: 750px)', width: '750' }]
+        : [{ media: '(max-width: 540px)', width: '1130' }, { width: '1440' }];
+      pictureNode = createOptimizedPicture(src, alt, true, breakpoints);
+    } else {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = alt || '';
+
+      pictureNode = document.createElement('picture');
+      pictureNode.appendChild(img);
+    }
+
+    heroImageContainer.append(pictureNode);
+
+    // Preload and attach to the hero (use the pictureNode if your preload expects element).
+    // If your preload function expects the container, switch to: preloadHeroImage(heroImageContainer);
+    preloadHeroImage(pictureNode);
+
+    // Ensure the container is attached (in case it wasn't already).
+    heroContainer.append(heroImageContainer);
+
+    // Mark what we rendered to avoid flicker/duplication on resize.
+    heroImageContainer.dataset.renderKey = renderKey;
+  }
+
+  // Variation 1
+  if (variationOption === 'overlayImageTextBottom') {
+    const heroImageInnerContainer = document.createElement('div');
+    heroImageInnerContainer.classList.add('hero-inner-image-container');
+
+    if (overlayImageEl?.querySelector('picture') === null && overlayImageEl.querySelector('a[href]')) {
+      overlayImageEl.innerHTML = `<div><picture>${getDynamicMediaImage(overlayImageEl).outerHTML}</picture></div>`;
+    }
+
+    const heroInnerImage = overlayImageEl?.querySelector('picture');
+    const heroInnerImageEl = heroInnerImage?.querySelector('img');
+    heroInnerImageEl?.setAttribute('loading', 'eager');
+    heroInnerImageEl?.setAttribute('fetchpriority', 'high');
+
+    const heroAnchorLink = document.createElement('a');
+    if (heroInnerImage) {
+      setAuthorDataProps(heroInnerImageEl, 'Overlay Image', 'overlayImage', 'image', 'hero', 'image');
+
+      heroAnchorLink.setAttribute('href', overlayImageLinkEl?.querySelector('a')?.href);
+      heroAnchorLink.append(heroInnerImage);
+      preloadHeroImage(heroInnerImage);
+    }
+
+    heroImageInnerContainer.append(heroAnchorLink);
+    heroContainer.append(heroImageInnerContainer);
+
+    const backgroundAnchorLink = document.createElement('a');
+    backgroundAnchorLink.classList.add('hero-bg-link');
+    backgroundAnchorLink?.setAttribute('href', contentEl?.querySelector('a')?.href);
+    backgroundAnchorLink.innerHTML = contentEl?.querySelector('a')?.innerHTML;
+    heroTextContent.classList.add('hero-first-variation');
+
+    if (featuredProductTextVal) {
+      heroContainer.append(viewProductFeatureText());
+    }
+
+    heroContainer.append(heroTextContent);
+
+    if (heroContentPosition && enableConfig && enableConfig.includes('enablePosition')) {
+      heroContainer.classList.add('overlay-image-variation', heroContentPosition);
+      heroAnchorLink.classList.add('hero-first-variation-anchor-img');
+    }
+
+    // Variation 2
+  } else if (variationOption === 'overlayText') {
+    heroTextContent.classList.add('overlay-text-content', 'overlay-text-variation');
+    setAuthorDataProps(heroTextContent, 'Hero Content', 'content', 'richtext', 'hero', 'text');
+
+    if (featuredProductTextVal !== '') {
+      heroContainer.append(viewProductFeatureText());
+    }
+
+    if (heroContentPosition && enableConfig && enableConfig.includes('enablePosition')) {
+      heroTextContent.classList.add(
+        'overlay-text-variation-position',
+        ...(heroContentPosition !== '' ? [heroContentPosition] : []),
+      );
+    }
+
+    if (contentTextColor && enableConfig && enableConfig.includes('enableColor')) {
+      heroTextContent.classList.add(
+        `hero-text-${getColorTextBasedOnColorCode(contentTextColor)}`,
+        `hero-heading-${getColorTextBasedOnColorCode(contentHeadingColor)}`,
+      );
+    }
+    heroTextContent.append(modifiedHeroContentHtml(contentEl, buttonData));
+    heroContainer.append(heroTextContent);
+  }
+
+  // Variation 3
+  else if (variationOption === 'heroFrostedGlass') {
+    const heroFrostedGlass = document.createElement('div');
+    heroFrostedGlass.dataset.backgroundColor = contentBackgroundColor !== '' ? contentBackgroundColor : 'transparent';
+    heroFrostedGlass.classList.add('hero-frosted-glass-layout', 'hero-text-content');
+    setAuthorDataProps(heroFrostedGlass, 'Hero Content', 'content', 'richtext', 'hero', 'text');
+
+    if (isFrosted === 'true') {
+      heroFrostedGlass.classList.add('hero-frosted-applied');
+      maskStyleApply(heroFrostedGlass, contentBackgroundColor, contentMaskOpacity);
+    }
+
+    if (heroContentPosition && enableConfig && enableConfig.includes('enablePosition')) {
+      heroFrostedGlass.classList.add(...(heroContentPosition !== '' ? [heroContentPosition] : []));
+    }
+
+    if (contentTextColor && enableConfig && enableConfig.includes('enableColor')) {
+      heroFrostedGlass.classList.add(
+        `hero-text-${getColorTextBasedOnColorCode(contentTextColor)}`,
+        `hero-heading-${getColorTextBasedOnColorCode(contentHeadingColor)}`,
+      );
+    }
+    heroFrostedGlass.append(modifiedHeroContentHtml(contentEl, buttonData));
+    if (featuredProductTextVal !== '') {
+      heroContainer.append(viewProductFeatureText());
+    }
+
+    heroContainer.classList.add('hero-frosted-glass-container');
+    heroContainer.append(heroFrostedGlass);
+  }
+
+  // Variation 4
+  else if (variationOption === 'heroGradient') {
+    const heroGradient = document.createElement('div');
+    const getgradientVariationContainer = document.createElement('div');
+
+    if (gradientVariation) {
+      getgradientVariationContainer.classList.add('hero-gradient-effect', gradientVariation);
+      setHeroGradientOpacity(getgradientVariationContainer, gradientOpacity);
+    }
+
+    heroGradient.dataset.backgroundColor = contentBackgroundColor !== '' ? contentBackgroundColor : 'transparent';
+    heroGradient.classList.add('hero-hero-gradient-layout', 'hero-text-content');
+    setAuthorDataProps(heroGradient, 'Hero Content', 'content', 'richtext', 'hero', 'text');
+
+    if (heroContentPosition && enableConfig && enableConfig.includes('enablePosition')) {
+      heroGradient.classList.add(...(heroContentPosition !== '' ? [heroContentPosition] : []));
+    }
+
+    if (contentTextColor && enableConfig && enableConfig.includes('enableColor')) {
+      heroGradient.classList.add(
+        `hero-text-${getColorTextBasedOnColorCode(contentTextColor)}`,
+        `hero-heading-${getColorTextBasedOnColorCode(contentHeadingColor)}`,
+      );
+    }
+
+    heroGradient.append(modifiedHeroContentHtml(contentEl, buttonData));
+    heroContainer.append(getgradientVariationContainer);
+
+    if (featuredProductTextVal !== '') {
+      heroContainer.append(viewProductFeatureText());
+    }
+
+    heroContainer.append(heroGradient);
+  }
+
+  // check lazy loading
+  if (heroContainer) {
+    const img = heroContainer.querySelector('.hero-image-container img');
+    if (img && img.hasAttribute('loading')) {
+      img.removeAttribute('loading');
+    }
+  }
+
+  // Initialize with current viewport state
+  const mobileMediaQuery = window.matchMedia('(max-width: 767px)');
+
+  // Always set background image first
+  setHeroBackground(mobileMediaQuery.matches);
+
+  // Then optionally add video overlay
+  if (desktopVideoEl && desktopVideoEl.textContent.trim() !== '') {
+    HeroVideoGenerate(mobileMediaQuery.matches);
+
+    // --- Add listener to update video on screen resize ---
+    let currentIsMobile = mobileMediaQuery.matches;
+
+    mobileMediaQuery.addEventListener('change', (e) => {
+      if (e.matches !== currentIsMobile) {
+        currentIsMobile = e.matches;
+        HeroVideoGenerate(currentIsMobile);
+      }
+    });
+  }
+
+  // Listener for media query changes
+  mobileMediaQuery.addEventListener('change', (e) => {
+    setHeroBackground(e.matches);
+  });
+
+  // Use fragment for efficient DOM replacement
+  const fragment = document.createDocumentFragment();
+  fragment.append(heroContainer);
+  block.innerHTML = '';
+  block.append(fragment);
 }
