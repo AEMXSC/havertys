@@ -1,5 +1,5 @@
 footer {
-  background: url('../../icons/HavertysLogo-White-Large.svg') 0 2px / 100% no-repeat var(--c-primary-dark, #252a2f);
+  background: url('../../icons/HavertysLogo-White-Large.svg') center 20px / 100% no-repeat var(--c-primary-dark, #252a2f);
   color: rgba(255,255,255,0.7);
   font-size: 14px;
 }
@@ -13,18 +13,56 @@ footer a:hover { color: #fff; }
   padding: 60px 2rem 40px;
 }
 
-.footer-row {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 2rem;
-  margin-bottom: 30px;
+/* Row 1: Logo + Store Locator/Appointment - centered */
+.footer-row-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  margin-bottom: 20px;
 }
 
-.footer-row-top img { height: 50px; width: auto; }
-.footer-row-top p { margin: 5px 0; }
+.footer-row-top img { height: 40px; width: auto; }
 
-.footer-socials img { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; padding: 8px; }
-.footer-socials p { margin: 8px 0; }
+.footer-row-top > div:last-child {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-row-top > div:last-child p { margin: 0; }
+
+.footer-row-top > div:last-child a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Row 2: Socials (centered) + Link columns */
+.footer-row-main {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  margin: 20px 0 30px;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.footer-socials > div {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-socials p { margin: 0; }
+.footer-socials img { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; padding: 6px; }
 
 .footer-links-grid {
   display: grid;
@@ -34,27 +72,38 @@ footer a:hover { color: #fff; }
 
 .footer-links-grid h2 {
   font-family: var(--body-font-family, sans-serif);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: #fff;
-  margin: 0 0 12px;
+  margin: 0 0 16px;
 }
 
 .footer-links-grid ul { list-style: none; padding: 0; margin: 0; }
 .footer-links-grid li { margin: 10px 0; }
+.footer-links-grid li a { font-size: 13px; }
 
+/* Row 3: Copyright + Legal */
 .footer-row-bottom {
-  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
   padding-top: 20px;
+  margin-top: 10px;
   font-size: 12px;
   color: rgba(255,255,255,0.5);
+  text-align: center;
 }
 
 .footer-row-bottom a { color: rgba(255,255,255,0.5); }
+.footer-row-bottom p { margin: 0; }
 
 @media (max-width: 900px) {
-  .footer-row { grid-template-columns: 1fr; }
+  .footer-row-top { flex-direction: column; gap: 1rem; }
+  .footer-row-main { grid-template-columns: 1fr; }
+  .footer-socials > div { justify-content: center; }
   .footer-links-grid { grid-template-columns: 1fr; }
+  .footer-row-bottom { flex-direction: column; text-align: center; }
 }
