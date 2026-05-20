@@ -12,7 +12,13 @@ export default async function decorate(block) {
   footer.classList.add('footer-container');
 
   const sections = tmp.querySelectorAll(':scope > div');
-  sections.forEach((section, i) => {
+  // Original footer expects: 0=logo, 1=buttons, 2=socials, 3=spacer, 4=links, 5=copyright, 6=legal
+  // DA returns: 0=logo, 1=buttons, 2=socials, 3=links, 4=copyright, 5=legal
+  // Insert empty spacer div at position 3 to align with CSS expectations
+  const spacer = document.createElement('div');
+  const sectionArray = [...sections];
+  sectionArray.splice(3, 0, spacer);
+  sectionArray.forEach((section, i) => {
     section.classList.add(`footer-section${i}`);
     section.classList.add('default-content-wrapper');
     footer.append(section);
