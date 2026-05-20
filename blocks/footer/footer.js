@@ -12,17 +12,40 @@ export default async function decorate(block) {
   footer.classList.add('footer-container');
 
   const sections = tmp.querySelectorAll(':scope > div');
-  // Original footer expects: 0=logo, 1=buttons, 2=socials, 3=spacer, 4=links, 5=copyright, 6=legal
-  // DA returns: 0=logo, 1=buttons, 2=socials, 3=links, 4=copyright, 5=legal
-  // Insert empty spacer div at position 3 to align with CSS expectations
-  const spacer = document.createElement('div');
   const sectionArray = [...sections];
-  sectionArray.splice(3, 0, spacer);
+
+  // Section with both "ABOUT HAVERTYS" and "CUSTOMER SERVICE" needs to be split into 2 columns
   sectionArray.forEach((section, i) => {
-    section.classList.add(`footer-section${i}`);
     section.classList.add('default-content-wrapper');
     footer.append(section);
   });
+
+  // Find the section with both h2 headings and split into a grid
+  const linksSection = footer.querySelector('.default-content-wrapper:has(h2)');
+  if (linksSection) {
+    linksSection.classList.add('footer-links');
+    const headings = linksSection.querySelectorAll('h2');
+    if (headings.length >= 2) {
+      const grid = document.createElement('div');
+      grid.classList.add('footer-links-grid');
+
+      const col1 = document.createElement('div');
+      col1.classList.add('footer-col');
+      const col2 = document.createElement('div');
+      col2.classList.add('footer-col');
+
+      let currentCol = col1;
+      [...linksSection.children].forEach((child) => {
+        if (child === headings[1]) currentCol = col2;
+        currentCol.append(child);
+      });
+
+      grid.append(col1);
+      grid.append(col2);
+      linksSection.innerHTML = '';
+      linksSection.append(grid);
+    }
+  }
 
   // decorate icons
   footer.querySelectorAll('span.icon').forEach((icon) => {
@@ -38,12 +61,6 @@ export default async function decorate(block) {
 
   // remove button classes from footer links
   footer.querySelectorAll('.button').forEach((link) => link.classList.remove('button'));
-
-  // update copyright year
-  const copyright = footer.querySelector('.footer-section6 p, .footer-section5 p');
-  if (copyright && copyright.textContent.includes('{currentYear}')) {
-    copyright.textContent = copyright.textContent.replace('{currentYear}', new Date().getFullYear());
-  }
 
   block.append(footer);
 }

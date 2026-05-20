@@ -446,3 +446,41 @@ footer .footer p {
 .footer-container .footer-section6 a {
   color: rgba(255,255,255,0.5);
 }
+
+/* Grid layout for About/Customer Service columns */
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 30px 0;
+}
+
+.footer-links-grid .footer-col h2 {
+  font-family: var(--body-font-family, sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  margin: 0 0 15px;
+}
+
+.footer-links-grid .footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links-grid .footer-col li {
+  margin: 8px 0;
+}
+
+.footer-links-grid .footer-col a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links-grid .footer-col a:hover {
+  color: #fff;
+}
