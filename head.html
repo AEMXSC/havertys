@@ -58,3 +58,54 @@
 <link rel="preload" as="script" crossorigin="anonymous" href="/plugins/martech/src/index.js" />
 <link rel="preload" as="script" crossorigin="anonymous" href="/plugins/martech/src/alloy.min.js" />
 <link rel="preconnect" href="https://edge.adobedc.net" />
+
+<!-- Structured data for AI crawlers and search engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FurnitureStore",
+      "@id": "https://main--havertys--aemxsc.aem.page/#organization",
+      "name": "Havertys Furniture",
+      "url": "https://main--havertys--aemxsc.aem.page",
+      "description": "Premium American furniture retailer founded in 1885. 125 stores across the South and Mid-Atlantic US. Free design consultation and Regret-Free Guarantee.",
+      "foundingDate": "1885",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Atlanta",
+        "addressRegion": "GA",
+        "addressCountry": "US"
+      },
+      "areaServed": ["Alabama","Florida","Georgia","Maryland","Mississippi",
+        "North Carolina","Oklahoma","South Carolina","Tennessee","Texas","Virginia"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Havertys Furniture Collections",
+        "itemListElement": [
+          {"@type":"OfferCatalog","name":"Sectionals",
+           "url":"https://main--havertys--aemxsc.aem.page/products/category-page/living-room/sectionals"},
+          {"@type":"OfferCatalog","name":"Sofas",
+           "url":"https://main--havertys--aemxsc.aem.page/products/category-page/living-room/sofas-sleepers"},
+          {"@type":"OfferCatalog","name":"Recliners",
+           "url":"https://main--havertys--aemxsc.aem.page/products/category-page/living-room/recliners"},
+          {"@type":"OfferCatalog","name":"Bedroom Furniture",
+           "url":"https://main--havertys--aemxsc.aem.page/products/category-page/bedroom"}
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://main--havertys--aemxsc.aem.page/#website",
+      "url": "https://main--havertys--aemxsc.aem.page",
+      "name": "Havertys Furniture",
+      "publisher": {"@id": "https://main--havertys--aemxsc.aem.page/#organization"},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://main--havertys--aemxsc.aem.page/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+</script>

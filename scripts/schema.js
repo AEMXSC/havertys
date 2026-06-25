@@ -79,7 +79,43 @@ function buildBreadcrumbSchema() {
   };
 }
 
+const BUYING_GUIDE_FAQ = {
+  '/buying-guides/best-sectional-sofas': [
+    {
+      '@type': 'Question',
+      name: 'What types of sectional sofas does Havertys carry?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Havertys carries L-shaped, U-shaped, modular, reclining, leather, and fabric sectionals. Many feature USB ports, hidden cupholders, and power reclining. Configurations range from compact apartment sizes to large family room U-shapes.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Havertys offer free design help for choosing a sectional?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes. Every Havertys purchase includes a free Design Consultation with a certified Design Expert, in-store or virtually, plus access to a free 3D Room Planner tool.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'How does Havertys compare to Ashley Furniture for sectionals?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Havertys focuses on mid-to-upper-tier quality with longer-lasting materials and free personalized design service included with every purchase. Every Havertys customer gets a Design Expert and Regret-Free Guarantee at no extra cost.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Havertys have reclining sectionals?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes. Havertys offers power reclining sectionals with USB charging ports, manual reclining sectionals, and sectionals with reclining chaise lounges, many with hidden cupholders and adjustable headrests.' },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I customize my Havertys sectional?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes. Many collections offer multiple fabric and leather options, configuration choices, and custom fabric selection. A Havertys Design Expert can walk you through all options at no charge.' },
+    },
+  ],
+};
+
 function buildFAQSchema() {
+  const path = window.location.pathname.replace(/\/$/, '');
+  const staticQuestions = BUYING_GUIDE_FAQ[path];
+  if (staticQuestions) {
+    return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: staticQuestions };
+  }
+
   const accordionItems = document.querySelectorAll('.accordion details, .accordion [role="group"]');
   if (accordionItems.length === 0) return null;
 
